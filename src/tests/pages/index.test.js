@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import App from "../pages/index";
+import App from "../../pages/index";
 
 // basic test to demonstrate how to get started with app testing
 describe("App", () => {
