@@ -8,7 +8,7 @@ provider:
   memorySize: 1024
   environment:
     NODE_ENV: production
-  tags:
+  stackTags:
     name: courses search
     group: ESG
     project: course-search
