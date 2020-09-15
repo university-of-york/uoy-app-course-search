@@ -1,0 +1,71 @@
+service: uoy-app-course-search
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: v1
+  region: eu-west-1
+  memorySize: 1024
+  environment:
+    NODE_ENV: production
+  stackTags:
+    name: courses search
+    group: ESG
+    project: course-search
+    status: ${env:DEPLOY_ENVIRONMENT, 'dev'}
+    pushed_by: github
+    defined_in: serverless
+    repo_name: uoy-app-course-search
+    team: "ESG Teaching and Learning"
+
+functions:
+  server:
+    handler: index.server
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
+
+plugins:
+  - serverless-apigw-binary
+
+custom:
+  apigwBinary:
+    types:
+      - '*/*'
+
+# Exclude next.js dependencies that are not needed at runtime
+package:
+  exclude:
+    - node_modules/@babel/**
+    - node_modules/ally.js/**
+    - node_modules/caniuse-lite/**
+    - node_modules/lodash/**
+    - node_modules/webpack/**
+    - node_modules/terser/**
+    - node_modules/es5-ext/**
+    - node_modules/resolve-url-loader/**
+    - node_modules/postcss/**
+    - node_modules/acorn/**
+    - node_modules/ajv/**
+    - node_modules/@webassemblyjs/**
+    - node_modules/cssnano-preset-simple/**
+    - node_modules/snapdragon/**
+    - node_modules/@next/**
+    - node_modules/regenerate-unicode-properties/**
+    - node_modules/pako/**
+    - node_modules/source-map/**
+    - node_modules/bluebird/**
+    - node_modules/uri-js/**
+    - node_modules/ast-types/**
+    - node_modules/watchpack-chokidar2/**
+    - node_modules/terser-webpack-plugin/**
+    - node_modules/core-js-compat/**
+    - node_modules/neo-async/**
+    - node_modules/postcss-selector-parser/**
+    - node_modules/css-loader/**
+    - node_modules/sass-loader/**
+    - node_modules/buffer/**
+    - node_modules/adjust-sourcemap-loader/**
+    - node_modules/ext/**
+    - node_modules/tr46/**
+    - node_modules/micromatch/**
