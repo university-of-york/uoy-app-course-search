@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "next": "9.5.2",
+    "next": "9.5.3",
     "node-fetch": "^2.6.0",
     "path-match": "^1.2.4",
     "react": "16.13.1",
