@@ -49,3 +49,7 @@ Or, in Intellij, open the `npm` window and double-click on `test`.
 
 - [Digital Platforms and Developments Team](mailto:marketing-support@york.ac.uk)
 - [Enterprise Systems Teaching and Learning Team](mailto:esg-teaching-and-learning-group@york.ac.uk)
+
+## Licence
+
+MIT
