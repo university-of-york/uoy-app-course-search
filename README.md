@@ -17,23 +17,23 @@ You will need [Node.js](https://nodejs.org/en/download/) (LTS version) installed
 
 ### Local Development
 
-This application uses [Next.js](https://nextjs.org/). The entry point 
+This application uses [Next.js](https://nextjs.org/). The entry point
 for the application is `src/pages/index.js`. To run the
 application locally in development mode using the command line:
 
 ```
 npm run dev
 ```
-                                                      
-Alternatively, in Intellij, open the `npm` window (right click
-on `package.json` and select `Show npm scripts`) and double-click on 
-`dev`. 
 
-Go to [http://localhost:3000](http://localhost:3000) 
+Alternatively, in Intellij, open the `npm` window (right click
+on `package.json` and select `Show npm scripts`) and double-click on
+`dev`.
+
+Go to [http://localhost:3000](http://localhost:3000)
 to use the application.
 
 To stop the application, on the command line press `ctrl-c`, or in
-Intellij, press the square red `Stop` button. 
+Intellij, press the square red `Stop` button.
 
 ## Testing
 
