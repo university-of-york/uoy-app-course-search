@@ -9,7 +9,7 @@ provider:
   environment:
     NODE_ENV: production
   stackTags:
-    name: courses search
+    name: course search
     group: ESG
     project: course-search
     status: ${env:DEPLOY_ENVIRONMENT, 'dev'}
