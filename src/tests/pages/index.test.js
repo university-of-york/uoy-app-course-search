@@ -1,13 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import App from "../../pages/index";
+import App from "../../pages";
 
 // basic test to demonstrate how to get started with app testing
 describe("App", () => {
-    // prettier-ignore
     it("renders without crashing", () => {
         render(<App />);
-        expect(
-            screen.getByRole("heading", { name: "Hello World!" })
-        ).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Hello World!" })).toBeInTheDocument();
     });
 });
