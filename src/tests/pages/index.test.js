@@ -3,11 +3,8 @@ import App from "../../pages/index";
 
 // basic test to demonstrate how to get started with app testing
 describe("App", () => {
-    // prettier-ignore
     it("renders without crashing", () => {
         render(<App />);
-        expect(
-            screen.getByRole("heading", { name: "Hello World!" })
-        ).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Hello World!" })).toBeInTheDocument();
     });
 });
