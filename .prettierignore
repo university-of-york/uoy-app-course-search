@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML and Markdown files:
+*.html
+*.md
+
+# Ignore the C4 model publisher yaml
+publish-c4-model.yml

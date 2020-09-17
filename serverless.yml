@@ -31,7 +31,7 @@ plugins:
 custom:
   apigwBinary:
     types:
-      - '*/*'
+      - "*/*"
 
 # Exclude next.js dependencies that are not needed at runtime
 package:
