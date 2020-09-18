@@ -1,5 +1,12 @@
-const App = () => {
-    return <h1>Hello World!</h1>; // application entry point - edit to start app development
+const App = (props) => {
+    return (
+        <>
+            <h1>Course search results</h1>
+            {props.searchResults?.map((course, index) => (
+                <h2 key={index}>{course.title}</h2>
+            ))}
+        </>
+    );
 };
 
 const getServerSideProps = async () => {
@@ -10,5 +17,4 @@ const getServerSideProps = async () => {
     return { props: { searchResults: data.results } };
 };
 
-export { getServerSideProps };
-export default App;
+export { App as default, getServerSideProps };

@@ -1,15 +1,24 @@
 import { render, screen } from "@testing-library/react";
-import { App, getServerSideProps } from "../../pages";
+import App, { getServerSideProps } from "../../pages";
 
 beforeEach(() => {
     fetch.resetMocks();
 });
 
-// basic test to demonstrate how to get started with app testing
 describe("App", () => {
-    it("renders without crashing", () => {
+    it("displays an appropriate page heading", () => {
         render(<App />);
-        expect(screen.getByRole("heading", { name: "Hello World!" })).toBeInTheDocument();
+
+        expect(screen.getByRole("heading", { name: "Course search results" })).toBeInTheDocument();
+    });
+
+    it("displays the titles from course search results", () => {
+        const searchResults = [{ title: "Maths" }, { title: "Physics" }];
+
+        render(<App searchResults={searchResults} />);
+
+        expect(screen.getByRole("heading", { name: "Maths" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Physics" })).toBeInTheDocument();
     });
 });
 
