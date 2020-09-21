@@ -8,6 +8,6 @@ jestFetchMock.enableMocks();
 // (see https://nextjs.org/docs/basic-features/environment-variables#test-environment-variables)
 // but this only works if you build the app before running the tests, which isn't practical
 // (see https://github.com/vercel/next.js/discussions/16270)
-require('dotenv').config({
-    path: '.env.test',
+require("dotenv").config({
+    path: ".env.test",
 });
