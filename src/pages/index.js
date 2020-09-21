@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const App = (props) => {
     return (
         <>
@@ -7,6 +9,15 @@ const App = (props) => {
             ))}
         </>
     );
+};
+
+App.propTypes = {
+    searchResults: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.string,
+            liveUrl: PropTypes.string,
+        })
+    ),
 };
 
 const getServerSideProps = async () => {
