@@ -2,8 +2,8 @@ const App = (props) => {
     return (
         <>
             <h1>Course search results</h1>
-            {props.searchResults?.map((course, index) => (
-                <h2 key={index}>{course.title}</h2>
+            {props.searchResults?.map((course) => (
+                <h2 key={course.liveUrl}>{course.title}</h2>
             ))}
         </>
     );

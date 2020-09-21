@@ -13,7 +13,10 @@ describe("App", () => {
     });
 
     it("displays the titles from course search results", () => {
-        const searchResults = [{ title: "Maths" }, { title: "Physics" }];
+        const searchResults = [
+            { title: "Maths", liveUrl: "http://foo.bar" },
+            { title: "Physics", liveUrl: "http://foo.baz" },
+        ];
 
         render(<App searchResults={searchResults} />);
 
