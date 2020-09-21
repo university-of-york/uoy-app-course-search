@@ -16,5 +16,5 @@
     "unicorn/import-index":"off",
     "unicorn/prevent-abbreviations":"off"
   },
-  "space":true
+  "space":4
 }
