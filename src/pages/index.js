@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {MenuNavigation, UniversityFooter, UniversityHeaderWithSearch, UniversityTitleBar} from "@university-of-york/esg-lib-pattern-library-react-components";
 import {Course} from "../components/Course";
+import {COURSE_MODEL} from "../constants/CourseModel";
 require("regenerator-runtime/runtime");
 
 const App = (props) => {
@@ -25,12 +26,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-    searchResults: PropTypes.arrayOf(
-        PropTypes.shape({
-            title: PropTypes.string,
-            liveUrl: PropTypes.string,
-        })
-    ),
+    searchResults: PropTypes.arrayOf(COURSE_MODEL),
 };
 
 const getServerSideProps = async () => {

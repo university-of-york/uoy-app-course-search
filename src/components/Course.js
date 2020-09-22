@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import styles from './Course.module.css';
 import {useRouter} from "next/router";
+import {COURSE_MODEL} from "../constants/CourseModel";
 
 const Course = ({course, router = useRouter()}) => {
 
@@ -18,10 +18,7 @@ const Course = ({course, router = useRouter()}) => {
 };
 
 Course.propTypes = {
-    course: PropTypes.shape({
-        title: PropTypes.string,
-        liveUrl: PropTypes.string,
-    })
+    course: COURSE_MODEL
 };
 
 export {Course};
