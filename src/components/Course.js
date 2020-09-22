@@ -1,24 +1,17 @@
 import React from "react";
-import styles from './Course.module.css';
-import {useRouter} from "next/router";
-import {COURSE_MODEL} from "../constants/CourseModel";
+import styles from "./Course.module.scss";
+import { COURSE_MODEL } from "../constants/CourseModel";
 
-const Course = ({course, router = useRouter()}) => {
-
-    const goToCoursePage = event => {
-        event.preventDefault;
-        router.push(course.liveUrl);
-    };
-
+const Course = ({ course }) => {
     return (
-        <li className={styles.course} onClick={goToCoursePage}>
+        <a className={styles.course} href={course.liveUrl}>
             <h3>{course.title}</h3>
-        </li>
+        </a>
     );
 };
 
 Course.propTypes = {
-    course: COURSE_MODEL
+    course: COURSE_MODEL,
 };
 
-export {Course};
+export { Course };

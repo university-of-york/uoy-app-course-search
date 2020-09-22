@@ -1,25 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {UniversityFooter, UniversityHeaderWithSearch, UniversityTitleBar} from "@university-of-york/esg-lib-pattern-library-react-components";
-import {Course} from "../components/Course";
-import {COURSE_MODEL} from "../constants/CourseModel";
+import {
+    UniversityFooter,
+    UniversityHeaderWithSearch,
+    UniversityTitleBar,
+} from "@university-of-york/esg-lib-pattern-library-react-components";
+import { Course } from "../components/Course";
+import { COURSE_MODEL } from "../constants/CourseModel";
 require("regenerator-runtime/runtime");
 
 const App = (props) => {
     return (
         <>
-            <UniversityHeaderWithSearch/>
-            <UniversityTitleBar title={"Course search results"}/>
+            <UniversityHeaderWithSearch />
+            <UniversityTitleBar title="Course search results" />
 
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
                 <ul className="course-results">
-                {props.searchResults?.map((course) => (
-                    <Course key={course.liveUrl} course={course}/>
-                ))}
+                    {props.searchResults?.map((course) => (
+                        <Course key={course.liveUrl} course={course} />
+                    ))}
                 </ul>
             </div>
 
-            <UniversityFooter/>
+            <UniversityFooter />
         </>
     );
 };
