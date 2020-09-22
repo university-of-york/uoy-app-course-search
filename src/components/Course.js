@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./Course.module.scss";
-import { COURSE_MODEL } from "../constants/CourseModel";
+import { COURSE_MODEL } from "../constants/model/CourseModel";
 
 const Course = ({ course }) => {
     return (
-        <a className={styles.course} href={course.liveUrl}>
-            <h3>{course.title}</h3>
-        </a>
+        <li className={styles.course}>
+            <a href={course.liveUrl}>{course.title}</a>
+        </li>
     );
 };
 

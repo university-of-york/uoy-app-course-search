@@ -1,0 +1,17 @@
+@import "src/constants/styles/colours";
+
+.course {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    color: colour("blue", 500 );
+}
+
+.course a {
+    text-decoration: none;
+}
+
+.course:hover {
+    cursor: pointer;
+    background-color: colour("blue", 300);
+}
