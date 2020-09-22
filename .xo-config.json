@@ -11,6 +11,7 @@
     "capitalized-comments":"off",
     "indent":"off",
     "import/no-unassigned-import":"off",
+    "import/extensions": "off",
     "react/react-in-jsx-scope":"off",
     "unicorn/filename-case":"off",
     "unicorn/import-index":"off",
