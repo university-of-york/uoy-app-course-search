@@ -9,7 +9,7 @@ const COURSE_MODEL = PropTypes.shape({
     length: PropTypes.string,
     typicalOffer: PropTypes.string,
     yearOfEntry: PropTypes.string,
-    distanceLearning: PropTypes.string | PropTypes.bool, // This will be a boolean in the future
+    distanceLearning: PropTypes.string, // This will be a boolean in the future
     summary: PropTypes.string,
     imageUrl: PropTypes.string,
     ucasCode: PropTypes.string,

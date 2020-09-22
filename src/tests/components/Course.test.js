@@ -10,6 +10,6 @@ describe("Course", () => {
 
         render(<Course course={course} />);
 
-        expect(screen.getByRole("heading", { name: "Mathematics" })).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: "Mathematics" })).toBeInTheDocument();
     });
 });
