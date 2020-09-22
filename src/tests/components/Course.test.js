@@ -1,4 +1,5 @@
-import {render, screen, fireEvent,  wait} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
+import userEvent from "@testing-library/user-event"
 import { Course } from "../../components/Course";
 
 describe("Course", () => {
@@ -13,7 +14,7 @@ describe("Course", () => {
         expect(screen.getByRole("heading", { name: "Mathematics" })).toBeInTheDocument();
     });
 
-    it("clicking takes the user to the full course page", async () => {
+    it("clicking takes the user to the full course page", () => {
         const courseUrl = 'www.google.com';
 
         const course = {
@@ -25,7 +26,7 @@ describe("Course", () => {
 
         render(<Course course={course} router={router}/>);
 
-        fireEvent.click(screen.getByRole('listitem'));
+        userEvent.click(screen.getByRole('listitem'));
 
         expect(router).toContain(courseUrl);
     });
