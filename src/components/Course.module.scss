@@ -2,13 +2,14 @@
 
 .course {
     list-style: none;
-    padding: 10px;
     margin: 0;
     color: colour("blue", 500 );
 }
 
 .course a {
     text-decoration: none;
+    display: block;
+    padding: 10px;
 }
 
 .course:hover {
