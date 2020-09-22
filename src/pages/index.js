@@ -16,7 +16,7 @@ const App = (props) => {
             <UniversityTitleBar title="Course search results" />
 
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
-                <ul className="course-results">
+                <ul>
                     {props.searchResults?.map((course) => (
                         <Course key={course.liveUrl} course={course} />
                     ))}
