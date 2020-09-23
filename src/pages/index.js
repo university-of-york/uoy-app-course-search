@@ -22,10 +22,16 @@ App.propTypes = {
 
 const getServerSideProps = async () => {
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=maths`;
-    const response = await fetch(courseSearchUrl);
-    const data = await response.json();
+    let searchSuccess, searchResponseData;
+    try {
+        const response = await fetch(courseSearchUrl);
+        searchSuccess = response.ok;
+        searchResponseData = await response.json();
+    } catch {
+        searchSuccess = false;
+    }
 
-    return { props: { searchResults: data.results } };
+    return { props: { searchSuccess, searchResults: searchResponseData?.results } };
 };
 
 export { App as default, getServerSideProps };

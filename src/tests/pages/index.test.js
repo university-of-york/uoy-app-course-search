@@ -43,11 +43,36 @@ describe("getServerSideProps", () => {
         expect(fetch).toHaveBeenCalledWith("https://test.courses.api.com?search=maths");
         expect(response).toEqual({
             props: {
+                searchSuccess: true,
                 searchResults: [
                     {
                         title: "Maths",
                     },
                 ],
+            },
+        });
+    });
+
+    it("indicates when the Courses API search failed (http error response)", async () => {
+        fetch.mockResponse("{}", { status: 500 });
+
+        const response = await getServerSideProps();
+
+        expect(response).toEqual({
+            props: {
+                searchSuccess: false,
+            },
+        });
+    });
+
+    it("indicates when the Courses API search failed (network or other error)", async () => {
+        fetch.mockReject(new Error("can not resolve host"));
+
+        const response = await getServerSideProps();
+
+        expect(response).toEqual({
+            props: {
+                searchSuccess: false,
             },
         });
     });
