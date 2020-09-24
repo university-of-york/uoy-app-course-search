@@ -23,6 +23,17 @@ describe("App", () => {
         expect(screen.getByRole("heading", { name: "Maths" })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: "Physics" })).toBeInTheDocument();
     });
+
+    it("displays an appropriate message when the course search failed", () => {
+        render(<App searchSuccess={false} />);
+
+        expect(screen.getByText(/Course search is currently unavailable. Please try again later/)).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: "contact IT Support" })).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: "contact IT Support" })).toHaveAttribute(
+            "href",
+            "https://www.york.ac.uk/it-support/"
+        );
+    });
 });
 
 describe("getServerSideProps", () => {

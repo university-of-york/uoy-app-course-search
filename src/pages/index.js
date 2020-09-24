@@ -4,6 +4,14 @@ const App = (props) => {
     return (
         <>
             <h1>Course search results</h1>
+            {props.searchSuccess || (
+                <div className="c-alert c-alert--warning">
+                    <div className="c-alert__content">
+                        Course search is currently unavailable. Please try again later, or
+                        <a href="https://www.york.ac.uk/it-support/">contact IT Support</a>
+                    </div>
+                </div>
+            )}
             {props.searchResults?.map((course) => (
                 <h2 key={course.liveUrl}>{course.title}</h2>
             ))}
@@ -18,6 +26,7 @@ App.propTypes = {
             liveUrl: PropTypes.string,
         })
     ),
+    searchSuccess: PropTypes.bool,
 };
 
 const getServerSideProps = async () => {
