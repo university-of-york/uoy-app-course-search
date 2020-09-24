@@ -17,6 +17,7 @@
 
 # misc
 .DS_Store
+.idea
 *.pem
 
 # debug
@@ -29,6 +30,9 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# local credentials
+.npmrc
 
 # vercel
 .vercel

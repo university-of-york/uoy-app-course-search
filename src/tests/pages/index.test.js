@@ -20,8 +20,8 @@ describe("App", () => {
 
         render(<App searchResults={searchResults} />);
 
-        expect(screen.getByRole("heading", { name: "Maths" })).toBeInTheDocument();
-        expect(screen.getByRole("heading", { name: "Physics" })).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: "Maths" })).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: "Physics" })).toBeInTheDocument();
     });
 });
 

@@ -11,12 +11,14 @@
         "lint": "xo ."
     },
     "dependencies": {
+        "@university-of-york/esg-lib-pattern-library-react-components": "^4.3.4",
         "express": "^4.17.1",
         "next": "9.5.3",
         "path-match": "^1.2.4",
         "prop-types": "^15.7.2",
         "react": "16.13.1",
         "react-dom": "16.13.1",
+        "regenerator-runtime": "^0.13.7",
         "serverless-apigw-binary": "^0.4.4",
         "serverless-http": "^2.5.0"
     },
@@ -24,6 +26,7 @@
         "@testing-library/dom": "^7.24.1",
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.0.2",
+        "@testing-library/user-event": "^12.1.6",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^26.3.0",
         "dotenv": "^8.2.0",
