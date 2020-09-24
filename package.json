@@ -19,7 +19,6 @@
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "regenerator-runtime": "^0.13.7",
-        "sass": "^1.26.11",
         "serverless-apigw-binary": "^0.4.4",
         "serverless-http": "^2.5.0"
     },
