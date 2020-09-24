@@ -1,17 +1,11 @@
 import PropTypes from "prop-types";
+import { SearchFailedMessage } from "../components/SearchFailedMessage";
 
 const App = (props) => {
     return (
         <>
             <h1>Course search results</h1>
-            {props.isSuccessfulSearch || (
-                <div className="c-alert c-alert--warning">
-                    <div className="c-alert__content">
-                        Course search is currently unavailable. Please try again later, or
-                        <a href="https://www.york.ac.uk/it-support/">contact IT Support</a>
-                    </div>
-                </div>
-            )}
+            {props.isSuccessfulSearch || <SearchFailedMessage />}
             {props.searchResults?.map((course) => (
                 <h2 key={course.liveUrl}>{course.title}</h2>
             ))}
