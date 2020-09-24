@@ -31,7 +31,8 @@ App.propTypes = {
 
 const getServerSideProps = async () => {
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=maths`;
-    let isSuccessfulSearch, searchResponseData;
+    let isSuccessfulSearch;
+    let searchResponseData;
     try {
         const response = await fetch(courseSearchUrl);
         isSuccessfulSearch = response.ok;
