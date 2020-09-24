@@ -6,7 +6,7 @@ import {
     UniversityTitleBar,
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { Course } from "../components/Course";
-import { COURSE_MODEL } from "../constants/model/CourseModel";
+import { COURSE_MODEL } from "../constants/CourseModel";
 require("regenerator-runtime/runtime");
 
 const App = (props) => {
@@ -16,11 +16,9 @@ const App = (props) => {
             <UniversityTitleBar title="Course search results" />
 
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
-                <ul>
-                    {props.searchResults?.map((course) => (
-                        <Course key={course.liveUrl} course={course} />
-                    ))}
-                </ul>
+                {props.searchResults?.map((course) => (
+                    <Course key={course.liveUrl} course={course} />
+                ))}
             </div>
 
             <UniversityFooter />

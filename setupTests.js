@@ -11,7 +11,3 @@ jestFetchMock.enableMocks();
 require("dotenv").config({
     path: ".env.test",
 });
-
-jest.mock("./src/components/Course.module.scss", () => {
-    return {};
-});
