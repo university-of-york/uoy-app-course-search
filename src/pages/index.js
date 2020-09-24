@@ -4,7 +4,7 @@ const App = (props) => {
     return (
         <>
             <h1>Course search results</h1>
-            {props.searchSuccess || (
+            {props.isSuccessfulSearch || (
                 <div className="c-alert c-alert--warning">
                     <div className="c-alert__content">
                         Course search is currently unavailable. Please try again later, or
@@ -26,21 +26,21 @@ App.propTypes = {
             liveUrl: PropTypes.string,
         })
     ),
-    searchSuccess: PropTypes.bool,
+    isSuccessfulSearch: PropTypes.bool,
 };
 
 const getServerSideProps = async () => {
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=maths`;
-    let searchSuccess, searchResponseData;
+    let isSuccessfulSearch, searchResponseData;
     try {
         const response = await fetch(courseSearchUrl);
-        searchSuccess = response.ok;
+        isSuccessfulSearch = response.ok;
         searchResponseData = await response.json();
     } catch {
-        searchSuccess = false;
+        isSuccessfulSearch = false;
     }
 
-    return { props: { searchSuccess, searchResults: searchResponseData?.results } };
+    return { props: { isSuccessfulSearch, searchResults: searchResponseData?.results } };
 };
 
 export { App as default, getServerSideProps };

@@ -25,7 +25,7 @@ describe("App", () => {
     });
 
     it("displays an appropriate message when the course search failed", () => {
-        render(<App searchSuccess={false} />);
+        render(<App isSuccessfulSearch={false} />);
 
         expect(screen.getByText(/Course search is currently unavailable. Please try again later/)).toBeInTheDocument();
         expect(screen.getByRole("link", { name: "contact IT Support" })).toBeInTheDocument();
@@ -54,7 +54,7 @@ describe("getServerSideProps", () => {
         expect(fetch).toHaveBeenCalledWith("https://test.courses.api.com?search=maths");
         expect(response).toEqual({
             props: {
-                searchSuccess: true,
+                isSuccessfulSearch: true,
                 searchResults: [
                     {
                         title: "Maths",
@@ -71,7 +71,7 @@ describe("getServerSideProps", () => {
 
         expect(response).toEqual({
             props: {
-                searchSuccess: false,
+                isSuccessfulSearch: false,
             },
         });
     });
@@ -83,7 +83,7 @@ describe("getServerSideProps", () => {
 
         expect(response).toEqual({
             props: {
-                searchSuccess: false,
+                isSuccessfulSearch: false,
             },
         });
     });
