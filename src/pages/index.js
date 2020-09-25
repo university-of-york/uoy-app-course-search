@@ -30,9 +30,10 @@ const getServerSideProps = async () => {
     try {
         const response = await fetch(courseSearchUrl);
         isSuccessfulSearch = response.ok;
-        searchResponseData = await response.json();
+        searchResponseData = isSuccessfulSearch ? await response.json() : { results: [] };
     } catch {
         isSuccessfulSearch = false;
+        searchResponseData = { results: [] };
     }
 
     return { props: { isSuccessfulSearch, searchResults: searchResponseData?.results } };

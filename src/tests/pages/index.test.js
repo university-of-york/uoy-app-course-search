@@ -72,6 +72,7 @@ describe("getServerSideProps", () => {
         expect(response).toEqual({
             props: {
                 isSuccessfulSearch: false,
+                searchResults: [],
             },
         });
     });
@@ -84,6 +85,7 @@ describe("getServerSideProps", () => {
         expect(response).toEqual({
             props: {
                 isSuccessfulSearch: false,
+                searchResults: [],
             },
         });
     });
