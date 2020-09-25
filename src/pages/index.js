@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { SearchFailedMessage } from "../components/SearchFailedMessage";
 
 const App = (props) => {
     return (
@@ -38,5 +37,14 @@ const getServerSideProps = async () => {
 
     return { props: { isSuccessfulSearch, searchResults: searchResponseData?.results } };
 };
+
+const SearchFailedMessage = () => (
+    <div className="c-alert c-alert--warning">
+        <div className="c-alert__content">
+            Course search is currently unavailable. Please try again later, or{" "}
+            <a href="https://www.york.ac.uk/it-support/">contact IT Support</a>.
+        </div>
+    </div>
+);
 
 export { App as default, getServerSideProps };
