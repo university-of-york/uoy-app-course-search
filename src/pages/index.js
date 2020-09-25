@@ -9,17 +9,14 @@ import { Course } from "../components/Course";
 import { COURSE_MODEL } from "../constants/CourseModel";
 require("regenerator-runtime/runtime");
 
-const App = (props) => {
+const App = ({ isSuccessfulSearch, searchResults }) => {
     return (
         <>
             <UniversityHeaderWithSearch />
             <UniversityTitleBar title="Course search results" />
 
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
-                {props.isSuccessfulSearch || <SearchFailedMessage />}
-                {props.searchResults?.map((course) => (
-                    <Course key={course.liveUrl} course={course} />
-                ))}
+                <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
             </div>
 
             <UniversityFooter />
@@ -28,8 +25,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-    searchResults: PropTypes.arrayOf(COURSE_MODEL),
     isSuccessfulSearch: PropTypes.bool,
+    searchResults: PropTypes.arrayOf(COURSE_MODEL),
 };
 
 const getServerSideProps = async () => {
@@ -46,6 +43,25 @@ const getServerSideProps = async () => {
     }
 
     return { props: { isSuccessfulSearch, searchResults: searchResponseData.results } };
+};
+
+const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
+    if (!isSuccessfulSearch) {
+        return <SearchFailedMessage />;
+    }
+
+    return (
+        <>
+            {searchResults?.map((course) => (
+                <Course key={course.liveUrl} course={course} />
+            ))}
+        </>
+    );
+};
+
+CourseSearchResults.propTypes = {
+    isSuccessfulSearch: PropTypes.bool,
+    searchResults: PropTypes.arrayOf(COURSE_MODEL),
 };
 
 const SearchFailedMessage = () => (
