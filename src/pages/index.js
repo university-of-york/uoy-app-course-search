@@ -29,22 +29,6 @@ App.propTypes = {
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
 };
 
-const getServerSideProps = async () => {
-    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=maths`;
-    let isSuccessfulSearch;
-    let searchResponseData;
-    try {
-        const response = await fetch(courseSearchUrl);
-        isSuccessfulSearch = response.ok;
-        searchResponseData = isSuccessfulSearch ? await response.json() : { results: [] };
-    } catch {
-        isSuccessfulSearch = false;
-        searchResponseData = { results: [] };
-    }
-
-    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results } };
-};
-
 const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
     if (!isSuccessfulSearch) {
         return <SearchFailedMessage />;
@@ -72,5 +56,22 @@ const SearchFailedMessage = () => (
         </div>
     </div>
 );
+
+const getServerSideProps = async () => {
+    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=maths`;
+    let isSuccessfulSearch;
+    let searchResponseData;
+
+    try {
+        const response = await fetch(courseSearchUrl);
+        isSuccessfulSearch = response.ok;
+        searchResponseData = isSuccessfulSearch ? await response.json() : { results: [] };
+    } catch {
+        isSuccessfulSearch = false;
+        searchResponseData = { results: [] };
+    }
+
+    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results } };
+};
 
 export { App as default, getServerSideProps };
