@@ -35,7 +35,7 @@ const getServerSideProps = async () => {
         searchResponseData = { results: [] };
     }
 
-    return { props: { isSuccessfulSearch, searchResults: searchResponseData?.results } };
+    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results } };
 };
 
 const SearchFailedMessage = () => (
