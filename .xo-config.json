@@ -12,6 +12,7 @@
     "indent":"off",
     "import/no-unassigned-import":"off",
     "react/react-in-jsx-scope":"off",
+    "react/jsx-no-useless-fragment":"off",
     "unicorn/filename-case":"off",
     "unicorn/import-index":"off",
     "unicorn/prevent-abbreviations":"off"

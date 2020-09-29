@@ -18,7 +18,7 @@ describe("App", () => {
             { title: "Physics", liveUrl: "http://foo.baz" },
         ];
 
-        render(<App searchResults={searchResults} />);
+        render(<App isSuccessfulSearch searchResults={searchResults} />);
 
         expect(screen.getByRole("link", { name: "Maths" })).toBeInTheDocument();
         expect(screen.getByRole("link", { name: "Physics" })).toBeInTheDocument();
