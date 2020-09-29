@@ -1,0 +1,32 @@
+name: Run XO and Prettier
+on:
+  push:
+    branches:
+      - CFIN-295_xo_prettier_workflow
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the application's source code
+        uses: actions/checkout@v2
+
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install application dependencies
+        run: npm ci
+
+      - name: Run XO script
+        run: npm run lint
+
+      - name: Run Prettier
+        run: npm run format
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.2
+        with:
+          commit_message: Apply formatting changes
+          branch: ${{ github.head_ref }}
