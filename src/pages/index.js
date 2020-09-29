@@ -35,11 +35,11 @@ const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
     }
 
     return (
-        <>
+        <ul className="c-listings">
             {searchResults?.map((course) => (
                 <Course key={course.liveUrl} course={course} />
             ))}
-        </>
+        </ul>
     );
 };
 
