@@ -18,7 +18,11 @@ const App = ({ isSuccessfulSearch, searchResults }) => {
             <UniversityTitleBar title="Courses" />
 
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
-                <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
+                <div className="o-grid__row">
+                    <div className="o-grid__box o-grid__box--full">
+                        <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
+                    </div>
+                </div>
             </div>
 
             <UniversityFooter />
