@@ -1,36 +1,38 @@
 {
-    "name": "uoy-app-course-search",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "deploy": "next build && sls deploy",
-        "test": "jest",
-        "lint": "xo ."
-    },
-    "dependencies": {
-        "express": "^4.17.1",
-        "next": "9.5.3",
-        "path-match": "^1.2.4",
-        "react": "16.13.1",
-        "react-dom": "16.13.1",
-        "serverless-apigw-binary": "^0.4.4",
-        "serverless-http": "^2.5.0"
-    },
-    "devDependencies": {
-        "@testing-library/dom": "^7.24.1",
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.0.2",
-        "babel-eslint": "^10.1.0",
-        "babel-jest": "^26.3.0",
-        "eslint-config-xo-nextjs": "^1.6.0",
-        "eslint-config-xo-react": "^0.23.0",
-        "eslint-plugin-react": "^7.20.6",
-        "eslint-plugin-react-hooks": "^4.1.2",
-        "jest": "^26.4.2",
-        "prettier": "2.1.1",
-        "xo": "^0.33.1"
-    }
+  "name": "uoy-app-course-search",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "next build && sls deploy",
+    "test": "jest",
+    "format": "prettier --write .",
+    "lint": "xo .",
+    "check": "xo && jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "next": "9.5.3",
+    "path-match": "^1.2.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-http": "^2.5.0"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.24.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.2",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
+    "eslint-config-xo-nextjs": "^1.6.0",
+    "eslint-config-xo-react": "^0.23.0",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "jest": "^26.4.2",
+    "prettier": "2.1.1",
+    "xo": "^0.33.1"
+  }
 }
