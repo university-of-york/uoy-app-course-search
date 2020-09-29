@@ -2,7 +2,7 @@ name: Run XO and Prettier
 on:
   push:
     branches:
-      - CFIN-295_xo_prettier_workflow
+      - dev
 
 jobs:
   run-checks:
