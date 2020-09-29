@@ -7,13 +7,15 @@ import {
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { Course } from "../components/Course";
 import { COURSE_MODEL } from "../constants/CourseModel";
+import Head from "next/head";
 require("regenerator-runtime/runtime");
 
 const App = ({ isSuccessfulSearch, searchResults }) => {
     return (
         <>
+            <PageHead />
             <UniversityHeaderWithSearch />
-            <UniversityTitleBar title="Course search results" />
+            <UniversityTitleBar title="Courses" />
 
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
                 <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
@@ -27,6 +29,28 @@ const App = ({ isSuccessfulSearch, searchResults }) => {
 App.propTypes = {
     isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
+};
+
+const PageHead = () => {
+    return (
+        <Head>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="author" content="University of York" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="description" content="University of York Course search" />
+
+            <title>Course search, University of York</title>
+
+            <link rel="shortcut icon" href="https://www.york.ac.uk/static/stable/img/favicon.ico" />
+            <link rel="icon" type="image/x-icon" href="https://www.york.ac.uk/static/stable/img/favicon.ico" />
+
+            <script src="https://www.york.ac.uk/static/stable/js/modernizr.min.js"></script>
+            <script src="https://www.york.ac.uk/static/stable/js/app.min.js"></script>
+
+            <script src="//use.typekit.net/dvj8rpp.js"></script>
+            <script language="application/javascript">Typekit.load();</script>
+        </Head>
+    );
 };
 
 const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
