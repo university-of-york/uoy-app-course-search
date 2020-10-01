@@ -62,6 +62,11 @@ npm run test
 
 Or, in Intellij, open the `npm` window and double-click on `test`.
 
+## Accessibility
+
+The application's linting process checks for conformance to accessibility standards
+using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y).
+
 ## Contact
 
 - [Digital Platforms and Developments Team](mailto:marketing-support@york.ac.uk)
