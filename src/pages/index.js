@@ -5,19 +5,23 @@ import {
     UniversityHeaderWithSearch,
     UniversityTitleBar,
 } from "@university-of-york/esg-lib-pattern-library-react-components";
-import { Course } from "../components/Course";
+import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
+import { PageHead } from "../components/PageHead";
 
-const App = (props) => {
+const App = ({ isSuccessfulSearch, searchResults }) => {
     return (
         <>
+            <PageHead />
             <UniversityHeaderWithSearch />
-            <UniversityTitleBar title="Course search results" />
+            <UniversityTitleBar title="Courses" />
 
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
-                {props.searchResults?.map((course) => (
-                    <Course key={course.liveUrl} course={course} />
-                ))}
+                <div className="o-grid__row">
+                    <div className="o-grid__box o-grid__box--full">
+                        <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
+                    </div>
+                </div>
             </div>
 
             <UniversityFooter />
@@ -26,15 +30,25 @@ const App = (props) => {
 };
 
 App.propTypes = {
+    isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
 };
 
 const getServerSideProps = async () => {
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=maths`;
-    const response = await fetch(courseSearchUrl);
-    const data = await response.json();
+    let isSuccessfulSearch;
+    let searchResponseData;
 
-    return { props: { searchResults: data.results } };
+    try {
+        const response = await fetch(courseSearchUrl);
+        isSuccessfulSearch = response.ok;
+        searchResponseData = isSuccessfulSearch ? await response.json() : { results: [] };
+    } catch {
+        isSuccessfulSearch = false;
+        searchResponseData = { results: [] };
+    }
+
+    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results } };
 };
 
 export { App as default, getServerSideProps };

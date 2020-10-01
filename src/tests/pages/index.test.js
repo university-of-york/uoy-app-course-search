@@ -9,7 +9,7 @@ describe("App", () => {
     it("displays an appropriate page heading", () => {
         render(<App />);
 
-        expect(screen.getByRole("heading", { name: "Course search results" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Courses" })).toBeInTheDocument();
     });
 
     it("displays the titles from course search results", () => {
@@ -18,7 +18,7 @@ describe("App", () => {
             { title: "Physics", liveUrl: "http://foo.baz" },
         ];
 
-        render(<App searchResults={searchResults} />);
+        render(<App isSuccessfulSearch searchResults={searchResults} />);
 
         expect(screen.getByRole("link", { name: "Maths" })).toBeInTheDocument();
         expect(screen.getByRole("link", { name: "Physics" })).toBeInTheDocument();
@@ -43,11 +43,38 @@ describe("getServerSideProps", () => {
         expect(fetch).toHaveBeenCalledWith("https://test.courses.api.com?search=maths");
         expect(response).toEqual({
             props: {
+                isSuccessfulSearch: true,
                 searchResults: [
                     {
                         title: "Maths",
                     },
                 ],
+            },
+        });
+    });
+
+    it("indicates when the Courses API search failed (http error response)", async () => {
+        fetch.mockResponse("{}", { status: 500 });
+
+        const response = await getServerSideProps();
+
+        expect(response).toEqual({
+            props: {
+                isSuccessfulSearch: false,
+                searchResults: [],
+            },
+        });
+    });
+
+    it("indicates when the Courses API search failed (network or other error)", async () => {
+        fetch.mockReject(new Error("can not resolve host"));
+
+        const response = await getServerSideProps();
+
+        expect(response).toEqual({
+            props: {
+                isSuccessfulSearch: false,
+                searchResults: [],
             },
         });
     });

@@ -3,9 +3,11 @@ import { COURSE_MODEL } from "../constants/CourseModel";
 
 const Course = ({ course }) => {
     return (
-        <p>
-            <a href={course.liveUrl}>{course.title}</a>
-        </p>
+        <li className="c-listings-item ">
+            <a className="c-listings-item__link" href={course.liveUrl}>
+                <h2 className="c-listings-item__title">{course.title}</h2>
+            </a>
+        </li>
     );
 };
 
