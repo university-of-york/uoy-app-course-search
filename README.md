@@ -1,8 +1,8 @@
 # Course Search
 
 This is the frontend for the Course Search application. It allows
-prospective students to search for courses at the University of York,
-view results, and follow links to course pages.
+prospective students to view a list of courses at the University of York
+and follow links to course pages.
 
 ## Related Repos
 
