@@ -1,8 +1,6 @@
 name: Run XO and Prettier
 on:
-  push:
-    branches:
-      - dev
+  pull_request:
 
 jobs:
   run-checks:
@@ -19,14 +17,8 @@ jobs:
       - name: Install application dependencies
         run: npm ci
 
-      - name: Run XO script
+      - name: Check code is formatted correctly
+        run: npm run checkformat
+
+      - name: Check code conforms to linting rules
         run: npm run lint
-
-      - name: Run Prettier
-        run: npm run format
-
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4.1.2
-        with:
-          commit_message: "CI: Apply formatting changes"
-          branch: ${{ github.head_ref }}
