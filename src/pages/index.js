@@ -7,16 +7,22 @@ import {
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
+import { PageHead } from "../components/PageHead";
 require("regenerator-runtime/runtime");
 
 const App = ({ isSuccessfulSearch, searchResults }) => {
     return (
         <>
+            <PageHead />
             <UniversityHeaderWithSearch />
-            <UniversityTitleBar title="Course search results" />
+            <UniversityTitleBar title="Courses" />
 
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
-                <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
+                <div className="o-grid__row">
+                    <div className="o-grid__box o-grid__box--full">
+                        <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
+                    </div>
+                </div>
             </div>
 
             <UniversityFooter />

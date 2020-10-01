@@ -9,7 +9,7 @@ describe("App", () => {
     it("displays an appropriate page heading", () => {
         render(<App />);
 
-        expect(screen.getByRole("heading", { name: "Course search results" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Courses" })).toBeInTheDocument();
     });
 
     it("displays the titles from course search results", () => {
