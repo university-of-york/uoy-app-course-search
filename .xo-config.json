@@ -1,5 +1,6 @@
 {
-  "extends":["xo-react","prettier","prettier/react"],
+  "plugins":["jsx-a11y"],
+  "extends":["xo-react","prettier","prettier/react","plugin:jsx-a11y/recommended"],
   "overrides":[
     {
       "files":["**/*.test.js","e2e/**","jest/*"],
