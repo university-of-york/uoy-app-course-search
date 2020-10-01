@@ -7,7 +7,6 @@ import {
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { Course } from "../components/Course";
 import { COURSE_MODEL } from "../constants/CourseModel";
-require("regenerator-runtime/runtime");
 
 const App = (props) => {
     return (
