@@ -5,7 +5,7 @@ import {
     UniversityHeaderWithSearch,
     UniversityTitleBar,
 } from "@university-of-york/esg-lib-pattern-library-react-components";
-import { Course } from "../components/Course";
+import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
 require("regenerator-runtime/runtime");
 
@@ -28,34 +28,6 @@ App.propTypes = {
     isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
 };
-
-const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
-    if (!isSuccessfulSearch) {
-        return <SearchFailedMessage />;
-    }
-
-    return (
-        <>
-            {searchResults?.map((course) => (
-                <Course key={course.liveUrl} course={course} />
-            ))}
-        </>
-    );
-};
-
-CourseSearchResults.propTypes = {
-    isSuccessfulSearch: PropTypes.bool,
-    searchResults: PropTypes.arrayOf(COURSE_MODEL),
-};
-
-const SearchFailedMessage = () => (
-    <div className="c-alert c-alert--warning">
-        <div className="c-alert__content">
-            Course search is currently unavailable. Please try again later, or{" "}
-            <a href="https://www.york.ac.uk/it-support/">contact IT Support</a>.
-        </div>
-    </div>
-);
 
 const getServerSideProps = async () => {
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=maths`;
