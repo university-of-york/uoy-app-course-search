@@ -1,4 +1,5 @@
 {
+  "plugins":["jsx-a11y"],
   "extends":["xo-react","prettier","prettier/react","plugin:jsx-a11y/recommended"],
   "overrides":[
     {
