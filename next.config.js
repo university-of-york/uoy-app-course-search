@@ -1,6 +1,6 @@
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  // Use the CDN in production and localhost for development.
+  // Retrieve assets from the correct API Gateway Stage in AWS.
   assetPrefix: isProd ? '/v1' : '',
 }
