@@ -8,7 +8,6 @@ import {
 import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
-require("regenerator-runtime/runtime");
 
 const App = ({ isSuccessfulSearch, searchResults }) => {
     return (
