@@ -53,6 +53,10 @@ npm ERR! 404  '@university-of-york/esg-lib-pattern-library-react-components@4.3.
 
 ### Code style
 
+The project defines rules for code formatting and style. Code is checked against these
+rules upon creation of a pull request and upon a merge into `dev` or `main` branches on Github.
+These checks are configured in `.github/workflows/checks.yml`.
+
 #### Formatting
 
 This project uses [prettier](https://prettier.io/) to format code and to check that code
