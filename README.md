@@ -72,6 +72,13 @@ To make Intellij use the `prettier` formatting rules while you edit code, open
 `package.json` and above the code window it will prompt you to `Use code style based on prettier for this project?`
 which you can accept.
 
+#### Linting
+
+This project uses [XO](https://github.com/xojs/xo) to check code style. 
+XO is based on [ESLint](https://eslint.org/). Overrides to default linting rules are agreed
+by the team and configured in `.xo-config.json` in the root folder. You can use `npm run lint`
+to check whether the code conforms to the linting rules.
+
 ### Useful commands
 
 **npm run dev**
