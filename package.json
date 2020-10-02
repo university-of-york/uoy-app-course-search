@@ -9,8 +9,9 @@
     "deploy": "next build && sls deploy",
     "test": "jest",
     "format": "prettier --write .",
+    "checkformat": "prettier --check .",
     "lint": "xo .",
-    "check": "xo && jest"
+    "check": "npm run format && npm run lint && npm run test"
   },
   "dependencies": {
     "express": "^4.17.1",
