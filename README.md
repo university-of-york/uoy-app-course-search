@@ -1,13 +1,14 @@
 # Course Search
 
 This is the frontend for the Course Search application. It allows
-prospective students to search for courses at the University of York,
-view results, and follow links to course pages.
+prospective students to view a list of courses at the University of York
+and follow links to course pages.
 
 ## Related Repos
 
 - [Courses API](https://github.com/university-of-york/uoy-api-courses) - the API that provides Course Search functionality and in turn calls the Funnelback Courses API.
 - [Funnelback Courses API](https://github.com/university-of-york/uoy-config-funnelback-courses) - the underlying Funnelback search provider configuration that powers searches.
+- [Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components) - suite of React components for incorporating university style into the application.
 
 ## Development
 
@@ -35,6 +36,22 @@ to use the application.
 To stop the application, on the command line press `ctrl-c`, or in
 Intellij, press the square red `Stop` button.
 
+#### Pattern Library dependency requires `.npmrc`
+
+The application has a dependency on [ESG Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components).
+Fetching this dependency requires the project to have appropriate credentials
+for the `@university-of-york` Github registry configured. 
+See the [Pattern Library README](https://github.com/university-of-york/esg-lib-pattern-library-react-components)
+for instructions on setting up a `.npmrc` file for this. Without it, running
+`npm install` may produce errors like:
+
+```
+npm ERR! 404 Not Found - GET https://registry.npmjs.org/@university-of-york%2fesg-lib-pattern-library-react-components - Not found
+npm ERR! 404
+npm ERR! 404  '@university-of-york/esg-lib-pattern-library-react-components@4.3.4' is not in the npm registry.
+```
+
+
 ## Testing
 
 Tests live in `src/tests`. To run them:
@@ -44,6 +61,11 @@ npm run test
 ```
 
 Or, in Intellij, open the `npm` window and double-click on `test`.
+
+## Accessibility
+
+The application's linting process checks for conformance to accessibility standards
+using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y).
 
 ## Contact
 
