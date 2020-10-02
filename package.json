@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "deploy": "next build && sls deploy",
-    "undeploy": "sls undeploy",
+    "undeploy": "sls remove",
     "test": "jest",
     "format": "prettier --write .",
     "checkformat": "prettier --check .",
