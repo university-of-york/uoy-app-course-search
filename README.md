@@ -111,6 +111,10 @@ You can find your sandbox AWS account id by logging in to AWS either via
 the web console or via saml2aws - it is displayed when you select which
 account you want to use.
 
+**npm run undeploy**
+
+Remove the application from AWS.
+
 **npm run test**
 
 Run the application's tests.
