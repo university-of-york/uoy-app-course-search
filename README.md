@@ -70,7 +70,7 @@ You can configure Intellij to format code, using `prettier`, when you save a fil
 you run Intellij's formatting command (`Ctrl-Alt-L`). To do this:
 * install the `prettier` plugin (under `File` > `Settings` > `Plugins`)
 * go to `File` > `Settings` > `Languages & Frameworks` > `Javascript` > `Prettier` and
-check the options `on save` and `on code reformat`.
+check the options `on save` and `on code reformat`
 
 To make Intellij use the `prettier` formatting rules while you edit code, open
 `package.json` and above the code window it will prompt you to `Use code style based on prettier for this project?`
@@ -107,7 +107,7 @@ Deploy the application to AWS. To deploy to your AWS sandbox, you will need to
 set AWS_ACCOUNT_ID=012345678
 ```
 
-You can find your sandbox AWS account id by loggin in to AWS either via
+You can find your sandbox AWS account id by logging in to AWS either via
 the web console or via saml2aws - it is displayed when you select which
 account you want to use.
 
