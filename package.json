@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "checkformat": "prettier --check .",
     "lint": "xo .",
-    "check": "npm run format && npm run lint && npm run test"
+    "check": "npm run checkformat && npm run lint && npm run test"
   },
   "dependencies": {
     "express": "^4.17.1",
