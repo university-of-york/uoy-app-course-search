@@ -85,19 +85,19 @@ to check whether the code conforms to the linting rules.
 
 ### Useful commands
 
-**npm run dev**
+**`npm run dev`**
 
 Start the application locally (running at http://localhost:3000 by default).
 
-**npm run build**
+**`npm run build`**
 
 Build the application. The build folder is `.next`.
 
-**npm run start**
+**`npm run start`**
 
 Start the application that has been built. This will use the code in the `.next` folder rather than the current source code.
 
-**npm run deploy**
+**`npm run deploy`**
 
 Deploy the application to AWS. To deploy to your AWS sandbox, you will need to 
 * be logged in to AWS using [saml2aws](https://wiki.york.ac.uk/display/AWS/2.+Command+Line+Access)
@@ -111,31 +111,31 @@ You can find your sandbox AWS account id by logging in to AWS either via
 the web console or via saml2aws - it is displayed when you select which
 account you want to use.
 
-**npm run undeploy**
+**`npm run undeploy`**
 
 Remove the application from AWS.
 
-**npm run test**
+**`npm run test`**
 
 Run the application's tests.
 
-**npm run format**
+**`npm run format`**
 
 Format all code using the team's agreed formatting rules. This uses `prettier`.
 
-**npm run checkformat**
+**`npm run checkformat`**
 
 Check all code is correctly formatted according to agreed rules. Uses `prettier`.
 
-**npm run lint**
+**`npm run lint`**
 
 Check to see if code meets the team's agreed coding standards. This uses `XO` (which in turn uses `eslint`).
 
-**npm run check**
+**`npm run check`**
 
 Checks code formatting (`prettier`), checks coding standards (`XO`), then runs tests.
 
-**npm run formatandcheck**
+**`npm run formatandcheck`**
 
 Fixes code formatting (`prettier`), checks coding standards (`XO`), then runs tests.
 
