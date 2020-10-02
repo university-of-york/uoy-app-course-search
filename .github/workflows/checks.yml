@@ -18,9 +18,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+          registry-url: https://npm.pkg.github.com
+          scope: '@university-of-york'
+          always-auth: true
 
       - name: Install application dependencies
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Check code is formatted correctly
         run: npm run checkformat
