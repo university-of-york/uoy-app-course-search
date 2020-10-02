@@ -1,22 +1,22 @@
 {
-  "plugins":["jsx-a11y"],
-  "extends":["xo-react","prettier","prettier/react","plugin:jsx-a11y/recommended"],
-  "overrides":[
+  "plugins": ["jsx-a11y"],
+  "extends": ["xo-react", "prettier", "prettier/react", "plugin:jsx-a11y/recommended"],
+  "overrides": [
     {
-      "files":["**/*.test.js","e2e/**","jest/*"],
-      "envs":["browser","jest"]
+      "files": ["**/*.test.js", "e2e/**", "jest/*"],
+      "envs": ["browser", "jest"]
     }
   ],
-  "envs":["browser"],
-  "rules":{
-    "capitalized-comments":"off",
-    "indent":"off",
-    "import/no-unassigned-import":"off",
-    "react/react-in-jsx-scope":"off",
-    "react/jsx-no-useless-fragment":"off",
-    "unicorn/filename-case":"off",
-    "unicorn/import-index":"off",
-    "unicorn/prevent-abbreviations":"off"
+  "envs": ["browser"],
+  "rules": {
+    "capitalized-comments": "off",
+    "indent": "off",
+    "import/no-unassigned-import": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/import-index": "off",
+    "unicorn/prevent-abbreviations": "off"
   },
-  "space":4
+  "space": 4
 }
