@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const TagList = ({ items }) => {
     return (
-        <ul>
+        <ul className="c-tag-list">
             {items.map((item) => (
                 <Tag key={item} name={item} />
             ))}
@@ -16,8 +16,10 @@ TagList.propTypes = {
 };
 
 const Tag = ({ name }) => (
-    <li aria-labelledby={`${name}-tag`}>
-        <span id={`${name}-tag`}>{name}</span>
+    <li className="c-tag-list__item" aria-labelledby={`${name}-tag`}>
+        <span className="c-tag" id={`${name}-tag`}>
+            {name}
+        </span>
     </li>
 );
 
