@@ -9,4 +9,10 @@ describe("CourseSearchResults", () => {
         expect(screen.getByRole("listitem", { name: "foo" })).toBeInTheDocument();
         expect(screen.getByRole("listitem", { name: "bar" })).toBeInTheDocument();
     });
+
+    it("displays no tags when given no inputs", () => {
+        render(<TagList items={[]} />);
+
+        expect(screen.queryByRole("listitem")).toBeNull();
+    });
 });
