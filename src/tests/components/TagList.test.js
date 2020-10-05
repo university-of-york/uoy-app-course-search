@@ -4,7 +4,7 @@ import React from "react";
 
 describe("CourseSearchResults", () => {
     it("displays tags labelled with given inputs", () => {
-        render(<TagList tags={["foo", "bar"]} />);
+        render(<TagList items={["foo", "bar"]} />);
 
         expect(screen.getByRole("listitem", { name: "foo" })).toBeInTheDocument();
         expect(screen.getByRole("listitem", { name: "bar" })).toBeInTheDocument();

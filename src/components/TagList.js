@@ -1,17 +1,19 @@
 import React from "react";
 
-const TagList = ({ tags }) => {
+const TagList = ({ items }) => {
     return (
         <ul>
-            {tags.map((item) => {
-                return (
-                    <li key={item} aria-labelledby={`${item}-tag`}>
-                        <span id={`${item}-tag`}>{item}</span>
-                    </li>
-                );
-            })}
+            {items.map((item) => (
+                <Tag key={item} name={item} />
+            ))}
         </ul>
     );
 };
+
+const Tag = ({ name }) => (
+    <li aria-labelledby={`${name}-tag`}>
+        <span id={`${name}-tag`}>{name}</span>
+    </li>
+);
 
 export { TagList };
