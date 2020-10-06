@@ -15,6 +15,7 @@ import {
 import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
+import { Search } from "../components/Search";
 
 const App = ({ isSuccessfulSearch, searchResults }) => {
     return (
@@ -26,35 +27,9 @@ const App = ({ isSuccessfulSearch, searchResults }) => {
             <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
                 <GridRow>
                     <GridBoxFull>
-                        <form
-                            autoComplete="off"
-                            method="get"
-                            className="c-form c-form--joined"
-                            role="search"
-                            aria-label="Courses"
-                        >
-                            <FormFieldset>
-                                <Grid>
-                                    <GridRow>
-                                        <GridBoxFull>
-                                            <FormElement>
-                                                <FormInputText name="search" type="text" ariaLabel="Search" placeholder="Search for your course" />
-                                                <button
-                                                    className="c-btn c-btn--medium"
-                                                    type="submit"
-                                                    aria-label="Search"
-                                                >
-                                                    <SearchIcon />
-                                                </button>
-                                            </FormElement>
-                                        </GridBoxFull>
-                                    </GridRow>
-                                </Grid>
-                            </FormFieldset>
-                        </form>
+                        <Search />
                     </GridBoxFull>
                 </GridRow>
-
                 <div className="o-grid__row">
                     <div className="o-grid__box o-grid__box--full">
                         <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
