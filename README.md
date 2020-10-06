@@ -51,11 +51,27 @@ npm ERR! 404
 npm ERR! 404  '@university-of-york/esg-lib-pattern-library-react-components@4.3.4' is not in the npm registry.
 ```
 
+### Testing
+
+To run the tests locally run:
+
+```
+npm test
+```
+
+Tests are run automatically upon creation of a pull request, configured in `.github/workflows/checks.yml`, 
+and upon a merge into `dev` or `main` branches on Github as part of `.github/workflows/deploy.yml`
+
+### Deployment
+
+Deployment to the development and production environments happen through GitHub actions that trigger automatically when 
+new code is merged into the `dev` and `main` branches. 
+
 ### Code style
 
 The project defines rules for code formatting and style. Code is checked against these
-rules upon creation of a pull request and upon a merge into `dev` or `main` branches on Github.
-These checks are configured in `.github/workflows/checks.yml`.
+rules upon creation of a pull request, configured in `.github/workflows/checks.yml`, 
+and upon a merge into `dev` or `main` branches on Github as part of `.github/workflows/deploy.yml`
 
 #### Formatting
 
