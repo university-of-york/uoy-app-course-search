@@ -34,6 +34,8 @@ custom:
   apigwBinary:
     types:
       - "*/*"
+  domainName: ${env:DOMAIN_NAME, ''}
+  sslCertificateArn: ${env:SSL_CERTIFICATE_ARN, ''}
 
 # Exclude next.js dependencies that are not needed at runtime
 package:
