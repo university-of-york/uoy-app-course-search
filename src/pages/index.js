@@ -38,7 +38,7 @@ const App = ({ isSuccessfulSearch, searchResults }) => {
                                     <GridRow>
                                         <GridBoxFull>
                                             <FormElement>
-                                                <FormInputText name="search" type="text" ariaLabel="Search" />
+                                                <FormInputText name="search" type="text" ariaLabel="Search" placeholder="Search for your course" />
                                                 <button
                                                     className="c-btn c-btn--medium"
                                                     type="submit"
