@@ -1,13 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-    FormElement,
-    FormFieldset,
-    FormInputText,
-    Grid,
     GridBoxFull,
     GridRow,
-    SearchIcon,
     UniversityFooter,
     UniversityHeaderWithSearch,
     UniversityTitleBar,

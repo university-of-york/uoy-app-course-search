@@ -1,8 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
-import {Search} from "../../components/Search";
+import { Search } from "../../components/Search";
 
 describe("Search", () => {
-
     it("displays a search input and button", () => {
         render(<Search />);
 
