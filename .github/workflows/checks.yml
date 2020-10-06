@@ -1,9 +1,5 @@
 name: Run XO and Prettier
 on:
-  push:
-    branches:
-      - dev
-      - main
   pull_request:
   workflow_dispatch:
 
@@ -32,3 +28,6 @@ jobs:
 
       - name: Check code conforms to linting rules
         run: npm run lint
+
+      - name: Check tests run
+        run: npm run test
