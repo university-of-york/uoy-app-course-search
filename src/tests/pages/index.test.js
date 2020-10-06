@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import App, { getServerSideProps } from "../../pages";
 
 beforeEach(() => {
@@ -10,6 +10,19 @@ describe("App", () => {
         render(<App />);
 
         expect(screen.getByRole("heading", { name: "Courses" })).toBeInTheDocument();
+    });
+
+    it("displays the search element with a search input and button", () => {
+        render(<App />);
+
+        const courseSearchBox = screen.getByRole("search", { name: "Courses" });
+
+        expect(courseSearchBox).toBeVisible();
+
+        const { getByRole } = within(courseSearchBox);
+
+        expect(getByRole("textbox", { name: "Search" })).toBeInTheDocument();
+        expect(getByRole("button", { name: "Search" }));
     });
 
     it("displays the titles from course search results", () => {
