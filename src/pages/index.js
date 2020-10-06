@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
+    GridBoxFull,
+    GridRow,
     UniversityFooter,
     UniversityHeaderWithSearch,
     UniversityTitleBar,
+    WrappedMainGrid,
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
@@ -16,13 +19,13 @@ const App = ({ isSuccessfulSearch, searchResults }) => {
             <UniversityHeaderWithSearch />
             <UniversityTitleBar title="Courses" />
 
-            <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
-                <div className="o-grid__row">
-                    <div className="o-grid__box o-grid__box--full">
+            <WrappedMainGrid>
+                <GridRow>
+                    <GridBoxFull>
                         <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
-                    </div>
-                </div>
-            </div>
+                    </GridBoxFull>
+                </GridRow>
+            </WrappedMainGrid>
 
             <UniversityFooter />
         </>
