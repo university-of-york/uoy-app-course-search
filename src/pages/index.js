@@ -6,6 +6,7 @@ import {
     UniversityFooter,
     UniversityHeaderWithSearch,
     UniversityTitleBar,
+    WrappedMainGrid,
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
@@ -19,18 +20,18 @@ const App = ({ isSuccessfulSearch, searchResults }) => {
             <UniversityHeaderWithSearch />
             <UniversityTitleBar title="Courses" />
 
-            <div className="o-wrapper o-wrapper--main o-grid js-wrapper--main">
+            <WrappedMainGrid>
                 <GridRow>
                     <GridBoxFull>
                         <Search />
                     </GridBoxFull>
                 </GridRow>
-                <div className="o-grid__row">
-                    <div className="o-grid__box o-grid__box--full">
+                <GridRow>
+                    <GridBoxFull>
                         <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
-                    </div>
-                </div>
-            </div>
+                    </GridBoxFull>
+                </GridRow>
+            </WrappedMainGrid>
 
             <UniversityFooter />
         </>
