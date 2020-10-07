@@ -1,4 +1,4 @@
-name: Run XO and Prettier
+name: Run Prettier and XO checks, and tests
 on:
   pull_request:
   workflow_dispatch:
