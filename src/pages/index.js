@@ -13,7 +13,7 @@ import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
 
-const App = ({ isSuccessfulSearch, searchResults }) => {
+const App = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
     return (
         <>
             <PageHead />
@@ -23,7 +23,7 @@ const App = ({ isSuccessfulSearch, searchResults }) => {
             <WrappedMainGrid>
                 <GridRow>
                     <GridBoxFull>
-                        <Search />
+                        <Search searchTerm={searchTerm} />
                     </GridBoxFull>
                 </GridRow>
                 <GridRow>
@@ -41,10 +41,13 @@ const App = ({ isSuccessfulSearch, searchResults }) => {
 App.propTypes = {
     isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
+    searchTerm: PropTypes.string,
 };
 
-const getServerSideProps = async () => {
-    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=maths`;
+const getServerSideProps = async (context) => {
+    const searchTerm = context.query.search ? context.query.search : "maths";
+
+    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}`;
     let isSuccessfulSearch;
     let searchResponseData;
 
@@ -57,7 +60,7 @@ const getServerSideProps = async () => {
         searchResponseData = { results: [] };
     }
 
-    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results } };
+    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results, searchTerm } };
 };
 
 export { App as default, getServerSideProps };
