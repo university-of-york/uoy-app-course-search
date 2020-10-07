@@ -14,4 +14,12 @@ describe("Search", () => {
         expect(getByRole("textbox", { name: "Search" })).toBeVisible();
         expect(getByRole("button", { name: "Search" })).toBeVisible();
     });
+
+    it("populates the search box with the search term", () => {
+        render(<Search searchTerm="French" />);
+
+        const { getByRole } = within(screen.getByRole("search", { name: "Courses" }));
+
+        expect(getByRole("textbox", { name: "Search" }).value).toEqual("French");
+    });
 });
