@@ -75,15 +75,13 @@ package:
     - node_modules/micromatch/**
 
 resources:
-
   Conditions:
     UseCustomDomainName: !Not
       - !Equals
         - ${self:custom.domainName}
-        - ''
+        - ""
 
   Resources:
-
     ApiGatewayCustomDomainName:
       Type: AWS::ApiGateway::DomainName
       Condition: UseCustomDomainName
@@ -99,7 +97,7 @@ resources:
       Condition: UseCustomDomainName
       DependsOn: ApiGatewayDeployment${sls:instanceId}
       Properties:
-        BasePath: ''
+        BasePath: ""
         DomainName: !Ref ApiGatewayCustomDomainName
         RestApiId: !Ref ApiGatewayRestApi
         Stage: ${self:provider.stage}
@@ -110,4 +108,4 @@ resources:
       Properties:
         ServiceToken: arn:aws:sns:eu-west-1:230504789214:RequestRecordSet
         Source: ${self:custom.domainName}.
-        Target: !Join [ '', [ !GetAtt ApiGatewayCustomDomainName.RegionalDomainName, '.' ] ]
+        Target: !Join ["", [!GetAtt ApiGatewayCustomDomainName.RegionalDomainName, "."]]
