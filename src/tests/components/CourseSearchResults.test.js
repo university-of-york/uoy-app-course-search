@@ -24,4 +24,10 @@ describe("CourseSearchResults", () => {
             "https://www.york.ac.uk/it-support/"
         );
     });
+
+    it("displays an appropriate message when there are no search results returned", () => {
+        render(<CourseSearchResults isSuccessfulSearch searchResults={[]} />);
+
+        expect(screen.getByText(/Sorry, your search did not return any results/)).toBeVisible();
+    });
 });

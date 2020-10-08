@@ -8,6 +8,10 @@ const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
         return <SearchFailedMessage />;
     }
 
+    if (!searchResults?.length) {
+        return <NoSearchResultsMessage />;
+    }
+
     return (
         <ul className="c-listings">
             {searchResults?.map((course) => (
@@ -28,6 +32,12 @@ const SearchFailedMessage = () => (
             Course search is currently unavailable. Please try again later, or{" "}
             <a href="https://www.york.ac.uk/it-support/">contact IT Support</a>.
         </div>
+    </div>
+);
+
+const NoSearchResultsMessage = () => (
+    <div className="c-alert c-alert--info">
+        <div className="c-alert__content">Sorry, your search did not return any results.</div>
     </div>
 );
 
