@@ -6,7 +6,7 @@ const Tag = ({ icon, mainText }) => (
         <span className="c-tag">
             <i aria-hidden className={`c-tag__icon c-icon c-icon--${icon}`} data-testid="tag-icon" />
             {mainText}
-        </span>
+        </span>{" "}
     </li>
 );
 
