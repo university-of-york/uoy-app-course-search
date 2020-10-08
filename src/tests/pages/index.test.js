@@ -5,11 +5,19 @@ beforeEach(() => {
     fetch.resetMocks();
 });
 
+const emptyContext = { query: {} };
+
 describe("App", () => {
     it("displays an appropriate page heading", () => {
         render(<App />);
 
         expect(screen.getByRole("heading", { name: "Courses" })).toBeInTheDocument();
+    });
+
+    it("displays the search element", () => {
+        render(<App />);
+
+        expect(screen.getByRole("search", { name: "Courses" })).toBeVisible();
     });
 
     it("displays the titles from course search results", () => {
@@ -31,51 +39,44 @@ describe("getServerSideProps", () => {
             JSON.stringify({
                 results: [
                     {
-                        title: "Maths",
+                        title: "English",
                     },
                 ],
             })
         );
 
-        const response = await getServerSideProps();
+        const response = await getServerSideProps({ query: { search: "english" } });
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+        expect(fetch).toHaveBeenCalledWith("https://test.courses.api.com?search=english");
+
+        expect(response.props.isSuccessfulSearch).toEqual(true);
+        expect(response.props.searchResults).toEqual([{ title: "English" }]);
+        expect(response.props.searchTerm).toEqual("english");
+    });
+
+    it("calls the Courses API with a default search term when none is entered", async () => {
+        await getServerSideProps(emptyContext);
 
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(fetch).toHaveBeenCalledWith("https://test.courses.api.com?search=maths");
-        expect(response).toEqual({
-            props: {
-                isSuccessfulSearch: true,
-                searchResults: [
-                    {
-                        title: "Maths",
-                    },
-                ],
-            },
-        });
     });
 
     it("indicates when the Courses API search failed (http error response)", async () => {
         fetch.mockResponse("{}", { status: 500 });
 
-        const response = await getServerSideProps();
+        const response = await getServerSideProps(emptyContext);
 
-        expect(response).toEqual({
-            props: {
-                isSuccessfulSearch: false,
-                searchResults: [],
-            },
-        });
+        expect(response.props.isSuccessfulSearch).toEqual(false);
+        expect(response.props.searchResults).toEqual([]);
     });
 
     it("indicates when the Courses API search failed (network or other error)", async () => {
         fetch.mockReject(new Error("can not resolve host"));
 
-        const response = await getServerSideProps();
+        const response = await getServerSideProps(emptyContext);
 
-        expect(response).toEqual({
-            props: {
-                isSuccessfulSearch: false,
-                searchResults: [],
-            },
-        });
+        expect(response.props.isSuccessfulSearch).toEqual(false);
+        expect(response.props.searchResults).toEqual([]);
     });
 });
