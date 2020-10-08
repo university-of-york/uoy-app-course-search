@@ -7,7 +7,7 @@ describe("TagList", () => {
     it("displays tags labelled with given inputs", () => {
         render(
             <TagList>
-                <Tag icon="clock" mainText="foo bar" />
+                <Tag icon="institution" mainText="foo bar" />
                 <Tag icon="key" mainText="fruit salad" />
             </TagList>
         );
@@ -15,7 +15,7 @@ describe("TagList", () => {
         const tags = screen.getAllByRole("listitem");
 
         expect(tags[0]).toHaveTextContent("foo bar");
-        expect(within(tags[0]).getByTestId("tag-icon")).toHaveClass("c-icon--clock");
+        expect(within(tags[0]).getByTestId("tag-icon")).toHaveClass("c-icon--institution");
 
         expect(tags[1]).toHaveTextContent("fruit salad");
         expect(within(tags[1]).getByTestId("tag-icon")).toHaveClass("c-icon--key");
