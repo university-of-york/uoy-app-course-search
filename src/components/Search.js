@@ -1,4 +1,5 @@
 import {
+    Form,
     FormElement,
     FormInputText,
     Grid,
@@ -11,7 +12,7 @@ import PropTypes from "prop-types";
 
 const Search = ({ searchTerm }) => {
     return (
-        <form autoComplete="off" method="get" className="c-form c-form--joined" role="search" aria-label="Courses">
+        <Form action="/" autoComplete="off" method="get" role="search" aria-label="Courses">
             <Grid>
                 <GridRow>
                     <GridBoxFull>
@@ -30,7 +31,7 @@ const Search = ({ searchTerm }) => {
                     </GridBoxFull>
                 </GridRow>
             </Grid>
-        </form>
+        </Form>
     );
 };
 
