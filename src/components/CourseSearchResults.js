@@ -2,6 +2,7 @@ import { Course } from "./Course";
 import PropTypes from "prop-types";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import React from "react";
+import { Alert } from "@university-of-york/esg-lib-pattern-library-react-components";
 
 const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
     if (!isSuccessfulSearch) {
@@ -27,18 +28,12 @@ CourseSearchResults.propTypes = {
 };
 
 const SearchFailedMessage = () => (
-    <div className="c-alert c-alert--warning">
-        <div className="c-alert__content">
-            Course search is currently unavailable. Please try again later, or{" "}
-            <a href="https://www.york.ac.uk/it-support/">contact IT Support</a>.
-        </div>
-    </div>
+    <Alert className="warning">
+        Course search is currently unavailable. Please try again later, or{" "}
+        <a href="https://www.york.ac.uk/it-support/">contact IT Support</a>.
+    </Alert>
 );
 
-const NoSearchResultsMessage = () => (
-    <div className="c-alert c-alert--info">
-        <div className="c-alert__content">Sorry, your search did not return any results.</div>
-    </div>
-);
+const NoSearchResultsMessage = () => <Alert className="info">Sorry, your search did not return any results.</Alert>;
 
 export { CourseSearchResults };
