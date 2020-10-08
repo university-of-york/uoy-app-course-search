@@ -8,7 +8,7 @@ const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
         return <SearchFailedMessage />;
     }
 
-    if (!searchResults || !searchResults.length) {
+    if (!searchResults?.length) {
         return <NoSearchResultsMessage />;
     }
 
