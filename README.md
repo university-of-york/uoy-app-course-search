@@ -53,11 +53,13 @@ npm ERR! 404  '@university-of-york/esg-lib-pattern-library-react-components@4.3.
 
 ### Testing
 
-To run the tests locally run:
+Tests live in `src/tests`. To run them:
 
 ```
 npm test
 ```
+
+Or, in Intellij, open the `npm` window and double-click on `test`, or in package.json, click on the green arrow next to the "test": "jest" entry.
 
 Tests are run automatically upon creation of a pull request, configured in `.github/workflows/checks.yml`, 
 and upon a merge into `dev` or `main` branches on Github as part of `.github/workflows/deploy.yml`
@@ -154,16 +156,6 @@ Checks code formatting (`prettier`), checks coding standards (`XO`), then runs t
 **`npm run formatandcheck`**
 
 Fixes code formatting (`prettier`), checks coding standards (`XO`), then runs tests.
-
-## Testing
-
-Tests live in `src/tests`. To run them:
-
-```
-npm run test
-```
-
-Or, in Intellij, open the `npm` window and double-click on `test`.
 
 ## Accessibility
 
