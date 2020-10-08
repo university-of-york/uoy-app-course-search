@@ -45,7 +45,7 @@ App.propTypes = {
 };
 
 const getServerSideProps = async (context) => {
-    const searchTerm = context.query.search ? context.query.search : "maths";
+    const searchTerm = context.query.search || "maths";
 
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}`;
 
