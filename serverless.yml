@@ -34,6 +34,8 @@ custom:
   apigwBinary:
     types:
       - "*/*"
+  domainName: ${env:DOMAIN_NAME, ''}
+  sslCertificateArn: ${env:SSL_CERTIFICATE_ARN, ''}
 
 # Exclude next.js dependencies that are not needed at runtime
 package:
@@ -71,3 +73,39 @@ package:
     - node_modules/ext/**
     - node_modules/tr46/**
     - node_modules/micromatch/**
+
+resources:
+  Conditions:
+    UseCustomDomainName: !Not
+      - !Equals
+        - ${self:custom.domainName}
+        - ""
+
+  Resources:
+    ApiGatewayCustomDomainName:
+      Type: AWS::ApiGateway::DomainName
+      Condition: UseCustomDomainName
+      Properties:
+        RegionalCertificateArn: ${self:custom.sslCertificateArn}
+        DomainName: ${self:custom.domainName}
+        EndpointConfiguration:
+          Types:
+            - REGIONAL
+
+    BasePathMapping:
+      Type: AWS::ApiGateway::BasePathMapping
+      Condition: UseCustomDomainName
+      DependsOn: ApiGatewayDeployment${sls:instanceId}
+      Properties:
+        BasePath: ""
+        DomainName: !Ref ApiGatewayCustomDomainName
+        RestApiId: !Ref ApiGatewayRestApi
+        Stage: ${self:provider.stage}
+
+    AppCNAME:
+      Type: Custom::CNAME
+      Condition: UseCustomDomainName
+      Properties:
+        ServiceToken: arn:aws:sns:eu-west-1:230504789214:RequestRecordSet
+        Source: ${self:custom.domainName}.
+        Target: !Join ["", [!GetAtt ApiGatewayCustomDomainName.RegionalDomainName, "."]]
