@@ -20,10 +20,4 @@ describe("TagList", () => {
         expect(tags[1]).toHaveTextContent("fruit salad");
         expect(within(tags[1]).getByTestId("tag-icon")).toHaveClass("c-icon--key");
     });
-
-    it("displays no tags when given no inputs", () => {
-        render(<TagList />);
-
-        expect(screen.queryByRole("listitem")).toBeNull();
-    });
 });
