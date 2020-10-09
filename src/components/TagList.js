@@ -6,7 +6,7 @@ const TagList = (props) => {
 };
 
 TagList.propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
 };
 
 export { TagList };
