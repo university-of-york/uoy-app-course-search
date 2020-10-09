@@ -12,7 +12,7 @@ describe("Course details", () => {
 
         const tags = screen.getAllByRole("listitem");
 
-        expect(tags[0]).toHaveTextContent("Starts 2021/22");
+        expect(tags[0]).toHaveTextContent("Starts 2021");
         expect(within(tags[0]).getByTestId("tag-icon")).toHaveClass("c-icon--calendar");
     });
 

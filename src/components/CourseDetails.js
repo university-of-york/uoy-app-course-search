@@ -14,7 +14,8 @@ const CourseDetails = ({ course }) => {
 
 const StartDateTag = ({ yearOfEntry }) => {
     if (yearOfEntry) {
-        return <Tag icon="calendar" mainText={`Starts ${yearOfEntry}`} />;
+        const startYear = yearOfEntry.slice(0, 4);
+        return <Tag icon="calendar" mainText={`Starts ${startYear}`} />;
     }
 
     return null;
