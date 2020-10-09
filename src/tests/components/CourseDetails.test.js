@@ -3,7 +3,7 @@ import React from "react";
 import { CourseDetails } from "../../components/CourseDetails";
 
 describe("TagList", () => {
-    it("displays tags labelled with given inputs", () => {
+    it("displays course metadata in tags with icons where appropriate", () => {
         const exampleCourse = {
             yearOfEntry: "2021/22",
         };
