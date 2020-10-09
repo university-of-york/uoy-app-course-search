@@ -9,6 +9,7 @@ const CourseDetails = ({ course }) => {
         <TagList>
             <AwardTag award={course.award} />
             <StartDateTag yearOfEntry={course.yearOfEntry} />
+            <LengthCourseTag length={course.length} />
         </TagList>
     );
 };
@@ -30,12 +31,24 @@ const StartDateTag = ({ yearOfEntry }) => {
     return null;
 };
 
+const LengthCourseTag = ({ length }) => {
+    if (length) {
+        return <Tag icon="clock-o" mainText={length} />;
+    }
+
+    return null;
+};
+
 AwardTag.propTypes = {
     award: PropTypes.string,
 };
 
 StartDateTag.propTypes = {
     yearOfEntry: PropTypes.string,
+};
+
+LengthCourseTag.propTypes = {
+    length: PropTypes.string,
 };
 
 CourseDetails.propTypes = {

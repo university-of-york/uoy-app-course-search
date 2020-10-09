@@ -3,6 +3,16 @@ import React from "react";
 import { CourseDetails } from "../../components/CourseDetails";
 
 describe("Course details", () => {
+    it("works with no metadata", () => {
+        const exampleCourse = {};
+
+        render(<CourseDetails course={exampleCourse} />);
+
+        const tagList = screen.getByRole("list"); // UL tags always have a role of list.
+
+        expect(tagList).toBeEmptyDOMElement();
+    });
+
     it("displays award tag", () => {
         const exampleCourse = {
             award: "BA (Hons)",
@@ -10,10 +20,10 @@ describe("Course details", () => {
 
         render(<CourseDetails course={exampleCourse} />);
 
-        const tags = screen.getAllByRole("listitem");
+        const tag = screen.getByRole("listitem");
 
-        expect(tags[0]).toHaveTextContent("BA (Hons)");
-        expect(within(tags[0]).getByTestId("tag-icon")).toHaveClass("c-icon--bank");
+        expect(tag).toHaveTextContent("BA (Hons)");
+        expect(within(tag).getByTestId("tag-icon")).toHaveClass("c-icon--bank");
     });
 
     it("displays start date tag", () => {
@@ -29,13 +39,16 @@ describe("Course details", () => {
         expect(within(tag).getByTestId("tag-icon")).toHaveClass("c-icon--calendar");
     });
 
-    it("works with no metadata", () => {
-        const exampleCourse = {};
+    it("displays tag with length of course", () => {
+        const exampleCourse = {
+            length: "4 years full-time",
+        };
 
         render(<CourseDetails course={exampleCourse} />);
 
-        const tagList = screen.getByRole("list"); // UL tags always have a role of list.
+        const tag = screen.getByRole("listitem");
 
-        expect(tagList).toBeEmptyDOMElement();
+        expect(tag).toHaveTextContent("4 years full-time");
+        expect(within(tag).getByTestId("tag-icon")).toHaveClass("c-icon--clock-o");
     });
 });
