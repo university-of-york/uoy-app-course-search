@@ -157,6 +157,23 @@ Checks code formatting (`prettier`), checks coding standards (`XO`), then runs t
 
 Fixes code formatting (`prettier`), checks coding standards (`XO`), then runs tests.
 
+## TroubleShooting
+
+### Logs
+Logs for the application can be found in CloudWatch. The group name is `/aws/lambda/uoy-app-course-search-v1-server`.
+
+This is the place to check if the application is experiencing weird errors, for example 
+```
+{
+message: "Internal server error"
+}
+```
+instead of a next error page or suspicious errors with nothing in the console.
+
+### Automated BugFixes (Dependabot)
+We have experienced issues with Dependabot updates breaking the application in the past. Before merging in an automated security 
+PR/Dependabot PR we should check out and deploy the code to a sandbox account, to ensure there aren't any breaking changes.
+
 ## Accessibility
 
 The application's linting process checks for conformance to accessibility standards
