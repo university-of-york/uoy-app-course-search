@@ -6,7 +6,7 @@ import { Tag } from "./Tag";
 const CourseDetails = ({ course }) => {
     return (
         <TagList>
-            <Tag icon="twitter" mainText="example" />
+            <Tag icon="calendar" mainText={`Starts ${course.yearOfEntry}`} />
         </TagList>
     );
 };
