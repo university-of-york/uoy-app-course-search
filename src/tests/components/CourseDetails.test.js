@@ -3,6 +3,19 @@ import React from "react";
 import { CourseDetails } from "../../components/CourseDetails";
 
 describe("Course details", () => {
+    it("displays award tag", () => {
+        const exampleCourse = {
+            award: "BA (Hons)",
+        };
+
+        render(<CourseDetails course={exampleCourse} />);
+
+        const tags = screen.getAllByRole("listitem");
+
+        expect(tags[0]).toHaveTextContent("BA (Hons)");
+        expect(within(tags[0]).getByTestId("tag-icon")).toHaveClass("c-icon--bank");
+    });
+
     it("displays start date tag", () => {
         const exampleCourse = {
             yearOfEntry: "2021/22",
