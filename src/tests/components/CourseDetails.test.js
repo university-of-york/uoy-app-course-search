@@ -10,10 +10,10 @@ describe("Course details", () => {
 
         render(<CourseDetails course={exampleCourse} />);
 
-        const tags = screen.getAllByRole("listitem");
+        const tag = screen.getByRole("listitem");
 
-        expect(tags[0]).toHaveTextContent("Starts 2021");
-        expect(within(tags[0]).getByTestId("tag-icon")).toHaveClass("c-icon--calendar");
+        expect(tag).toHaveTextContent("Starts 2021");
+        expect(within(tag).getByTestId("tag-icon")).toHaveClass("c-icon--calendar");
     });
 
     it("works with no metadata", () => {
