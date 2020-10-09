@@ -7,9 +7,18 @@ import PropTypes from "prop-types";
 const CourseDetails = ({ course }) => {
     return (
         <TagList>
+            <AwardTag award={course.award} />
             <StartDateTag yearOfEntry={course.yearOfEntry} />
         </TagList>
     );
+};
+
+const AwardTag = ({ award }) => {
+    if (award) {
+        return <Tag icon="bank" mainText={award} />;
+    }
+
+    return null;
 };
 
 const StartDateTag = ({ yearOfEntry }) => {
@@ -19,6 +28,10 @@ const StartDateTag = ({ yearOfEntry }) => {
     }
 
     return null;
+};
+
+AwardTag.propTypes = {
+    award: PropTypes.string,
 };
 
 StartDateTag.propTypes = {
