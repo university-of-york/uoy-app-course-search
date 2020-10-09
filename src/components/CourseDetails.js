@@ -16,7 +16,7 @@ const CourseDetails = ({ course }) => {
 
 const AwardTag = ({ award }) => {
     if (award) {
-        return <Tag icon="bank" mainText={award} />;
+        return <Tag icon="university" mainText={award} />;
     }
 
     return null;
