@@ -4,6 +4,7 @@ import { Course } from "../../components/Course";
 describe("Course", () => {
     it("displays the course title", () => {
         const course = {
+            length: "",
             title: "Mathematics",
             liveUrl: "",
         };

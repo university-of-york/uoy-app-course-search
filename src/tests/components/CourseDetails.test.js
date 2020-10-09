@@ -23,7 +23,7 @@ describe("Course details", () => {
         const tag = screen.getByRole("listitem");
 
         expect(tag).toHaveTextContent("BA (Hons)");
-        expect(within(tag).getByTestId("tag-icon")).toHaveClass("c-icon--bank");
+        expect(within(tag).getByTestId("tag-icon")).toHaveClass("c-icon--university");
     });
 
     it("displays start date tag", () => {
