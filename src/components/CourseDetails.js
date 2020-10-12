@@ -9,16 +9,25 @@ const CourseDetails = ({ course }) => {
         <TagList>
             <AwardTag award={course.award} />
             <StartDateTag yearOfEntry={course.yearOfEntry} />
+            <LengthCourseTag length={course.length} />
         </TagList>
     );
 };
 
+CourseDetails.propTypes = {
+    course: COURSE_MODEL,
+};
+
 const AwardTag = ({ award }) => {
     if (award) {
-        return <Tag icon="bank" mainText={award} />;
+        return <Tag icon="university" mainText={award} />;
     }
 
     return null;
+};
+
+AwardTag.propTypes = {
+    award: PropTypes.string,
 };
 
 const StartDateTag = ({ yearOfEntry }) => {
@@ -30,16 +39,20 @@ const StartDateTag = ({ yearOfEntry }) => {
     return null;
 };
 
-AwardTag.propTypes = {
-    award: PropTypes.string,
-};
-
 StartDateTag.propTypes = {
     yearOfEntry: PropTypes.string,
 };
 
-CourseDetails.propTypes = {
-    course: COURSE_MODEL,
+const LengthCourseTag = ({ length }) => {
+    if (length) {
+        return <Tag icon="clock-o" mainText={length} />;
+    }
+
+    return null;
+};
+
+LengthCourseTag.propTypes = {
+    length: PropTypes.string,
 };
 
 export { CourseDetails };
