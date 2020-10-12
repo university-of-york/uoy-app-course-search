@@ -4,6 +4,8 @@ This is the frontend for the Course Search application. It allows
 prospective students to view a list of courses at the University of York
 and follow links to course pages.
 
+See our [GitHub Wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and related developer guides.
+
 ## Related Repos
 
 - [Courses API](https://github.com/university-of-york/uoy-api-courses) - the API that provides Course Search functionality and in turn calls the Funnelback Courses API.
