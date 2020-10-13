@@ -160,7 +160,7 @@ Fixes code formatting (`prettier`), checks coding standards (`XO`), then runs te
 ## TroubleShooting
 
 ### Logs
-Logs for the application can be found in CloudWatch. Open CloudWatch from the AWS Management console and click on `Log groups`. The group name is `/aws/lambda/uoy-app-course-search-v1-server`.
+Logs for the application can be found in CloudWatch. As an ESG AWS user for the relevant environment, open CloudWatch from the AWS Management console and click on `Log groups`. The group name is `/aws/lambda/uoy-app-course-search-v1-server`.
 
 This is the place to check if the application is experiencing weird errors, for example 
 ```
