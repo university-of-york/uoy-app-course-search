@@ -28,7 +28,7 @@ describe("Course", () => {
     it("wraps the course details in a link", async () => {
         const course = {
             title: "A Course",
-            liveUrl: "",
+            liveUrl: "https://fakecourse.notadomain/",
             award: "Award",
         };
 
@@ -36,6 +36,7 @@ describe("Course", () => {
 
         const link = screen.getByRole("link");
 
+        expect(link.href).toEqual("https://fakecourse.notadomain/");
         expect(within(link).getByRole("heading", { name: "A Course - Award" })).toBeInTheDocument();
         expect(within(link).getByTestId("tag-icon")).toBeInTheDocument();
     });
