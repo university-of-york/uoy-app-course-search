@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { Course } from "../../components/Course";
 
 describe("Course", () => {
@@ -22,5 +22,21 @@ describe("Course", () => {
         render(<Course course={course} />);
 
         expect(screen.getByRole("heading", { name: "Mathematics" })).toBeInTheDocument();
+    });
+
+    // This is one test as we are testing the link content, not the tags or title specifically
+    it("wraps the course details in a link", async () => {
+        const course = {
+            title: "A Course",
+            liveUrl: "",
+            award: "Award",
+        };
+
+        render(<Course course={course} />);
+
+        const link = screen.getByRole("link");
+
+        expect(within(link).getByRole("heading", { name: "A Course - Award" })).toBeInTheDocument();
+        expect(within(link).getByTestId("tag-icon")).toBeInTheDocument();
     });
 });
