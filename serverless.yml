@@ -54,7 +54,6 @@ package:
     - node_modules/@webassemblyjs/**
     - node_modules/cssnano-preset-simple/**
     - node_modules/snapdragon/**
-    - node_modules/@next/**
     - node_modules/regenerate-unicode-properties/**
     - node_modules/pako/**
     - node_modules/source-map/**

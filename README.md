@@ -1,8 +1,9 @@
 # Course Search
 
-This is the frontend for the Course Search application. It allows
-prospective students to view a list of courses at the University of York
-and follow links to course pages.
+This is the University of York's Course Search application. It allows prospective students to search for courses,
+view results, and follow links to course pages.
+
+See our [GitHub Wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and related developer guides.
 
 ## Related Repos
 
@@ -156,6 +157,23 @@ Checks code formatting (`prettier`), checks coding standards (`XO`), then runs t
 **`npm run formatandcheck`**
 
 Fixes code formatting (`prettier`), checks coding standards (`XO`), then runs tests.
+
+## TroubleShooting
+
+### Logs
+Logs for the application can be found in CloudWatch. As an ESG AWS user for the relevant environment, open CloudWatch from the AWS Management console and click on `Log groups`. The group name is `/aws/lambda/uoy-app-course-search-v1-server`.
+
+This is the place to check if the application is experiencing weird errors, for example 
+```
+{
+message: "Internal server error"
+}
+```
+instead of a next error page or suspicious errors with nothing in the console.
+
+## Automated BugFixes (Dependabot)
+We have experienced issues with Dependabot updates breaking the application in the past. Before merging in an automated security 
+PR/Dependabot PR we should check out and deploy the code to a sandbox account, to ensure there aren't any breaking changes.
 
 ## Accessibility
 
