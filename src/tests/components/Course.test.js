@@ -11,7 +11,7 @@ describe("Course", () => {
 
         render(<Course course={course} />);
 
-        expect(screen.getByRole("link", { name: "Mathematics - BSc (Hons)" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Mathematics - BSc (Hons)" })).toBeInTheDocument();
     });
     it("displays the course title when no award", () => {
         const course = {
@@ -21,6 +21,6 @@ describe("Course", () => {
 
         render(<Course course={course} />);
 
-        expect(screen.getByRole("link", { name: "Mathematics" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Mathematics" })).toBeInTheDocument();
     });
 });
