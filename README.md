@@ -5,6 +5,11 @@ view results, and follow links to course pages.
 
 See our [GitHub Wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and related developer guides.
 
+**This project is a work-in-progress and search results may not meet expectations**
+
+Live URL: https://courses.app.york.ac.uk/
+Dev URL: https://courses.dev.app.york.ac.uk/
+
 ## Related Repos
 
 - [Courses API](https://github.com/university-of-york/uoy-api-courses) - the API that provides Course Search functionality and in turn calls the Funnelback Courses API.
