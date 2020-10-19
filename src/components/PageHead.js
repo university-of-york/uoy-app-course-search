@@ -1,7 +1,8 @@
 import Head from "next/head";
 import React from "react";
+import PropTypes from "prop-types";
 
-const PageHead = () => {
+const PageHead = ({ search }) => {
     return (
         <Head>
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +10,7 @@ const PageHead = () => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="description" content="University of York Course search" />
 
-            <title>Course search, University of York</title>
+            <title>{pageTitle(search)}</title>
 
             <link rel="shortcut icon" href="https://www.york.ac.uk/static/stable/img/favicon.ico" />
             <link rel="icon" type="image/x-icon" href="https://www.york.ac.uk/static/stable/img/favicon.ico" />
@@ -24,4 +25,15 @@ const PageHead = () => {
     );
 };
 
-export { PageHead };
+PageHead.propTypes = {
+    search: PropTypes.string,
+};
+
+const pageTitle = (searchTerm) =>
+    searchTerm ? `Course results for ${searchTerm}, University of York` : "Course Search, University of York";
+
+pageTitle.propTypes = {
+    search: PropTypes.string,
+};
+
+export { PageHead, pageTitle };
