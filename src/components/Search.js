@@ -1,4 +1,5 @@
 import {
+    BasicSubmitButton,
     Form,
     FormElement,
     FormInputText,
@@ -24,9 +25,9 @@ const Search = ({ searchTerm }) => {
                                 placeholder="Search for your course"
                                 defaultValue={searchTerm}
                             />
-                            <button className="c-btn c-btn--medium" type="submit" aria-label="Search">
+                            <BasicSubmitButton aria-label="Search">
                                 <SearchIcon />
-                            </button>
+                            </BasicSubmitButton>
                         </FormElement>
                     </GridBoxFull>
                 </GridRow>

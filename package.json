@@ -17,7 +17,7 @@
     "fc": "npm run formatandcheck"
   },
   "dependencies": {
-    "@university-of-york/esg-lib-pattern-library-react-components": "^5.0.2",
+    "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.1",
     "express": "^4.17.1",
     "next": "9.5.4",
     "path-match": "^1.2.4",
