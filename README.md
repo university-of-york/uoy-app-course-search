@@ -77,8 +77,13 @@ new code is merged into the `dev` and `main` branches.
 
 ### Domain setup
 
-This application is automatically deployed to a custom domain by serverless and CloudFormation. Parameters such as the domain and SSL certificate 
-are populated in `.github/workflows/deploy.yml`, though the sensitive values are stored securely in the `Secrets` section of the GitHub repo settings.
+This application is automatically deployed to a custom domain by serverless and CloudFormation
+if the environment is appropriately configured (by setting environment variables `DOMAIN_NAME`
+and `SSL_CERTIFICATE_ARN`). For local sandbox development, you are unlikely to need to use a
+custom domain name, and therefore don't need to set these environment variables. For `dev` and 
+`production` environments, these environment variables are populated as part of the CI/CD 
+pipeline in `.github/workflows/deploy.yml`, though the sensitive values are stored securely 
+in the `Secrets` section of the GitHub repo settings.
 
 Provided that the [SSL certificate has been provisioned beforehand](https://github.com/university-of-york/uoy-app-course-search/wiki/Creating-and-Validating-an-SSL-Certificate-in-AWS),
 serverless will do all the work necessary to set up the environment, as detailed in `serverless.yml`. This involves setting up a custom domain name
