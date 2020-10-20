@@ -5,6 +5,11 @@ view results, and follow links to course pages.
 
 See our [GitHub Wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and related developer guides.
 
+**This project is a work-in-progress and search results may not meet expectations**
+
+Live URL: https://courses.app.york.ac.uk/
+Dev URL: https://courses.dev.app.york.ac.uk/
+
 ## Related Repos
 
 - [Courses API](https://github.com/university-of-york/uoy-api-courses) - the API that provides Course Search functionality and in turn calls the Funnelback Courses API.
@@ -69,6 +74,20 @@ and upon a merge into `dev` or `main` branches on Github as part of `.github/wor
 
 Deployment to the development and production environments happen through GitHub actions that trigger automatically when 
 new code is merged into the `dev` and `main` branches. 
+
+### Domain setup
+
+This application is automatically deployed to a custom domain by serverless and CloudFormation
+if the environment is appropriately configured (by setting environment variables `DOMAIN_NAME`
+and `SSL_CERTIFICATE_ARN`). For local sandbox development, you are unlikely to need to use a
+custom domain name, and therefore don't need to set these environment variables. For `dev` and 
+`production` environments, these environment variables are populated as part of the CI/CD 
+pipeline in `.github/workflows/deploy.yml`, though the sensitive values are stored securely 
+in the `Secrets` section of the GitHub repo settings.
+
+Provided that the [SSL certificate has been provisioned beforehand](https://github.com/university-of-york/uoy-app-course-search/wiki/Creating-and-Validating-an-SSL-Certificate-in-AWS),
+serverless will do all the work necessary to set up the environment, as detailed in `serverless.yml`. This involves setting up a custom domain name
+in API Gateway and mapping this to the API endpoint that serves our Next.js application. 
 
 ### Code style
 
