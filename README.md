@@ -203,7 +203,7 @@ using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a
 
 The application is tested against a number of mobile devices by using emulators. 
 In the first instance developers use Google Chrome Developer Tools and then finally BrowserStack for testing. 
-The Wiki page "Testing course search rendering on mobile devices" has more detail on the process.
+The Wiki page [Testing course search rendering on mobile devices](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing-Course-Search-Rendering-on-Mobile-Devices) has more detail on the process.
 
 ## Contact
 
