@@ -101,6 +101,10 @@ using production environment variables.
 For local development, environment variables can be overridden by creating 
 `.env.development.local` and `.env.production.local`. These files will be ignored by Git.
 
+When running in AWS Lambda, this application's environment variables are set in Lambda
+by Serverless during the deployment process, thanks to the
+[Serverless dotenv plugin](https://www.serverless.com/plugins/serverless-dotenv-plugin).
+
 #### Switching between development and production Courses API
 
 This application fetches course data using the [Courses API](https://github.com/university-of-york/uoy-api-courses).
