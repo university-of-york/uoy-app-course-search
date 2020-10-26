@@ -16,7 +16,7 @@ import { Search } from "../components/Search";
 const App = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
     return (
         <>
-            <PageHead />
+            <PageHead search={searchTerm} />
             <UniversityHeaderWithSearch />
             <UniversityTitleBar title="Courses" />
 

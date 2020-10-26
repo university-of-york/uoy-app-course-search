@@ -29,6 +29,7 @@ functions:
 
 plugins:
   - serverless-apigw-binary
+  - serverless-dotenv-plugin
 
 custom:
   apigwBinary:

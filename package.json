@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "next build && sls deploy",
+    "deploy": "next build && sls deploy --env production",
+    "deploy:dev": "next build && sls deploy --env development",
     "undeploy": "sls remove",
     "test": "jest",
     "format": "prettier --write .",
@@ -17,7 +18,7 @@
     "fc": "npm run formatandcheck"
   },
   "dependencies": {
-    "@university-of-york/esg-lib-pattern-library-react-components": "^5.0.2",
+    "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.1",
     "express": "^4.17.1",
     "next": "9.5.4",
     "path-match": "^1.2.4",
@@ -43,7 +44,8 @@
     "jest": "^26.4.2",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "2.1.1",
-    "xo": "^0.33.1",
-    "serverless": "^2.1.1"
+    "serverless": "^2.1.1",
+    "serverless-dotenv-plugin": "^3.1.0",
+    "xo": "^0.33.1"
   }
 }
