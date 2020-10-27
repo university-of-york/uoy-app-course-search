@@ -42,6 +42,7 @@ App.propTypes = {
     isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
     searchTerm: PropTypes.string,
+    numberOfResults: PropTypes.number,
 };
 
 const getServerSideProps = async (context) => {
@@ -61,7 +62,14 @@ const getServerSideProps = async (context) => {
         searchResponseData = { results: [] };
     }
 
-    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results, searchTerm } };
+    return {
+        props: {
+            isSuccessfulSearch,
+            searchResults: searchResponseData.results,
+            searchTerm,
+            numberOfResults: searchResponseData.results.length,
+        },
+    };
 };
 
 export { App as default, getServerSideProps };
