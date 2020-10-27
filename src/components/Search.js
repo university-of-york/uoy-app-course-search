@@ -29,6 +29,9 @@ const Search = ({ searchTerm }) => {
                                 <SearchIcon />
                             </BasicSubmitButton>
                         </FormElement>
+                        <span data-testid="search-results-description">
+                            Showing results for <strong>{searchTerm}</strong>
+                        </span>
                     </GridBoxFull>
                 </GridRow>
             </Grid>
