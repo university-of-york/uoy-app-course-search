@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App, { getServerSideProps } from "../../pages";
 
 beforeEach(() => {
@@ -41,9 +41,7 @@ describe("App", () => {
 
         render(<App isSuccessfulSearch searchResults={searchResults} searchTerm="Maths" />);
 
-        const search = screen.getByRole("search", { name: "Courses" });
-
-        expect(within(search).getByTestId("search-results-description")).toHaveTextContent("Showing results for Maths");
+        expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing results for Maths");
     });
 });
 

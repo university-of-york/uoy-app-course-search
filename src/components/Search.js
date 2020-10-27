@@ -13,10 +13,10 @@ import PropTypes from "prop-types";
 
 const Search = ({ searchTerm }) => {
     return (
-        <Form action="/" autoComplete="off" method="get" role="search" aria-label="Courses">
-            <Grid>
-                <GridRow>
-                    <GridBoxFull>
+        <Grid>
+            <GridRow>
+                <GridBoxFull>
+                    <Form action="/" autoComplete="off" method="get" role="search" aria-label="Courses">
                         <FormElement>
                             <FormInputText
                                 name="search"
@@ -29,13 +29,17 @@ const Search = ({ searchTerm }) => {
                                 <SearchIcon />
                             </BasicSubmitButton>
                         </FormElement>
-                        <span data-testid="search-results-description">
-                            Showing results for <strong>{searchTerm}</strong>
-                        </span>
-                    </GridBoxFull>
-                </GridRow>
-            </Grid>
-        </Form>
+                    </Form>
+                </GridBoxFull>
+            </GridRow>
+            <GridRow>
+                <GridBoxFull>
+                    <p data-testid="search-results-description">
+                        Showing results for <strong>{searchTerm}</strong>
+                    </p>
+                </GridBoxFull>
+            </GridRow>
+        </Grid>
     );
 };
 
