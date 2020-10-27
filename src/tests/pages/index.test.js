@@ -34,12 +34,7 @@ describe("App", () => {
     });
 
     it("displays the number of results returned", () => {
-        const searchResults = [
-            { title: "Maths", liveUrl: "http://foo.bar" },
-            { title: "Physics", liveUrl: "http://foo.baz" },
-        ];
-
-        render(<App isSuccessfulSearch searchResults={searchResults} searchTerm="Maths" />);
+        render(<App isSuccessfulSearch searchTerm="Maths" />);
 
         expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing results for Maths");
     });
