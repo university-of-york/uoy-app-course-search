@@ -11,7 +11,7 @@ import {
 import React from "react";
 import PropTypes from "prop-types";
 
-const Search = ({ searchTerm }) => {
+const Search = ({ searchTerm, numberOfResults }) => {
     return (
         <Grid>
             <GridRow>
@@ -35,7 +35,7 @@ const Search = ({ searchTerm }) => {
             <GridRow>
                 <GridBoxFull>
                     <p data-testid="search-results-description">
-                        Showing results for <strong>{searchTerm}</strong>
+                        Showing {numberOfResults} results for <strong>{searchTerm}</strong>
                     </p>
                 </GridBoxFull>
             </GridRow>
@@ -45,6 +45,7 @@ const Search = ({ searchTerm }) => {
 
 Search.propTypes = {
     searchTerm: PropTypes.string,
+    numberOfResults: PropTypes.number,
 };
 
 export { Search };

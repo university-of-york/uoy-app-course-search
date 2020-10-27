@@ -13,7 +13,7 @@ import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
 
-const App = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
+const App = ({ isSuccessfulSearch, searchResults, searchTerm, numberOfResults }) => {
     return (
         <>
             <PageHead search={searchTerm} />
@@ -23,7 +23,7 @@ const App = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
             <WrappedMainGrid>
                 <GridRow>
                     <GridBoxFull>
-                        <Search searchTerm={searchTerm} />
+                        <Search searchTerm={searchTerm} numberOfResults={numberOfResults} />
                     </GridBoxFull>
                 </GridRow>
                 <GridRow>

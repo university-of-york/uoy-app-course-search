@@ -21,6 +21,12 @@ describe("App", () => {
         expect(screen.getByRole("search", { name: "Courses" })).toBeVisible();
     });
 
+    it("displays the search results description", () => {
+        render(<App />);
+
+        expect(screen.getByTestId("search-results-description")).toBeVisible();
+    });
+
     it("displays the titles from course search results", () => {
         const searchResults = [
             { title: "Maths", liveUrl: "http://foo.bar" },
@@ -31,12 +37,6 @@ describe("App", () => {
 
         expect(screen.getByRole("link", { name: "Maths" })).toBeInTheDocument();
         expect(screen.getByRole("link", { name: "Physics" })).toBeInTheDocument();
-    });
-
-    it("displays the number of results returned", () => {
-        render(<App isSuccessfulSearch searchTerm="Maths" />);
-
-        expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing results for Maths");
     });
 });
 
