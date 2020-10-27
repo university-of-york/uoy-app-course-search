@@ -6,6 +6,7 @@ beforeEach(() => {
 });
 
 const emptyContext = { query: {} };
+const contextWithSearchTerm = { query: { search: "english" } };
 
 describe("App", () => {
     it("displays an appropriate page heading", () => {
@@ -45,21 +46,49 @@ describe("getServerSideProps", () => {
             })
         );
 
-        const response = await getServerSideProps({ query: { search: "english" } });
+        const response = await getServerSideProps(contextWithSearchTerm);
 
         expect(fetch).toHaveBeenCalledTimes(1);
-        expect(fetch).toHaveBeenCalledWith("https://test.courses.api.com?search=english");
 
         expect(response.props.isSuccessfulSearch).toEqual(true);
         expect(response.props.searchResults).toEqual([{ title: "English" }]);
         expect(response.props.searchTerm).toEqual("english");
     });
 
+    it("calls the Courses API with the correct base url", async () => {
+        await getServerSideProps(emptyContext);
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+
+        const calledUrl = fetch.mock.calls[0][0];
+        expect(calledUrl).toContain("https://test.courses.api.com");
+    });
+
     it("calls the Courses API with a default search term when none is entered", async () => {
         await getServerSideProps(emptyContext);
 
         expect(fetch).toHaveBeenCalledTimes(1);
-        expect(fetch).toHaveBeenCalledWith("https://test.courses.api.com?search=maths");
+
+        const calledUrl = fetch.mock.calls[0][0];
+        expect(calledUrl).toContain("search=maths");
+    });
+
+    it("calls the Courses API with a search term", async () => {
+        await getServerSideProps(contextWithSearchTerm);
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+
+        const calledUrl = fetch.mock.calls[0][0];
+        expect(calledUrl).toContain("search=english");
+    });
+
+    it("calls the Courses API with a max value", async () => {
+        await getServerSideProps(contextWithSearchTerm);
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+
+        const calledUrl = fetch.mock.calls[0][0];
+        expect(calledUrl).toContain("max=20");
     });
 
     it("indicates when the Courses API search failed (http error response)", async () => {
