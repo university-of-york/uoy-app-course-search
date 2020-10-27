@@ -82,7 +82,7 @@ describe("getServerSideProps", () => {
         expect(calledUrl).toContain("search=english");
     });
 
-    it("calls the Courses API with a max value", async () => {
+    it("calls the Courses API with a maximum number of results to return", async () => {
         await getServerSideProps(contextWithSearchTerm);
 
         expect(fetch).toHaveBeenCalledTimes(1);
