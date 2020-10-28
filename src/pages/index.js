@@ -55,13 +55,13 @@ const getServerSideProps = async (context) => {
     try {
         const response = await fetch(courseSearchUrl);
         isSuccessfulSearch = response.ok;
-        searchResponseData = isSuccessfulSearch ? await response.json() : { results: [] };
+        searchResponseData = isSuccessfulSearch ? await response.json() : { numberOfMatches: 0, results: [] };
     } catch {
         isSuccessfulSearch = false;
-        searchResponseData = { results: [] };
+        searchResponseData = { numberOfMatches: 0, results: [] };
     }
 
-    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results, searchTerm } };
+    return { props: { isSuccessfulSearch, searchResults: searchResponseData, searchTerm } };
 };
 
 export { App as default, getServerSideProps };

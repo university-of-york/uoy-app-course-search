@@ -38,6 +38,7 @@ describe("getServerSideProps", () => {
     it("calls the Courses API and returns response in expected format", async () => {
         fetch.mockResponse(
             JSON.stringify({
+                numberOfMatches: 1,
                 results: [
                     {
                         title: "English",
@@ -51,7 +52,7 @@ describe("getServerSideProps", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
         expect(response.props.isSuccessfulSearch).toEqual(true);
-        expect(response.props.searchResults).toEqual([{ title: "English" }]);
+        expect(response.props.searchResults.results).toEqual([{ title: "English" }]);
         expect(response.props.searchTerm).toEqual("english");
     });
 
@@ -97,7 +98,8 @@ describe("getServerSideProps", () => {
         const response = await getServerSideProps(emptyContext);
 
         expect(response.props.isSuccessfulSearch).toEqual(false);
-        expect(response.props.searchResults).toEqual([]);
+        expect(response.props.searchResults.results).toEqual([]);
+        expect(response.props.searchResults.numberOfMatches).toEqual(0);
     });
 
     it("indicates when the Courses API search failed (network or other error)", async () => {
@@ -106,6 +108,22 @@ describe("getServerSideProps", () => {
         const response = await getServerSideProps(emptyContext);
 
         expect(response.props.isSuccessfulSearch).toEqual(false);
-        expect(response.props.searchResults).toEqual([]);
+        expect(response.props.searchResults.numberOfMatches).toEqual(0);
+        expect(response.props.searchResults.results).toEqual([]);
+    });
+
+    it("returns the number of matches from the API", async () => {
+        fetch.mockResponse(
+            JSON.stringify({
+                numberOfMatches: 1,
+                results: [],
+            })
+        );
+
+        const response = await getServerSideProps(contextWithSearchTerm);
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+        expect(response.props.isSuccessfulSearch).toEqual(true);
+        expect(response.props.searchResults.numberOfMatches).toEqual(1);
     });
 });
