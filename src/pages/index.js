@@ -61,7 +61,14 @@ const getServerSideProps = async (context) => {
         searchResponseData = { numberOfMatches: 0, results: [] };
     }
 
-    return { props: { isSuccessfulSearch, searchResults: searchResponseData, searchTerm } };
+    return {
+        props: {
+            isSuccessfulSearch,
+            searchResults: searchResponseData.results,
+            numberOfMatches: searchResponseData.numberOfMatches,
+            searchTerm,
+        },
+    };
 };
 
 export { App as default, getServerSideProps };

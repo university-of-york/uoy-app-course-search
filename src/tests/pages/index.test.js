@@ -52,7 +52,7 @@ describe("getServerSideProps", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
         expect(response.props.isSuccessfulSearch).toEqual(true);
-        expect(response.props.searchResults.results).toEqual([{ title: "English" }]);
+        expect(response.props.searchResults).toEqual([{ title: "English" }]);
         expect(response.props.searchTerm).toEqual("english");
     });
 
@@ -98,8 +98,8 @@ describe("getServerSideProps", () => {
         const response = await getServerSideProps(emptyContext);
 
         expect(response.props.isSuccessfulSearch).toEqual(false);
-        expect(response.props.searchResults.results).toEqual([]);
-        expect(response.props.searchResults.numberOfMatches).toEqual(0);
+        expect(response.props.numberOfMatches).toEqual(0);
+        expect(response.props.searchResults).toEqual([]);
     });
 
     it("indicates when the Courses API search failed (network or other error)", async () => {
@@ -108,8 +108,8 @@ describe("getServerSideProps", () => {
         const response = await getServerSideProps(emptyContext);
 
         expect(response.props.isSuccessfulSearch).toEqual(false);
-        expect(response.props.searchResults.numberOfMatches).toEqual(0);
-        expect(response.props.searchResults.results).toEqual([]);
+        expect(response.props.numberOfMatches).toEqual(0);
+        expect(response.props.searchResults).toEqual([]);
     });
 
     it("returns the number of matches from the API", async () => {
@@ -124,6 +124,6 @@ describe("getServerSideProps", () => {
 
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(response.props.isSuccessfulSearch).toEqual(true);
-        expect(response.props.searchResults.numberOfMatches).toEqual(1);
+        expect(response.props.numberOfMatches).toEqual(1);
     });
 });
