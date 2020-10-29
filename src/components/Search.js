@@ -11,7 +11,7 @@ import {
 import React from "react";
 import PropTypes from "prop-types";
 
-const Search = ({ searchTerm, numberOfMatches, numberOfResults }) => {
+const Search = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
     return (
         <Grid>
             <GridRow>
@@ -37,7 +37,7 @@ const Search = ({ searchTerm, numberOfMatches, numberOfResults }) => {
                     <SearchResultsDescription
                         searchTerm={searchTerm}
                         numberOfMatches={numberOfMatches}
-                        numberOfResults={numberOfResults}
+                        numberOfResultsShown={numberOfResultsShown}
                     />
                 </GridBoxFull>
             </GridRow>
@@ -48,13 +48,13 @@ const Search = ({ searchTerm, numberOfMatches, numberOfResults }) => {
 Search.propTypes = {
     searchTerm: PropTypes.string,
     numberOfMatches: PropTypes.number,
-    numberOfResults: PropTypes.number,
+    numberOfResultsShown: PropTypes.number,
 };
 
-const SearchResultsDescription = ({ searchTerm, numberOfMatches, numberOfResults }) => {
+const SearchResultsDescription = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
     return (
         <p data-testid="search-results-description">
-            Showing {numberOfMatches > numberOfResults ? "the top" : ""} {numberOfResults} results for{" "}
+            Showing {numberOfMatches > numberOfResultsShown ? "the top" : ""} {numberOfResultsShown} results for{" "}
             <strong>{searchTerm}</strong>
         </p>
     );
@@ -63,7 +63,7 @@ const SearchResultsDescription = ({ searchTerm, numberOfMatches, numberOfResults
 SearchResultsDescription.propTypes = {
     searchTerm: PropTypes.string,
     numberOfMatches: PropTypes.number,
-    numberOfResults: PropTypes.number,
+    numberOfResultsShown: PropTypes.number,
 };
 
 export { Search };

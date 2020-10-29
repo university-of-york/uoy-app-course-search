@@ -24,13 +24,13 @@ describe("Search", () => {
     });
 
     it("displays the search term and number of results", () => {
-        render(<Search searchTerm="Maths" numberOfResults={5} />);
+        render(<Search searchTerm="Maths" numberOfResultsShown={5} />);
 
         expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing 5 results for Maths");
     });
 
     it("informs the user that only a limited number of results are being shown", () => {
-        render(<Search searchTerm="Maths" numberOfMatches={25} numberOfResults={23} />);
+        render(<Search searchTerm="Maths" numberOfMatches={25} numberOfResultsShown={23} />);
 
         expect(screen.getByTestId("search-results-description")).toHaveTextContent(
             "Showing the top 23 results for Maths"
@@ -38,7 +38,7 @@ describe("Search", () => {
     });
 
     it("inform the user that all results are shown when the number of matches is equal to the number of results", () => {
-        render(<Search searchTerm="Maths" numberOfMatches={5} numberOfResults={5} />);
+        render(<Search searchTerm="Maths" numberOfMatches={5} numberOfResultsShown={5} />);
 
         expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing 5 results for Maths");
     });
