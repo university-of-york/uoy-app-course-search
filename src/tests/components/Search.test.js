@@ -22,4 +22,10 @@ describe("Search", () => {
 
         expect(getByRole("textbox", { name: "Search" }).value).toEqual("French");
     });
+
+    it("displays the search term and number of results", () => {
+        render(<Search searchTerm="Maths" numberOfResults={5} />);
+
+        expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing 5 results for Maths");
+    });
 });
