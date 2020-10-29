@@ -34,6 +34,6 @@ describe("Search", () => {
     it("informs the user that all results are shown when the number of matches is equal to the number of results", () => {
         render(<Search searchTerm="Maths" numberOfMatches={5} numberOfResultsShown={5} />);
 
-        expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing 5 results for Maths");
+        expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing all 5 results for Maths");
     });
 });

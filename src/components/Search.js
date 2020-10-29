@@ -54,7 +54,7 @@ Search.propTypes = {
 const SearchResultsDescription = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
     return (
         <p data-testid="search-results-description">
-            Showing {numberOfMatches > numberOfResultsShown ? "the top" : ""} {numberOfResultsShown} results for{" "}
+            Showing {numberOfMatches > numberOfResultsShown ? "the top" : "all"} {numberOfResultsShown} results for{" "}
             <strong>{searchTerm}</strong>
         </p>
     );
