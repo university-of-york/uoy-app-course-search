@@ -11,7 +11,22 @@ import {
 import React from "react";
 import PropTypes from "prop-types";
 
-const Search = ({ searchTerm, numberOfResults }) => {
+const Search = ({ searchTerm, numberOfMatches, numberOfResults }) => {
+    let searchNumberStatement;
+    if (numberOfMatches > numberOfResults) {
+        searchNumberStatement = (
+            <p data-testid="search-results-description">
+                Showing the top {numberOfResults} results for <strong>{searchTerm}</strong>
+            </p>
+        );
+    } else {
+        searchNumberStatement = (
+            <p data-testid="search-results-description">
+                Showing {numberOfResults} results for <strong>{searchTerm}</strong>
+            </p>
+        );
+    }
+
     return (
         <Grid>
             <GridRow>
@@ -33,11 +48,7 @@ const Search = ({ searchTerm, numberOfResults }) => {
                 </GridBoxFull>
             </GridRow>
             <GridRow>
-                <GridBoxFull>
-                    <p data-testid="search-results-description">
-                        Showing {numberOfResults} results for <strong>{searchTerm}</strong>
-                    </p>
-                </GridBoxFull>
+                <GridBoxFull>{searchNumberStatement}</GridBoxFull>
             </GridRow>
         </Grid>
     );
@@ -45,6 +56,7 @@ const Search = ({ searchTerm, numberOfResults }) => {
 
 Search.propTypes = {
     searchTerm: PropTypes.string,
+    numberOfMatches: PropTypes.number,
     numberOfResults: PropTypes.number,
 };
 

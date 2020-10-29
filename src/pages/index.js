@@ -13,7 +13,7 @@ import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
 
-const App = ({ isSuccessfulSearch, searchResults, numberOfResults, searchTerm }) => {
+const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, numberOfResults, searchTerm }) => {
     return (
         <>
             <PageHead search={searchTerm} />
@@ -23,7 +23,11 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfResults, searchTerm })
             <WrappedMainGrid>
                 <GridRow>
                     <GridBoxFull>
-                        <Search searchTerm={searchTerm} numberOfResults={numberOfResults} />
+                        <Search
+                            searchTerm={searchTerm}
+                            numberOfMatches={numberOfMatches}
+                            numberOfResults={numberOfResults}
+                        />
                     </GridBoxFull>
                 </GridRow>
                 <GridRow>
@@ -41,6 +45,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfResults, searchTerm })
 App.propTypes = {
     isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
+    numberOfMatches: PropTypes.number,
     numberOfResults: PropTypes.number,
     searchTerm: PropTypes.string,
 };
