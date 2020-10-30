@@ -70,6 +70,12 @@ Or, in Intellij, open the `npm` window and double-click on `test`, or in package
 Tests are run automatically upon creation of a pull request, configured in `.github/workflows/checks.yml`, 
 and upon a merge into `dev` or `main` branches on Github as part of `.github/workflows/deploy.yml`
 
+#### Mobile devices testing
+
+The application is tested against a number of mobile devices, both emulated and real.
+In the first instance developers use Google Chrome Developer Tools and then finally BrowserStack for testing. 
+The Wiki page [Testing course search rendering on mobile devices](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing-Course-Search-Rendering-on-Mobile-Devices) has more detail on the process.
+
 ### Deployment
 
 Deployment to the development and production environments happen through GitHub actions that trigger automatically when 
@@ -88,6 +94,54 @@ in the `Secrets` section of the GitHub repo settings.
 Provided that the [SSL certificate has been provisioned beforehand](https://github.com/university-of-york/uoy-app-course-search/wiki/Creating-and-Validating-an-SSL-Certificate-in-AWS),
 serverless will do all the work necessary to set up the environment, as detailed in `serverless.yml`. This involves setting up a custom domain name
 in API Gateway and mapping this to the API endpoint that serves our Next.js application. 
+
+### Development and production environments
+
+Development environment variables are configured in `.env.development` and production
+environment variables are configured in `.env.production`. 
+The CI/CD pipeline is configured so that pushes to the `dev` branch will trigger a
+deployment to the ESG development AWS account using development environment variables,
+and pushes to the `main` branch will trigger a deployment to the ESG production AWS account
+using production environment variables.
+
+For local development, environment variables can be overridden by creating 
+`.env.development.local` and `.env.production.local`. These files will be ignored by Git.
+
+When running in AWS Lambda, this application's environment variables are set in Lambda
+by Serverless during the deployment process, thanks to the
+[Serverless dotenv plugin](https://www.serverless.com/plugins/serverless-dotenv-plugin).
+
+#### Switching between development and production Courses API
+
+This application fetches course data using the [Courses API](https://github.com/university-of-york/uoy-api-courses).
+Its URL is configured as an environment variable so that each deployment can use 
+the appropriate Courses API version. The development and production versions of 
+Course Search use the development and production versions of the Courses API respectively. 
+
+##### Local development
+
+When running Course Search locally using `npm run dev`, development environment variables
+will be used. To switch between development and
+production Courses API, create a file `.env.development.local` and add the production
+Courses API URL to it.
+
+##### Developer AWS sandbox
+
+When running Course Search in your AWS sandbox, use `npm run deploy` to deploy using
+production environment variables (and therefore the production Courses API), and 
+`npm run deploy:dev` to deploy using development environment variables (and
+ therefore the development Courses API).
+
+##### courses.dev.app.york.ac.uk
+
+To change the development version of Course Search so that it uses the production version
+of the Courses API
+* checkout the `dev` branch of Course Search
+* log in to AWS using `saml2aws`
+* select the ESG Dev write user
+* run `npm run deploy`
+
+To change it back to using the development version of the Courses API, run `npm run deploy:dev`.
 
 ### Code style
 
@@ -149,6 +203,13 @@ You can find your sandbox AWS account id by logging in to AWS either via
 the web console or via saml2aws - it is displayed when you select which
 account you want to use.
 
+This will deploy the app using production environment variables (configured in
+`.env.production`).
+
+**`npm run deploy:dev`**
+
+As above, but will use development environment variables (configured in `.env.development`).
+
 **`npm run undeploy`**
 
 Remove the application from AWS.
@@ -198,12 +259,6 @@ PR/Dependabot PR we should check out and deploy the code to a sandbox account, t
 
 The application's linting process checks for conformance to accessibility standards
 using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y).
-
-## Mobile devices testing
-
-The application is tested against a number of mobile devices, both emulated and real.
-In the first instance developers use Google Chrome Developer Tools and then finally BrowserStack for testing. 
-The Wiki page [Testing course search rendering on mobile devices](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing-Course-Search-Rendering-on-Mobile-Devices) has more detail on the process.
 
 ## Contact
 
