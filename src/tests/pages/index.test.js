@@ -21,6 +21,12 @@ describe("App", () => {
         expect(screen.getByRole("search", { name: "Courses" })).toBeVisible();
     });
 
+    it("displays the search results description", () => {
+        render(<App />);
+
+        expect(screen.getByTestId("search-results-description")).toBeVisible();
+    });
+
     it("displays the titles from course search results", () => {
         const searchResults = [
             { title: "Maths", liveUrl: "http://foo.bar" },
@@ -38,9 +44,13 @@ describe("getServerSideProps", () => {
     it("calls the Courses API and returns response in expected format", async () => {
         fetch.mockResponse(
             JSON.stringify({
+                numberOfMatches: 1,
                 results: [
                     {
                         title: "English",
+                    },
+                    {
+                        title: "Maths",
                     },
                 ],
             })
@@ -51,8 +61,9 @@ describe("getServerSideProps", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
         expect(response.props.isSuccessfulSearch).toEqual(true);
-        expect(response.props.searchResults).toEqual([{ title: "English" }]);
+        expect(response.props.searchResults).toEqual([{ title: "English" }, { title: "Maths" }]);
         expect(response.props.searchTerm).toEqual("english");
+        expect(response.props.numberOfResultsShown).toEqual(2);
     });
 
     it("calls the Courses API with the correct base url", async () => {
@@ -97,7 +108,9 @@ describe("getServerSideProps", () => {
         const response = await getServerSideProps(emptyContext);
 
         expect(response.props.isSuccessfulSearch).toEqual(false);
+        expect(response.props.numberOfMatches).toEqual(0);
         expect(response.props.searchResults).toEqual([]);
+        expect(response.props.numberOfResultsShown).toEqual(0);
     });
 
     it("indicates when the Courses API search failed (network or other error)", async () => {
@@ -106,6 +119,23 @@ describe("getServerSideProps", () => {
         const response = await getServerSideProps(emptyContext);
 
         expect(response.props.isSuccessfulSearch).toEqual(false);
+        expect(response.props.numberOfMatches).toEqual(0);
         expect(response.props.searchResults).toEqual([]);
+        expect(response.props.numberOfResultsShown).toEqual(0);
+    });
+
+    it("returns the number of matches from the API", async () => {
+        fetch.mockResponse(
+            JSON.stringify({
+                numberOfMatches: 1,
+                results: [],
+            })
+        );
+
+        const response = await getServerSideProps(contextWithSearchTerm);
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+        expect(response.props.isSuccessfulSearch).toEqual(true);
+        expect(response.props.numberOfMatches).toEqual(1);
     });
 });
