@@ -99,7 +99,7 @@ describe("getServerSideProps", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
         const calledUrl = fetch.mock.calls[0][0];
-        expect(calledUrl).toContain("max=20");
+        expect(calledUrl).toContain("max=35");
     });
 
     it("indicates when the Courses API search failed (http error response)", async () => {
