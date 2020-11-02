@@ -65,13 +65,23 @@ describe("getServerSideProps", () => {
         expect(response.props.searchTerm).toEqual("english");
     });
 
-    it("calls the Courses API with the correct base url", async () => {
+    it("constructs the Courses API url with the expected environment variables", async () => {
         await getServerSideProps(emptyContext);
 
         expect(fetch).toHaveBeenCalledTimes(1);
 
         const calledUrl = fetch.mock.calls[0][0];
         expect(calledUrl).toContain("https://test.courses.api.com");
+        expect(calledUrl).toContain("max=20");
+    });
+
+    it("calls the Courses API with the correct base url", async () => {
+        await getServerSideProps(emptyContext);
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+
+        const calledUrl = fetch.mock.calls[0][0];
+        expect(calledUrl).toContain(process.env.COURSES_API_BASEURL);
     });
 
     it("calls the Courses API with a default search term when none is entered", async () => {
@@ -98,7 +108,7 @@ describe("getServerSideProps", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
 
         const calledUrl = fetch.mock.calls[0][0];
-        expect(calledUrl).toContain("max=20");
+        expect(calledUrl).toContain(`max=${process.env.COURSES_API_MAX_RESULTS}`);
     });
 
     it("indicates when the Courses API search failed (http error response)", async () => {
