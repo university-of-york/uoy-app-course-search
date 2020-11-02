@@ -73,6 +73,7 @@ package:
     - node_modules/ext/**
     - node_modules/tr46/**
     - node_modules/micromatch/**
+    - node_modules/sharp/**
 
 resources:
   Conditions:
