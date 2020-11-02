@@ -13,7 +13,7 @@ import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
 
-const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, numberOfResultsShown, searchTerm }) => {
+const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
         <>
             <PageHead search={searchTerm} />
@@ -26,7 +26,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, numberOfResul
                         <Search
                             searchTerm={searchTerm}
                             numberOfMatches={numberOfMatches}
-                            numberOfResultsShown={numberOfResultsShown}
+                            numberOfResultsShown={searchResults?.length}
                         />
                     </GridBoxFull>
                 </GridRow>
@@ -46,7 +46,6 @@ App.propTypes = {
     isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
     numberOfMatches: PropTypes.number,
-    numberOfResultsShown: PropTypes.number,
     searchTerm: PropTypes.string,
 };
 
@@ -72,7 +71,6 @@ const getServerSideProps = async (context) => {
             isSuccessfulSearch,
             searchResults: searchResponseData.results,
             numberOfMatches: searchResponseData.numberOfMatches,
-            numberOfResultsShown: searchResponseData.results.length,
             searchTerm,
         },
     };
