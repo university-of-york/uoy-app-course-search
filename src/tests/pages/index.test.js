@@ -63,7 +63,6 @@ describe("getServerSideProps", () => {
         expect(response.props.isSuccessfulSearch).toEqual(true);
         expect(response.props.searchResults).toEqual([{ title: "English" }, { title: "Maths" }]);
         expect(response.props.searchTerm).toEqual("english");
-        expect(response.props.numberOfResultsShown).toEqual(2);
     });
 
     it("calls the Courses API with the correct base url", async () => {
@@ -110,7 +109,6 @@ describe("getServerSideProps", () => {
         expect(response.props.isSuccessfulSearch).toEqual(false);
         expect(response.props.numberOfMatches).toEqual(0);
         expect(response.props.searchResults).toEqual([]);
-        expect(response.props.numberOfResultsShown).toEqual(0);
     });
 
     it("indicates when the Courses API search failed (network or other error)", async () => {
@@ -121,7 +119,6 @@ describe("getServerSideProps", () => {
         expect(response.props.isSuccessfulSearch).toEqual(false);
         expect(response.props.numberOfMatches).toEqual(0);
         expect(response.props.searchResults).toEqual([]);
-        expect(response.props.numberOfResultsShown).toEqual(0);
     });
 
     it("returns the number of matches from the API", async () => {
