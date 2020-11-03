@@ -16,7 +16,7 @@ const Search = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
         <Grid>
             <GridRow>
                 <GridBoxFull>
-                    <Form action="/" autoComplete="off" method="get" role="search" aria-label="Courses">
+                    <Form action="" autoComplete="off" method="get" role="search" aria-label="Courses">
                         <FormElement>
                             <FormInputText
                                 name="search"
