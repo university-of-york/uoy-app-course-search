@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "package": "next build && sls package",
     "deploy": "next build && sls deploy --env production",
     "deploy:dev": "next build && sls deploy --env development",
     "undeploy": "sls remove",
