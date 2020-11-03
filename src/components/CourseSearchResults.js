@@ -4,7 +4,11 @@ import { COURSE_MODEL } from "../constants/CourseModel";
 import React from "react";
 import { Alert } from "@university-of-york/esg-lib-pattern-library-react-components";
 
-const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
+const CourseSearchResults = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
+    if (!searchTerm) {
+        return null;
+    }
+
     if (!isSuccessfulSearch) {
         return <SearchFailedMessage />;
     }
@@ -25,6 +29,7 @@ const CourseSearchResults = ({ isSuccessfulSearch, searchResults }) => {
 CourseSearchResults.propTypes = {
     isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
+    searchTerm: PropTypes.string,
 };
 
 const SearchFailedMessage = () => (
