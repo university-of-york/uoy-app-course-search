@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import {
     GridBoxFull,
@@ -12,8 +12,13 @@ import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
+import { logPageView } from "../utils/analytics";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
+    useEffect(() => {
+        logPageView();
+    }, []);
+
     return (
         <>
             <PageHead search={searchTerm} />

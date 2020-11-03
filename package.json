@@ -44,6 +44,7 @@
     "jest": "^26.4.2",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "2.1.1",
+    "react-ga": "^3.2.0",
     "serverless": "^2.1.1",
     "serverless-dotenv-plugin": "^3.1.0",
     "xo": "^0.33.1"
