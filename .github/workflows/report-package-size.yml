@@ -1,4 +1,4 @@
-name: Application Size
+name: Report Package Size
 
 on: [pull_request]
 
@@ -17,7 +17,7 @@ jobs:
           scope: "@university-of-york"
           always-auth: true
 
-      - name: Check the application's file size
+      - name: Check and report changes in the application's package size
         uses: preactjs/compressed-size-action@e2bfc4b346d78f9a3c7e8a2e22bcbd285a25fafa
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
