@@ -28,4 +28,3 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           AWS_ACCOUNT_ID: ${{ secrets.DEV_AWS_ACCOUNT_ID }}
-
