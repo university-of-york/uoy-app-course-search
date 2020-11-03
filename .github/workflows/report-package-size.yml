@@ -26,5 +26,5 @@ jobs:
           compression: none
           minimum-change-threshold: 1024
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           AWS_ACCOUNT_ID: ${{ secrets.DEV_AWS_ACCOUNT_ID }}
