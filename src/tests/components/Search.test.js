@@ -36,4 +36,15 @@ describe("Search", () => {
 
         expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing all 5 results for Maths");
     });
+
+    it.each`
+        description    | searchTerm
+        ${"blank"}     | ${""}
+        ${"null"}      | ${null}
+        ${"undefined"} | ${undefined}
+    `("does not display any text when given $description search terms", ({ searchTerm }) => {
+        render(<Search searchTerm={searchTerm} />);
+
+        expect(screen.queryByText(/./)).not.toBeInTheDocument();
+    });
 });

@@ -22,7 +22,7 @@ describe("App", () => {
     });
 
     it("displays the search results description", () => {
-        render(<App />);
+        render(<App searchTerm="foobar" />);
 
         expect(screen.getByTestId("search-results-description")).toBeVisible();
     });
