@@ -21,6 +21,9 @@ const PageHead = ({ search }) => {
 
             <script src="//use.typekit.net/dvj8rpp.js" />
             <script language="application/javascript">Typekit.load();</script>
+
+            <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-1621853-1" />
+            <script src="/js/analytics.js" />
         </Head>
     );
 };

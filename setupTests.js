@@ -3,8 +3,6 @@ import jestFetchMock from "jest-fetch-mock";
 
 jestFetchMock.enableMocks();
 
-jest.mock("./src/utils/analytics");
-
 // use 'dotenv' to load environment variables for test environment
 // Next.js claims to have built-in support for .env.test
 // (see https://nextjs.org/docs/basic-features/environment-variables#test-environment-variables)
