@@ -11,12 +11,12 @@ import {
 import React from "react";
 import PropTypes from "prop-types";
 
-const Search = ({ searchTerm }) => {
+const Search = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
     return (
-        <Form action="/" autoComplete="off" method="get" role="search" aria-label="Courses">
-            <Grid>
-                <GridRow>
-                    <GridBoxFull>
+        <Grid>
+            <GridRow>
+                <GridBoxFull>
+                    <Form action="" autoComplete="off" method="get" role="search" aria-label="Courses">
                         <FormElement>
                             <FormInputText
                                 name="search"
@@ -29,15 +29,41 @@ const Search = ({ searchTerm }) => {
                                 <SearchIcon />
                             </BasicSubmitButton>
                         </FormElement>
-                    </GridBoxFull>
-                </GridRow>
-            </Grid>
-        </Form>
+                    </Form>
+                </GridBoxFull>
+            </GridRow>
+            <GridRow>
+                <GridBoxFull>
+                    <SearchResultsDescription
+                        searchTerm={searchTerm}
+                        numberOfMatches={numberOfMatches}
+                        numberOfResultsShown={numberOfResultsShown}
+                    />
+                </GridBoxFull>
+            </GridRow>
+        </Grid>
     );
 };
 
 Search.propTypes = {
     searchTerm: PropTypes.string,
+    numberOfMatches: PropTypes.number,
+    numberOfResultsShown: PropTypes.number,
+};
+
+const SearchResultsDescription = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
+    return (
+        <p data-testid="search-results-description">
+            Showing {numberOfMatches > numberOfResultsShown ? "the top" : "all"} {numberOfResultsShown} results for{" "}
+            <strong>{searchTerm}</strong>
+        </p>
+    );
+};
+
+SearchResultsDescription.propTypes = {
+    searchTerm: PropTypes.string,
+    numberOfMatches: PropTypes.number,
+    numberOfResultsShown: PropTypes.number,
 };
 
 export { Search };

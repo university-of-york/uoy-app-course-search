@@ -13,7 +13,7 @@ import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
 
-const App = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
+const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
         <>
             <PageHead search={searchTerm} />
@@ -23,7 +23,11 @@ const App = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
             <WrappedMainGrid>
                 <GridRow>
                     <GridBoxFull>
-                        <Search searchTerm={searchTerm} />
+                        <Search
+                            searchTerm={searchTerm}
+                            numberOfMatches={numberOfMatches}
+                            numberOfResultsShown={searchResults?.length}
+                        />
                     </GridBoxFull>
                 </GridRow>
                 <GridRow>
@@ -41,13 +45,14 @@ const App = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
 App.propTypes = {
     isSuccessfulSearch: PropTypes.bool,
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
+    numberOfMatches: PropTypes.number,
     searchTerm: PropTypes.string,
 };
 
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search || "maths";
 
-    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}`;
+    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}&max=${process.env.COURSES_API_MAX_RESULTS}`;
 
     let isSuccessfulSearch;
     let searchResponseData;
@@ -55,13 +60,20 @@ const getServerSideProps = async (context) => {
     try {
         const response = await fetch(courseSearchUrl);
         isSuccessfulSearch = response.ok;
-        searchResponseData = isSuccessfulSearch ? await response.json() : { results: [] };
+        searchResponseData = isSuccessfulSearch ? await response.json() : { numberOfMatches: 0, results: [] };
     } catch {
         isSuccessfulSearch = false;
-        searchResponseData = { results: [] };
+        searchResponseData = { numberOfMatches: 0, results: [] };
     }
 
-    return { props: { isSuccessfulSearch, searchResults: searchResponseData.results, searchTerm } };
+    return {
+        props: {
+            isSuccessfulSearch,
+            searchResults: searchResponseData.results,
+            numberOfMatches: searchResponseData.numberOfMatches,
+            searchTerm,
+        },
+    };
 };
 
 export { App as default, getServerSideProps };

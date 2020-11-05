@@ -70,6 +70,12 @@ Or, in Intellij, open the `npm` window and double-click on `test`, or in package
 Tests are run automatically upon creation of a pull request, configured in `.github/workflows/checks.yml`, 
 and upon a merge into `dev` or `main` branches on Github as part of `.github/workflows/deploy.yml`
 
+#### Mobile devices testing
+
+The application is tested against a number of mobile devices, both emulated and real.
+In the first instance developers use Google Chrome Developer Tools and then finally BrowserStack for testing. 
+The Wiki page [Testing course search rendering on mobile devices](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing-Course-Search-Rendering-on-Mobile-Devices) has more detail on the process.
+
 ### Deployment
 
 Deployment to the development and production environments happen through GitHub actions that trigger automatically when 
@@ -253,12 +259,6 @@ PR/Dependabot PR we should check out and deploy the code to a sandbox account, t
 
 The application's linting process checks for conformance to accessibility standards
 using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y).
-
-## Mobile devices testing
-
-The application is tested against a number of mobile devices, both emulated and real.
-In the first instance developers use Google Chrome Developer Tools and then finally BrowserStack for testing. 
-The Wiki page [Testing course search rendering on mobile devices](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing-Course-Search-Rendering-on-Mobile-Devices) has more detail on the process.
 
 ## Contact
 
