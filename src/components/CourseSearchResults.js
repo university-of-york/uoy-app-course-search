@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import React from "react";
 import { Alert } from "@university-of-york/esg-lib-pattern-library-react-components";
+import { noSearchConducted } from "../utils/searchTerms";
 
 const CourseSearchResults = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
-    if (searchTerm === null || searchTerm === undefined) {
+    if (noSearchConducted(searchTerm)) {
         return null;
     }
 

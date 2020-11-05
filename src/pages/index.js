@@ -12,6 +12,7 @@ import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
+import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -56,11 +57,11 @@ App.propTypes = {
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search;
 
-    if (searchTerm === null || searchTerm === undefined) {
+    if (noSearchConducted(searchTerm)) {
         return { props: {} };
     }
 
-    if (searchTerm === "") {
+    if (emptySearchConducted(searchTerm)) {
         return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
     }
 
