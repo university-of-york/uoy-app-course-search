@@ -56,8 +56,12 @@ App.propTypes = {
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search;
 
-    if (!searchTerm) {
+    if (searchTerm === null || searchTerm === undefined) {
         return { props: {} };
+    }
+
+    if (searchTerm === "") {
+        return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
     }
 
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}&max=${process.env.COURSES_API_MAX_RESULTS}`;
