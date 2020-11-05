@@ -32,7 +32,11 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                 </GridRow>
                 <GridRow>
                     <GridBoxFull>
-                        <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
+                        <CourseSearchResults
+                            isSuccessfulSearch={isSuccessfulSearch}
+                            searchResults={searchResults}
+                            searchTerm={searchTerm}
+                        />
                     </GridBoxFull>
                 </GridRow>
             </WrappedMainGrid>
@@ -50,7 +54,11 @@ App.propTypes = {
 };
 
 const getServerSideProps = async (context) => {
-    const searchTerm = context.query.search || "maths";
+    const searchTerm = context.query.search;
+
+    if (!searchTerm) {
+        return { props: {} };
+    }
 
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}&max=${process.env.COURSES_API_MAX_RESULTS}`;
 
