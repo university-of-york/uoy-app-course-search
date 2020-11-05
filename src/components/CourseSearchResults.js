@@ -5,7 +5,7 @@ import React from "react";
 import { Alert } from "@university-of-york/esg-lib-pattern-library-react-components";
 
 const CourseSearchResults = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
-    if (!searchTerm) {
+    if (searchTerm === null || searchTerm === undefined) {
         return null;
     }
 

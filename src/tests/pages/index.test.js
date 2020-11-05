@@ -143,9 +143,22 @@ describe("getServerSideProps", () => {
         expect(response.props.numberOfMatches).toEqual(1);
     });
 
-    it("returns nothing when given no search terms", async () => {
-        const response = await getServerSideProps(emptyContext);
+    it.each`
+        description    | searchTerm
+        ${"null"}      | ${null}
+        ${"undefined"} | ${undefined}
+    `("returns nothing when given $description search terms (e.g. on initial visit)", async ({ searchTerm }) => {
+        const response = await getServerSideProps({ query: { search: searchTerm } });
 
         expect(response.props).toEqual({});
+    });
+
+    it("returns blank properties when user conducts blank search", async () => {
+        const response = await getServerSideProps({ query: { search: "" } });
+
+        expect(response.props.searchTerm).toEqual("");
+        expect(response.props.isSuccessfulSearch).toEqual(true);
+        expect(response.props.searchResults).toEqual([]);
+        expect(response.props.numberOfMatches).toEqual(0);
     });
 });
