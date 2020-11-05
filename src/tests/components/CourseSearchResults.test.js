@@ -15,7 +15,7 @@ describe("CourseSearchResults", () => {
     });
 
     it("displays an appropriate message when the course search failed", () => {
-        render(<CourseSearchResults isSuccessfulSearch={false} searchTerm="foobar" />);
+        render(<CourseSearchResults isSuccessfulSearch={false} searchResults={[]} searchTerm="foobar" />);
 
         expect(screen.getByText(/Course search is currently unavailable. Please try again later/)).toBeInTheDocument();
         expect(screen.getByRole("link", { name: "contact IT Support" })).toBeInTheDocument();
