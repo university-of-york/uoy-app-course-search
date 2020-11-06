@@ -15,14 +15,17 @@
     color: #404040;
     padding: 10px;
 }
-.new_tag__text {
+.new_tag__title {
     font-family: museo-sans,Helvetica,Arial,sans-serif;
-    line-height: 1;
-}
-h2.new_tag__text {
+    line-height: 1.5;
     font-size: 16px;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0
 }
-p.new_tag__text {
+
+.new_tag__text {
     font-size: 14px;
+    font-size: .875rem;
+    margin: 0
 }

@@ -19,7 +19,7 @@ CourseDetails.propTypes = {
 
 const AwardTag = ({ level, award }) => {
     if (level) {
-        return <Tag icon="mortar-board" mainText={level} subText={award} />;
+        return <Tag topIcon="mortar-board" mainText={level} subText={award} />;
     }
 
     return null;
@@ -32,7 +32,7 @@ AwardTag.propTypes = {
 const StartDateAndLengthTag = ({ yearOfEntry, length }) => {
     if (yearOfEntry) {
         const startYear = yearOfEntry.slice(0, 4);
-        return <Tag icon="clock-o" mainText={`Start ${startYear}`} subText={length} />;
+        return <Tag topIcon="clock-o" mainText={`Start ${startYear}`} subText={length} />;
     }
 
     return null;
