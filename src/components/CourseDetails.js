@@ -7,9 +7,8 @@ import PropTypes from "prop-types";
 const CourseDetails = ({ course }) => {
     return (
         <TagList>
-            <AwardTag award={course.award} />
-            <StartDateTag yearOfEntry={course.yearOfEntry} />
-            <LengthCourseTag length={course.length} />
+            <AwardTag level={course.level} award={course.award} />
+            <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
         </TagList>
     );
 };
@@ -18,9 +17,9 @@ CourseDetails.propTypes = {
     course: COURSE_MODEL,
 };
 
-const AwardTag = ({ award }) => {
-    if (award) {
-        return <Tag icon="university" mainText={award} />;
+const AwardTag = ({ level, award }) => {
+    if (level) {
+        return <Tag icon="mortar-board" mainText={level} subText={award} />;
     }
 
     return null;
@@ -30,29 +29,17 @@ AwardTag.propTypes = {
     award: PropTypes.string,
 };
 
-const StartDateTag = ({ yearOfEntry }) => {
+const StartDateAndLengthTag = ({ yearOfEntry, length }) => {
     if (yearOfEntry) {
         const startYear = yearOfEntry.slice(0, 4);
-        return <Tag icon="calendar" mainText={`Starts ${startYear}`} />;
+        return <Tag icon="clock-o" mainText={`Start ${startYear}`} subText={length} />;
     }
 
     return null;
 };
 
-StartDateTag.propTypes = {
+StartDateAndLengthTag.propTypes = {
     yearOfEntry: PropTypes.string,
-};
-
-const LengthCourseTag = ({ length }) => {
-    if (length) {
-        return <Tag icon="clock-o" mainText={length} />;
-    }
-
-    return null;
-};
-
-LengthCourseTag.propTypes = {
-    length: PropTypes.string,
 };
 
 export { CourseDetails };
