@@ -5,6 +5,10 @@ beforeEach(() => {
     fetch.resetMocks();
 });
 
+const searchResults = [
+    { title: "Maths", liveUrl: "http://foo.bar" },
+    { title: "Physics", liveUrl: "http://foo.baz" },
+];
 const emptyContext = { query: {} };
 const contextWithSearchTerm = { query: { search: "english" } };
 
@@ -22,17 +26,12 @@ describe("App", () => {
     });
 
     it("displays the search results description", () => {
-        render(<App searchTerm="foobar" />);
+        render(<App isSuccessfulSearch searchResults={searchResults} searchTerm="foobar" />);
 
         expect(screen.getByTestId("search-results-description")).toBeVisible();
     });
 
     it("displays the titles from course search results", () => {
-        const searchResults = [
-            { title: "Maths", liveUrl: "http://foo.bar" },
-            { title: "Physics", liveUrl: "http://foo.baz" },
-        ];
-
         render(<App isSuccessfulSearch searchResults={searchResults} searchTerm="foobar" />);
 
         expect(screen.getByRole("link", { name: "Maths" })).toBeInTheDocument();
