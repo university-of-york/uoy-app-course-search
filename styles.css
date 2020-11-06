@@ -1,0 +1,28 @@
+.new-tag {
+    display: inline-block;
+    background-color: #f0f2e9;
+    color: #404040;
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 5px 10px;
+    line-height: 1.2;
+    margin: 0 0 4px;
+    width: 206px ;
+    height: 99px;
+}
+.new-tag__icon {
+    color: #404040;
+    padding: 10px;
+}
+.new_tag__text {
+    font-family: museo-sans,Helvetica,Arial,sans-serif;
+    line-height: 1;
+}
+h2.new_tag__text {
+    font-size: 16px;
+    font-size: 1.5rem;
+}
+p.new_tag__text {
+    font-size: 14px;
+}
