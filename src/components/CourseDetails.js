@@ -9,6 +9,7 @@ const CourseDetails = ({ course }) => {
         <TagList>
             <AwardTag level={course.level} award={course.award} />
             <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
+            <Tag mainText="Extras" subText="something something" />
         </TagList>
     );
 };
