@@ -16,9 +16,6 @@ const PageHead = ({ search }) => {
             <link rel="icon" type="image/x-icon" href="https://www.york.ac.uk/static/stable/img/favicon.ico" />
             <link rel="stylesheet" href="https://www.york.ac.uk/static/stable/css/styles.min.css" media="screen" />
 
-            <script src="https://www.york.ac.uk/static/stable/js/modernizr.min.js" />
-            <script src="https://www.york.ac.uk/static/stable/js/app.min.js" />
-
             <script src="//use.typekit.net/dvj8rpp.js" />
             <script language="application/javascript">Typekit.load();</script>
         </Head>
