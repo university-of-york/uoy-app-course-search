@@ -1,26 +1,38 @@
 import PropTypes from "prop-types";
 import React from "react";
+import {Icon} from "@university-of-york/esg-lib-pattern-library-react-components";
 
-const Tag = ({ topIcon, mainText, subText }) => (
+const Tag = ({ topIcon, title, subText }) => (
     <div className="new-tag">
-        <TopIcon icon={topIcon} />
-        <dt className="new_tag__title">{mainText}</dt>
-        <dd className="new_tag__text">{subText}</dd>
+        {topIcon && <i aria-hidden className={`c-icon c-icon--${topIcon} c-icon--2x`} data-testid="tag-icon" />}
+        <dt className="new-tag__title">{title}</dt>
+        <dd className="new-tag__text">{subText}</dd>
     </div>
 );
 
 Tag.propTypes = {
     icon: PropTypes.string,
-    mainText: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     subText: PropTypes.string,
 };
 
-const TopIcon = ({ icon }) => {
-    if (icon) {
-        return <i aria-hidden className={`c-icon c-icon--${icon} c-icon--2x`} data-testid="tag-icon" />;
-    }
+const ExtrasTag = ({title, content}) => {
+  const contents = content.map(item => (<ExtrasTagContent icon={item.icon} label={item.text} fullWidth={title == null} />));
+  const uglyClassNameVariable = title ? "new-tag" : "new-tag new-tag--extras";
 
-    return null;
+
+  return (
+    <div className={uglyClassNameVariable}>
+      {title && <dt className="new-tag__title">{title}</dt>}
+      {contents}
+    </div>
+  );
 };
 
-export { Tag };
+const ExtrasTagContent = ({icon, label}) => (
+    <p className={"new-tag__text new-tag__text--extras"}>
+      {icon && <span className="new-tag__icon"><Icon behaviour={icon} /></span>} {label}
+    </p>
+)
+
+export { Tag, ExtrasTag };
