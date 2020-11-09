@@ -7,8 +7,8 @@ describe("TagList", () => {
     it("displays tags labelled with given inputs", () => {
         render(
             <TagList>
-                <Tag icon="institution" mainText="foo bar" />
-                <Tag icon="key" mainText="fruit salad" />
+                <Tag topIcon="institution" title="foo bar" />
+                <Tag topIcon="key" title="fruit salad" />
             </TagList>
         );
 

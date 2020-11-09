@@ -3,7 +3,7 @@ import React from "react";
 import {Icon} from "@university-of-york/esg-lib-pattern-library-react-components";
 
 const Tag = ({ topIcon, title, subText }) => (
-    <div className="new-tag">
+    <div className="new-tag" role="listitem">
         {topIcon && <i aria-hidden className={`c-icon c-icon--${topIcon} c-icon--2x`} data-testid="tag-icon" />}
         <dt className="new-tag__title">{title}</dt>
         <dd className="new-tag__text">{subText}</dd>
@@ -29,10 +29,25 @@ const ExtrasTag = ({title, content}) => {
   );
 };
 
-const ExtrasTagContent = ({icon, label}) => (
-    <p className={"new-tag__text new-tag__text--extras"}>
-      {icon && <span className="new-tag__icon"><Icon behaviour={icon} /></span>} {label}
+ExtrasTag.propTypes = {
+    title: PropTypes.string,
+    content: PropTypes.array,
+};
+
+const ExtrasTagContent = ({ icon, label }) => (
+    <p className="new-tag__text new-tag__text--extras">
+        {icon && (
+            <span className="new-tag__icon">
+                <Icon behaviour={icon} />
+            </span>
+        )}
+        {label}
     </p>
-)
+);
+
+ExtrasTagContent.propTypes = {
+    icon: PropTypes.string,
+    label: PropTypes.string,
+};
 
 export { Tag, ExtrasTag };

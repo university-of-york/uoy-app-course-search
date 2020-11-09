@@ -6,6 +6,7 @@ describe("Course", () => {
         const course = {
             title: "Mathematics",
             liveUrl: "",
+            level: "undergraduate",
             award: "BSc (Hons)",
         };
 
@@ -29,6 +30,7 @@ describe("Course", () => {
         const course = {
             title: "A Course",
             liveUrl: "https://fakecourse.notadomain/",
+            level: "undergraduate",
             award: "Award",
         };
 

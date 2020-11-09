@@ -35,8 +35,10 @@ describe("App", () => {
 
         render(<App isSuccessfulSearch searchResults={searchResults} />);
 
-        expect(screen.getByRole("link", { name: "Maths" })).toBeInTheDocument();
-        expect(screen.getByRole("link", { name: "Physics" })).toBeInTheDocument();
+        const headings = screen.getAllByRole("heading");
+
+        expect(headings[2]).toHaveTextContent("Maths");
+        expect(headings[3]).toHaveTextContent("Physics");
     });
 });
 

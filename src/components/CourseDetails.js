@@ -1,7 +1,7 @@
 import React from "react";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import { TagList } from "./TagList";
-import {ExtrasTag, Tag} from "./Tag";
+import { ExtrasTag, Tag } from "./Tag";
 import PropTypes from "prop-types";
 
 const CourseDetails = ({ course }) => {
@@ -9,17 +9,23 @@ const CourseDetails = ({ course }) => {
         <TagList>
             <AwardTag level={course.level} award={course.award} />
             <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
-            <ExtrasTag title="Extras" content={[
-              {icon:"suitcase", text:"year abroad"},
-              {icon:"plane", text:"year in industry"},
-              {icon:"mortar-board", text:"Distance Learning"},
-            ]} />
-            <ExtrasTag title="" content={[
-              {icon:"suitcase", text:"year abroad"},
-              {icon:"plane", text:"year in industry"},
-              {icon:"plane", text:"Distance Learning"},
-              {icon:"mortar-board", text:"Integrated Masters"}
-              ]} />
+            <ExtrasTag
+                title="Extras"
+                content={[
+                    { icon: "suitcase", text: "year abroad" },
+                    { icon: "plane", text: "year in industry" },
+                    { icon: "mortar-board", text: "Distance Learning" },
+                ]}
+            />
+            <ExtrasTag
+                title=""
+                content={[
+                    { icon: "suitcase", text: "year abroad" },
+                    { icon: "plane", text: "year in industry" },
+                    { icon: "plane", text: "Distance Learning" },
+                    { icon: "mortar-board", text: "Integrated Masters" },
+                ]}
+            />
         </TagList>
     );
 };
@@ -37,6 +43,7 @@ const AwardTag = ({ level, award }) => {
 };
 
 AwardTag.propTypes = {
+    level: PropTypes.string,
     award: PropTypes.string,
 };
 
@@ -51,6 +58,7 @@ const StartDateAndLengthTag = ({ yearOfEntry, length }) => {
 
 StartDateAndLengthTag.propTypes = {
     yearOfEntry: PropTypes.string,
+    length: PropTypes.string,
 };
 
 export { CourseDetails };
