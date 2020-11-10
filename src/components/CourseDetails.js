@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 const CourseDetails = ({ course }) => {
     return (
         <TagList>
-            <AwardTag level={course.level} award={course.award} />
+            <LevelAndAwardTag level={course.level} award={course.award} />
             <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
             <ExtrasTag
                 title="Extras"
@@ -34,23 +34,20 @@ CourseDetails.propTypes = {
     course: COURSE_MODEL,
 };
 
-const AwardTag = ({ level, award }) => {
-    if (level) {
-        return <Tag topIcon="mortar-board" title={level} subText={award} />;
-    }
-
-    return null;
+const LevelAndAwardTag = ({ level, award }) => {
+    const tag = level || award ? <Tag topIcon="mortar-board" title={level} subText={award} /> : null;
+    return tag;
 };
 
-AwardTag.propTypes = {
+LevelAndAwardTag.propTypes = {
     level: PropTypes.string,
     award: PropTypes.string,
 };
 
 const StartDateAndLengthTag = ({ yearOfEntry, length }) => {
-    if (yearOfEntry) {
-        const startYear = yearOfEntry.slice(0, 4);
-        return <Tag topIcon="clock-o" title={`Start ${startYear}`} subText={length} />;
+    if (yearOfEntry || length) {
+        const startYear = yearOfEntry ? `Start ${yearOfEntry.slice(0, 4)}` : null;
+        return <Tag topIcon="clock-o" title={startYear} subText={length} />;
     }
 
     return null;
