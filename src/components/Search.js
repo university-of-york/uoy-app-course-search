@@ -52,7 +52,7 @@ Search.propTypes = {
 };
 
 const SearchResultsDescription = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
-    if (!searchTerm) {
+    if (!numberOfResultsShown) {
         return null;
     }
 
