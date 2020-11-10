@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import { TagList } from "../../components/TagList";
-import { ExtrasTag, Tag } from "../../components/Tag";
+import { ArrayTag, Tag } from "../../components/Tag";
 import React from "react";
 
 describe("TagList", () => {
@@ -29,7 +29,7 @@ describe("TagList", () => {
     it("displays extra tags as per inputs", () => {
         render(
             <TagList>
-                <ExtrasTag
+                <ArrayTag
                     title="Extras"
                     content={[
                         { icon: "suitcase", text: "year abroad" },
@@ -37,7 +37,7 @@ describe("TagList", () => {
                         { icon: "mortar-board", text: "Distance Learning" },
                     ]}
                 />
-                <ExtrasTag
+                <ArrayTag
                     title=""
                     content={[
                         { icon: "suitcase", text: "year abroad" },
@@ -58,14 +58,14 @@ describe("TagList", () => {
         expect(within(tags[0]).getByTestId("plane")).toHaveClass("c-icon--plane");
         expect(within(tags[0]).getByTestId("mortar-board")).toHaveClass("c-icon--mortar-board");
 
-        expect(tags[1]).not.toHaveTextContent("Extras");
-        expect(tags[0]).toHaveTextContent("year abroad");
-        expect(tags[0]).toHaveTextContent("year in industry");
-        expect(tags[1]).toHaveTextContent("Distance Learning");
-        expect(tags[1]).toHaveTextContent("Integrated Masters");
-        expect(within(tags[1]).getByTestId("suitcase")).toHaveClass("c-icon--suitcase");
-        expect(within(tags[1]).getByTestId("mortar-board")).toHaveClass("c-icon--mortar-board");
-        const planes = within(tags[1]).getAllByTestId("plane");
+        expect(tags[4]).not.toHaveTextContent("Extras");
+        expect(tags[4]).toHaveTextContent("year abroad");
+        expect(tags[4]).toHaveTextContent("year in industry");
+        expect(tags[4]).toHaveTextContent("Distance Learning");
+        expect(tags[4]).toHaveTextContent("Integrated Masters");
+        expect(within(tags[4]).getByTestId("suitcase")).toHaveClass("c-icon--suitcase");
+        expect(within(tags[4]).getByTestId("mortar-board")).toHaveClass("c-icon--mortar-board");
+        const planes = within(tags[4]).getAllByTestId("plane");
         expect((planes.length = 2));
     });
 });

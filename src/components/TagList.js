@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const TagList = (props) => {
-    return <dl className="new-tag-list">{props.children}</dl>;
+    return <ul className="rich-tag-list">{props.children}</ul>;
 };
 
 TagList.propTypes = {

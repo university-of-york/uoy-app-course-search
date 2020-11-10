@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import React from "react";
 
 const Tag = ({ topIcon, title, subText }) => (
-    <div className="new-tag" role="listitem">
+    <li className="rich-tag">
         {topIcon && <i aria-hidden className={`c-icon c-icon--${topIcon} c-icon--2x`} data-testid="tag-icon" />}
-        <dt className="new-tag__title">{title}</dt>
-        <dd className="new-tag__text">{subText}</dd>
-    </div>
+        <p className="rich-tag__title">{title}</p>
+        <p className="rich-tag__text">{subText}</p>
+    </li>
 );
 
 Tag.propTypes = {
@@ -15,39 +15,34 @@ Tag.propTypes = {
     subText: PropTypes.string,
 };
 
-const ExtrasTag = ({ title, content }) => {
+const ArrayTag = ({ title, content }) => {
     const contents = content.map((item) => (
-        <ExtrasTagContent key={item.text} icon={item.icon} label={item.text} fullWidth={title === null} />
+        <ArrayTagContent key={item.text} icon={item.icon} label={item.text} fullWidth={title === null} />
     ));
-    const tagClass = title ? "new-tag" : "new-tag new-tag--extras";
 
     return (
-        <div className={tagClass} role="listitem">
-            {title && <dt className="new-tag__title">{title}</dt>}
-            {contents}
-        </div>
+        <li className="rich-tag">
+            {title && <dt className="rich-tag__title">{title}</dt>}
+            <ul className="c-icon--ul">{contents}</ul>
+        </li>
     );
 };
 
-ExtrasTag.propTypes = {
+ArrayTag.propTypes = {
     title: PropTypes.string,
     content: PropTypes.array,
 };
 
-const ExtrasTagContent = ({ icon, label }) => (
-    <p className="new-tag__text new-tag__text--extras">
-        {icon && (
-            <span className="new-tag__icon">
-                <i aria-hidden className={`c-icon c-icon--${icon} c-icon--1g`} data-testid={icon} />
-            </span>
-        )}
+const ArrayTagContent = ({ icon, label }) => (
+    <li className="rich-tag__text">
+        {icon && <i aria-hidden className={`c-icon c-icon--${icon} c-icon--1g c-icon--li`} data-testid={icon} />}
         {label}
-    </p>
+    </li>
 );
 
-ExtrasTagContent.propTypes = {
+ArrayTagContent.propTypes = {
     icon: PropTypes.string,
     label: PropTypes.string,
 };
 
-export { Tag, ExtrasTag };
+export { Tag, ArrayTag };
