@@ -13,6 +13,7 @@ import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
 import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
+import { searchForCourses } from "../utils/searchForCourses";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -52,25 +53,6 @@ App.propTypes = {
     searchResults: PropTypes.arrayOf(COURSE_MODEL),
     numberOfMatches: PropTypes.number,
     searchTerm: PropTypes.string,
-};
-
-const searchForCourses = async (searchTerm) => {
-    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}&max=${process.env.COURSES_API_MAX_RESULTS}`;
-
-    let isSuccessfulSearch;
-    let searchResponseData;
-    const defaultResponse = { numberOfMatches: 0, results: [] };
-
-    try {
-        const response = await fetch(courseSearchUrl);
-        isSuccessfulSearch = response.ok;
-        searchResponseData = isSuccessfulSearch ? await response.json() : defaultResponse;
-    } catch {
-        isSuccessfulSearch = false;
-        searchResponseData = defaultResponse;
-    }
-
-    return { isSuccessfulSearch, searchResponseData };
 };
 
 const getServerSideProps = async (context) => {
