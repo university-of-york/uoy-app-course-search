@@ -82,6 +82,7 @@ The Wiki page [Testing course search rendering on mobile devices](https://github
 The application has a github workflow action so that at a Pull Request it is subject to automated testing using Percy. 
 Should a difference be detected, then approval is required using Percy prior to a merge. 
 The Percy project is named "uoy-app-course-search", as uoy-app-course-search is public, so is the Percy project.
+More detail can be found in the wiki page: [Testing: Percy, automation in testing with GitHub](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing:-Percy,-automation-in-testing-with-GitHub)
 
 ### Deployment
 
