@@ -76,6 +76,13 @@ The application is tested against a number of mobile devices, both emulated and 
 In the first instance developers use Google Chrome Developer Tools and then finally BrowserStack for testing. 
 The Wiki page [Testing course search rendering on mobile devices](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing-Course-Search-Rendering-on-Mobile-Devices) has more detail on the process.
 
+#### Percy Automated Testing 
+
+The application has a github workflow action so that at a Pull Request it is subject to automated testing using Percy. 
+Should a difference be detected, then approval is required using Percy prior to a merge. 
+The Percy project is named "uoy-app-course-search", as uoy-app-course-search is public, so is the Percy project.
+A Percy Badge is added to the bottom of this README to show our use of the package. 
+
 ### Deployment
 
 Deployment to the development and production environments happen through GitHub actions that trigger automatically when 
@@ -268,3 +275,5 @@ using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a
 ## Licence
 
 MIT
+
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ad91c322/uoy-app-course-search)
