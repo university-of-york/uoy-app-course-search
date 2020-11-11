@@ -1,4 +1,5 @@
 # Course Search
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ad91c322/uoy-app-course-search)
 
 This is the University of York's Course Search application. It allows prospective students to search for courses,
 view results, and follow links to course pages.
@@ -81,7 +82,6 @@ The Wiki page [Testing course search rendering on mobile devices](https://github
 The application has a github workflow action so that at a Pull Request it is subject to automated testing using Percy. 
 Should a difference be detected, then approval is required using Percy prior to a merge. 
 The Percy project is named "uoy-app-course-search", as uoy-app-course-search is public, so is the Percy project.
-A Percy Badge is added to the bottom of this README to show our use of the package. 
 
 ### Deployment
 
@@ -275,5 +275,3 @@ using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a
 ## Licence
 
 MIT
-
-[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ad91c322/uoy-app-course-search)
