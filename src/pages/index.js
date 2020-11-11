@@ -54,25 +54,6 @@ App.propTypes = {
     searchTerm: PropTypes.string,
 };
 
-const searchForCourses = async (searchTerm) => {
-    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}&max=${process.env.COURSES_API_MAX_RESULTS}`;
-
-    let isSuccessfulSearch;
-    let searchResponseData;
-    const defaultResponse = { numberOfMatches: 0, results: [] };
-
-    try {
-        const response = await fetch(courseSearchUrl);
-        isSuccessfulSearch = response.ok;
-        searchResponseData = isSuccessfulSearch ? await response.json() : defaultResponse;
-    } catch {
-        isSuccessfulSearch = false;
-        searchResponseData = defaultResponse;
-    }
-
-    return { isSuccessfulSearch, searchResponseData };
-};
-
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search;
 
@@ -94,6 +75,25 @@ const getServerSideProps = async (context) => {
             numberOfMatches: searchResponseData.numberOfMatches,
         },
     };
+};
+
+const searchForCourses = async (searchTerm) => {
+    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}&max=${process.env.COURSES_API_MAX_RESULTS}`;
+
+    let isSuccessfulSearch;
+    let searchResponseData;
+    const defaultResponse = { numberOfMatches: 0, results: [] };
+
+    try {
+        const response = await fetch(courseSearchUrl);
+        isSuccessfulSearch = response.ok;
+        searchResponseData = isSuccessfulSearch ? await response.json() : defaultResponse;
+    } catch {
+        isSuccessfulSearch = false;
+        searchResponseData = defaultResponse;
+    }
+
+    return { isSuccessfulSearch, searchResponseData };
 };
 
 export { App as default, getServerSideProps };
