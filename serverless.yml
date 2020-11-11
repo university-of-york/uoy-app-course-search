@@ -85,6 +85,13 @@ package:
     - node_modules/tr46/**
     - node_modules/micromatch/**
     - node_modules/sharp/**
+    - node_modules/@ampproject/**
+    - node_modules/postcss-modules-parser/**
+    - node_modules/css-modules-loader-core/**
+    - node_modules/babel-plugin-react-css-modules/**
+    - node_modules/es-abstract/**
+    - node_modules/string.prototype.trimstart/**
+    - node_modules/string.prototype.trimend/**
 
 resources:
   Conditions:
