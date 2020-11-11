@@ -17,7 +17,7 @@
     "check": "npm run checkformat && npm run lint && npm run test",
     "formatandcheck": "npm run format && npm run lint && npm run test",
     "fc": "npm run formatandcheck",
-    "percy": "percy exec -- node src/tests/github/percyAutomationTesting.js"
+    "percy": "percy exec -- node src/tests/visual/percyAutomationTesting.js"
   },
   "dependencies": {
     "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.1",
