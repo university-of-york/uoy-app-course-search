@@ -20,7 +20,7 @@
     "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js"
   },
   "dependencies": {
-    "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.1",
+    "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.3",
     "express": "^4.17.1",
     "next": "^10.0.0",
     "path-match": "^1.2.4",
