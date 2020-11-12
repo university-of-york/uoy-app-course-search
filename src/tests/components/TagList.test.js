@@ -42,7 +42,7 @@ describe("TagList", () => {
                     content={[
                         { icon: "suitcase", text: "year abroad" },
                         { icon: "plane", text: "year in industry" },
-                        { icon: "plane", text: "Distance Learning" },
+                        { icon: "mortar-board", text: "Distance Learning" },
                         { icon: "mortar-board", text: "Integrated Masters" },
                     ]}
                 />
@@ -64,8 +64,8 @@ describe("TagList", () => {
         expect(tags[4]).toHaveTextContent("Distance Learning");
         expect(tags[4]).toHaveTextContent("Integrated Masters");
         expect(within(tags[4]).getByTestId("suitcase")).toHaveClass("c-icon--suitcase");
-        expect(within(tags[4]).getByTestId("mortar-board")).toHaveClass("c-icon--mortar-board");
-        const planes = within(tags[4]).getAllByTestId("plane");
-        expect((planes.length = 2));
+        expect(within(tags[4]).getByTestId("plane")).toHaveClass("c-icon--plane");
+        const mortarBoards = within(tags[4]).getAllByTestId("mortar-board");
+        expect((mortarBoards.length = 2));
     });
 });

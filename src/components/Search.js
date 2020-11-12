@@ -25,7 +25,7 @@ const Search = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
                                 placeholder="Search for your course"
                                 defaultValue={searchTerm}
                             />
-                            <BasicSubmitButton aria-label="Search" text="">
+                            <BasicSubmitButton aria-label="Search">
                                 <SearchIcon />
                             </BasicSubmitButton>
                         </FormElement>

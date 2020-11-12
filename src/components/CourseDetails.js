@@ -22,7 +22,7 @@ const CourseDetails = ({ course }) => {
                 content={[
                     { icon: "suitcase", text: "year abroad" },
                     { icon: "plane", text: "year in industry" },
-                    { icon: "plane", text: "Distance Learning" },
+                    { icon: "mortar-board", text: "Distance Learning" },
                     { icon: "mortar-board", text: "Integrated Masters" },
                 ]}
             />
@@ -35,8 +35,11 @@ CourseDetails.propTypes = {
 };
 
 const LevelAndAwardTag = ({ level, award }) => {
-    const tag = level || award ? <Tag topIcon="mortar-board" title={level} subText={award} /> : null;
-    return tag;
+    if (level || award) {
+        return <Tag topIcon="mortar-board" title={level} subText={award} />;
+    }
+
+    return null;
 };
 
 LevelAndAwardTag.propTypes = {

@@ -39,8 +39,7 @@ describe("Course details", () => {
 
         const tag = screen.getAllByRole("listitem");
 
-        expect(tag[0]).toHaveTextContent("undergraduate");
-        expect(tag[0]).not.toHaveTextContent("BA (Hons)");
+        expect(tag[0]).toHaveTextContent(/^undergraduate$/); // exactly matching undergraduate
         expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--mortar-board");
     });
 
@@ -53,8 +52,7 @@ describe("Course details", () => {
 
         const tag = screen.getAllByRole("listitem");
 
-        expect(tag[0]).not.toHaveTextContent("undergraduate");
-        expect(tag[0]).toHaveTextContent("BA (Hons)");
+        expect(tag[0]).toHaveTextContent(/^BA \(Hons\)$/); // exactly matching BA (Hons)
         expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--mortar-board");
     });
 
@@ -66,10 +64,10 @@ describe("Course details", () => {
         const tag = screen.queryAllByRole("listitem");
 
         if (tag.length === 0) {
-            expect((tag.length = 0));
+            const tagList = screen.getByRole("list");
+            expect(tagList).toBeEmptyDOMElement();
         } else {
-            expect(tag[0]).not.toHaveTextContent("undergraduate");
-            expect(tag[0]).not.toHaveTextContent("BA (Hons)");
+            expect(tag[0]).toHaveTextContent("year abroad");
             expect(within(tag[0]).queryByTestId("tag-icon")).toBe(null);
         }
     });
@@ -98,8 +96,7 @@ describe("Course details", () => {
 
         const tag = screen.getAllByRole("listitem");
 
-        expect(tag[0]).toHaveTextContent("Start 2021");
-        expect(tag[0]).not.toHaveTextContent("4 years full-time");
+        expect(tag[0]).toHaveTextContent(/^Start 2021$/); // exactly matching 'Start 2021'
         expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--clock-o");
     });
 
@@ -112,8 +109,7 @@ describe("Course details", () => {
 
         const tag = screen.getAllByRole("listitem");
 
-        expect(tag[0]).not.toHaveTextContent("Start 2021");
-        expect(tag[0]).toHaveTextContent("4 years full-time");
+        expect(tag[0]).toHaveTextContent(/^4 years full-time$/); // exactly matching '4 years full-time'
         expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--clock-o");
     });
 
@@ -125,10 +121,10 @@ describe("Course details", () => {
         const tag = screen.queryAllByRole("listitem");
 
         if (tag.length === 0) {
-            expect((tag.length = 0));
+            const tagList = screen.getByRole("list");
+            expect(tagList).toBeEmptyDOMElement();
         } else {
-            expect(tag[0]).not.toHaveTextContent("Start");
-            expect(tag[0]).not.toHaveTextContent("years");
+            expect(tag[0]).toHaveTextContent("year abroad");
             expect(within(tag[0]).queryByTestId("tag-icon")).toBe(null);
         }
     });
