@@ -19,6 +19,8 @@ provider:
     defined_in: serverless
     repo_name: uoy-app-course-search
     team: "ESG Teaching and Learning"
+  apiGateway:
+    minimumCompressionSize: 1000
 
 functions:
   server:
