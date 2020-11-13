@@ -36,4 +36,10 @@ describe("Search", () => {
 
         expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing all 5 results for Maths");
     });
+
+    it("does not display any text when there are no search results", () => {
+        render(<Search numberOfResultsShown={0} />);
+
+        expect(screen.queryByText(/./)).not.toBeInTheDocument();
+    });
 });

@@ -52,6 +52,10 @@ Search.propTypes = {
 };
 
 const SearchResultsDescription = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
+    if (!numberOfResultsShown) {
+        return null;
+    }
+
     return (
         <p data-testid="search-results-description">
             Showing {numberOfMatches > numberOfResultsShown ? "the top" : "all"} {numberOfResultsShown} results for{" "}
