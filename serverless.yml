@@ -40,9 +40,20 @@ custom:
   domainName: ${env:DOMAIN_NAME, ''}
   sslCertificateArn: ${env:SSL_CERTIFICATE_ARN, ''}
 
-# Exclude next.js dependencies that are not needed at runtime
+# Exclude files and next.js dependencies that are not needed at runtime
 package:
   exclude:
+    - .*
+    - .github/**
+    - .idea/**
+    - docs/**
+    - src/**
+    - package.json
+    - package-lock.json
+    - README.md
+    - LICENSE
+    - setupTests.js
+    - jest.config.js
     - node_modules/@babel/**
     - node_modules/ally.js/**
     - node_modules/caniuse-lite/**
@@ -76,6 +87,13 @@ package:
     - node_modules/tr46/**
     - node_modules/micromatch/**
     - node_modules/sharp/**
+    - node_modules/@ampproject/**
+    - node_modules/postcss-modules-parser/**
+    - node_modules/css-modules-loader-core/**
+    - node_modules/babel-plugin-react-css-modules/**
+    - node_modules/es-abstract/**
+    - node_modules/string.prototype.trimstart/**
+    - node_modules/string.prototype.trimend/**
 
 resources:
   Conditions:
