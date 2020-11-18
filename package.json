@@ -19,7 +19,8 @@
     "formatandcheck": "npm run format && npm run lint && npm run test",
     "fc": "npm run formatandcheck",
     "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js",
-    "lighthouse": "lighthouse --output-path=./lighthouse.html --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view"
+    "lighthouse:desktop": "lighthouse --output-path=./lighthouse.desktop --output=html,json --emulated-form-factor=desktop --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
+    "lighthouse:mobile": "lighthouse --output-path=./lighthouse.mobile --output=html,json --emulated-form-factor=mobile --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view"
   },
   "dependencies": {
     "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.3",
