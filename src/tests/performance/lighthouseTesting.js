@@ -1,3 +1,4 @@
+const actions = require("@actions/core");
 const average = require("lodash.mean");
 const chromeLauncher = require("chrome-launcher");
 const lighthouse = require("lighthouse");
@@ -29,15 +30,10 @@ const MINIMUM_ACCEPTABLE_SCORE = 90;
     await chrome.kill();
 
     if (averagePerformanceScore >= MINIMUM_ACCEPTABLE_SCORE) {
-        console.log("Average performance score: " + averagePerformanceScore);
-        process.exit(0);
+        actions.info(`Average performance score: ${averagePerformanceScore}`);
     } else {
-        console.error(
-            "Average performance score of " +
-                averagePerformanceScore +
-                " is less than the minimum threshold of " +
-                MINIMUM_ACCEPTABLE_SCORE
+        actions.setFailed(
+            `Average performance score of ${averagePerformanceScore} is less than the minimum threshold of ${MINIMUM_ACCEPTABLE_SCORE}`
         );
-        process.exit(1);
     }
 })();
