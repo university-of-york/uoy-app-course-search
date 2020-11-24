@@ -1,8 +1,5 @@
 name: Run performance tests with Lighthouse
 on:
-  push:
-    branches:
-      - CFIN-391
   pull_request:
   workflow_dispatch:
 
