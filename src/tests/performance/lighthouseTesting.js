@@ -24,9 +24,10 @@ const MINIMUM_MOBILE_SCORE = 80;
     const config = isMobileReport ? mobileConfig : desktopConfig;
     const threshold = isMobileReport ? MINIMUM_MOBILE_SCORE : MINIMUM_DESKTOP_SCORE;
 
-    let results = [];
+    const results = [];
 
     for (let i = 0; i < ITERATIONS; i++) {
+        // eslint-disable-next-line no-await-in-loop
         const result = await lighthouse(TEST_URL, options, config);
 
         results.push(result.lhr);
