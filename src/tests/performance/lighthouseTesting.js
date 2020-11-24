@@ -1,7 +1,7 @@
 const actions = require("@actions/core");
-const average = require("lodash.mean");
 const chromeLauncher = require("chrome-launcher");
 const lighthouse = require("lighthouse");
+const { computeMedianRun } = require("lighthouse/lighthouse-core/lib/median-run");
 const mobileConfig = require("lighthouse/lighthouse-core/config/lr-mobile-config");
 const desktopConfig = require("lighthouse/lighthouse-core/config/lr-desktop-config");
 
@@ -24,25 +24,24 @@ const MINIMUM_MOBILE_SCORE = 80;
     const config = isMobileReport ? mobileConfig : desktopConfig;
     const threshold = isMobileReport ? MINIMUM_MOBILE_SCORE : MINIMUM_DESKTOP_SCORE;
 
-    let scores = [];
+    let results = [];
 
     for (let i = 0; i < ITERATIONS; i++) {
         const result = await lighthouse(TEST_URL, options, config);
 
-        scores.push(result.lhr.categories.performance.score * 100);
+        results.push(result.lhr);
     }
 
-    const averagePerformanceScore = average(scores);
-
-    console.log(scores);
+    const median = computeMedianRun(results);
+    const performanceScore = median.categories.performance.score * 100;
 
     await chrome.kill();
 
-    if (averagePerformanceScore >= threshold) {
-        actions.info(`Average performance score: ${averagePerformanceScore}`);
+    if (performanceScore >= threshold) {
+        actions.info(`Average performance score: ${performanceScore}`);
     } else {
         actions.setFailed(
-            `Average performance score of ${averagePerformanceScore} is less than the minimum threshold of ${threshold}`
+            `Average performance score of ${performanceScore} is less than the minimum threshold of ${threshold}`
         );
     }
 })();
