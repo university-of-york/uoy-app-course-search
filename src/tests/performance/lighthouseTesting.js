@@ -39,10 +39,10 @@ const MINIMUM_MOBILE_SCORE = 80;
     await chrome.kill();
 
     if (performanceScore >= threshold) {
-        actions.info(`Average performance score: ${performanceScore}`);
+        actions.info(`Median performance score: ${performanceScore}`);
     } else {
         actions.setFailed(
-            `Average performance score of ${performanceScore} is less than the minimum threshold of ${threshold}`
+            `Median performance score of ${performanceScore} is less than the minimum threshold of ${threshold}`
         );
     }
 })();

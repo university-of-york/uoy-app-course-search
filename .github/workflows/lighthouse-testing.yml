@@ -33,7 +33,7 @@ jobs:
         run: sleep 10
 
       - name: Check Lighthouse performance score for desktop devices
-        run: npm run lighthouse-workflow:desktop
+        run: npm run lighthouse-check:desktop
 
       - name: Check Lighthouse performance score for mobile devices
-        run: npm run lighthouse-workflow:mobile
+        run: npm run lighthouse-check:mobile
