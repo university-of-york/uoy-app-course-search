@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "package": "next build && sls package",
     "deploy": "next build && sls deploy --env production",
     "deploy:dev": "next build && sls deploy --env development",
     "undeploy": "sls remove",
@@ -15,10 +16,11 @@
     "lint": "xo .",
     "check": "npm run checkformat && npm run lint && npm run test",
     "formatandcheck": "npm run format && npm run lint && npm run test",
-    "fc": "npm run formatandcheck"
+    "fc": "npm run formatandcheck",
+    "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js"
   },
   "dependencies": {
-    "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.1",
+    "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.4",
     "express": "^4.17.1",
     "next": "^10.0.0",
     "path-match": "^1.2.4",
@@ -29,6 +31,7 @@
     "serverless-http": "^2.5.0"
   },
   "devDependencies": {
+    "@percy/script": "^1.1.0",
     "@testing-library/dom": "^7.24.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.2",

@@ -1,0 +1,41 @@
+name: Run visual tests with Percy
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+
+jobs:
+  visual-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the application's source code
+        uses: actions/checkout@v2
+
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com
+          scope: "@university-of-york"
+          always-auth: true
+
+      - name: Install application dependencies
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Build the application
+        run: npm run build
+
+      - name: Run the application in the background
+        run: (npm start &)
+
+      - name: Wait for the application to start
+        run: sleep 10
+
+      - name: Run percy visual tests
+        run: npm run percy
+        env:
+          PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
