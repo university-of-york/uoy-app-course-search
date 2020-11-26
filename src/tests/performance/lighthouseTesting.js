@@ -2,8 +2,8 @@ const actions = require("@actions/core");
 const chromeLauncher = require("chrome-launcher");
 const lighthouse = require("lighthouse");
 const { computeMedianRun } = require("lighthouse/lighthouse-core/lib/median-run");
-const mobileConfig = require("../../../.lighthouse/config/mobile.js");
-const desktopConfig = require("../../../.lighthouse/config/desktop.js");
+const mobileConfig = require("lighthouse/lighthouse-core/config/lr-mobile-config");
+const desktopConfig = require("lighthouse/lighthouse-core/config/lr-desktop-config");
 
 const TEST_URL = "http://localhost:3000?search=maths";
 const ITERATIONS = 5;
