@@ -46,6 +46,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "jest": "^26.4.2",
     "jest-fetch-mock": "^3.0.3",
+    "lighthouse": "^6.4.1",
     "prettier": "2.1.1",
     "serverless": "^2.1.1",
     "serverless-dotenv-plugin": "^3.1.0",
