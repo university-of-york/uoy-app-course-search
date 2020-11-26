@@ -19,8 +19,8 @@
     "formatandcheck": "npm run format && npm run lint && npm run test",
     "fc": "npm run formatandcheck",
     "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js",
-    "lighthouse:desktop": "lighthouse --output-path=./.lighthouse/lighthouse.desktop.html --config-path=./.lighthouse/config/desktop.js --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
-    "lighthouse:mobile": "lighthouse --output-path=./.lighthouse/lighthouse.mobile.html --config-path=./.lighthouse/config/mobile.js --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
+    "lighthouse:desktop": "lighthouse --output-path=./lighthouse.desktop.html --config-path=./node_modules/lighthouse/lighthouse-core/config/lr-desktop-config.js --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
+    "lighthouse:mobile": "lighthouse --output-path=./lighthouse.mobile.html --config-path=./node_modules/lighthouse/lighthouse-core/config/lr-mobile-config.js --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
     "lh": "npm run lighthouse:mobile"
   },
   "dependencies": {
