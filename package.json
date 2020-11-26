@@ -17,7 +17,10 @@
     "check": "npm run checkformat && npm run lint && npm run test",
     "formatandcheck": "npm run format && npm run lint && npm run test",
     "fc": "npm run formatandcheck",
-    "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js"
+    "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js",
+    "lighthouse-check:desktop": "node src/tests/performance/lighthouseTesting.js",
+    "lighthouse-check:mobile": "node src/tests/performance/lighthouseTesting.js --mobile",
+    "lhc": "npm run lighthouse-check:mobile"
   },
   "dependencies": {
     "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.3",
@@ -31,6 +34,7 @@
     "serverless-http": "^2.5.0"
   },
   "devDependencies": {
+    "@actions/core": "^1.2.6",
     "@percy/script": "^1.1.0",
     "@testing-library/dom": "^7.24.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -46,6 +50,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "jest": "^26.4.2",
     "jest-fetch-mock": "^3.0.3",
+    "lighthouse": "^6.4.1",
     "prettier": "2.1.1",
     "serverless": "^2.1.1",
     "serverless-dotenv-plugin": "^3.1.0",
