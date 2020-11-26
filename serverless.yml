@@ -54,6 +54,7 @@ package:
     - LICENSE
     - setupTests.js
     - jest.config.js
+    - lighthouse.*.html
     - node_modules/@babel/**
     - node_modules/ally.js/**
     - node_modules/caniuse-lite/**
