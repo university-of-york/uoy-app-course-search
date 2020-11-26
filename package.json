@@ -17,7 +17,10 @@
     "check": "npm run checkformat && npm run lint && npm run test",
     "formatandcheck": "npm run format && npm run lint && npm run test",
     "fc": "npm run formatandcheck",
-    "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js"
+    "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js",
+    "lighthouse-check:desktop": "node src/tests/performance/lighthouseTesting.js",
+    "lighthouse-check:mobile": "node src/tests/performance/lighthouseTesting.js --mobile",
+    "lhc": "npm run lighthouse-check:mobile"
   },
   "dependencies": {
     "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.3",
