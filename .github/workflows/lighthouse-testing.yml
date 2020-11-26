@@ -35,6 +35,8 @@ jobs:
       - name: Wait for the application to start
         run: sleep 10
 
-      - name: Run lighthouse performance testing
-        run: npm run lighthouse:workflow
+      - name: Check Lighthouse performance score for desktop devices
+        run: npm run lighthouse-workflow:desktop
 
+      - name: Check Lighthouse performance score for mobile devices
+        run: npm run lighthouse-workflow:mobile
