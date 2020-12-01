@@ -39,3 +39,6 @@ yarn-error.log*
 
 # serverless
 .serverless
+
+# lighthouse reporting
+lighthouse.*.html
