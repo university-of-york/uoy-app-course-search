@@ -2,6 +2,9 @@ name: Run visual tests with Percy
 on:
   pull_request:
   workflow_dispatch:
+  push:
+    branches:
+      - dev
 
 jobs:
   visual-tests:
