@@ -61,15 +61,8 @@ describe("Course details", () => {
 
         render(<CourseDetails course={exampleCourse} />);
 
-        const tag = screen.queryAllByRole("listitem");
-
-        if (tag.length === 0) {
-            const tagList = screen.getByRole("list");
-            expect(tagList).toBeEmptyDOMElement();
-        } else {
-            expect(tag[0]).toHaveTextContent("year abroad");
-            expect(within(tag[0]).queryByTestId("tag-icon")).toBe(null);
-        }
+        const tagList = screen.getByRole("list");
+        expect(tagList).toBeEmptyDOMElement();
     });
 
     it("displays tag with start year and length of course when both are present", () => {
@@ -113,7 +106,7 @@ describe("Course details", () => {
         expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--clock-o");
     });
 
-    it("does not displays tag with start year and length of course when neither are present", () => {
+    it("does not display tag with start year and length of course when neither are present", () => {
         const exampleCourse = {};
 
         render(<CourseDetails course={exampleCourse} />);
