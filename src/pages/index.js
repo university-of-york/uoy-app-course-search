@@ -12,6 +12,8 @@ import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
+import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
+import { searchForCourses } from "../utils/searchForCourses";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -32,7 +34,11 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                 </GridRow>
                 <GridRow>
                     <GridBoxFull>
-                        <CourseSearchResults isSuccessfulSearch={isSuccessfulSearch} searchResults={searchResults} />
+                        <CourseSearchResults
+                            isSuccessfulSearch={isSuccessfulSearch}
+                            searchResults={searchResults}
+                            searchTerm={searchTerm}
+                        />
                     </GridBoxFull>
                 </GridRow>
             </WrappedMainGrid>
@@ -50,28 +56,24 @@ App.propTypes = {
 };
 
 const getServerSideProps = async (context) => {
-    const searchTerm = context.query.search || "maths";
+    const searchTerm = context.query.search;
 
-    const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}&max=${process.env.COURSES_API_MAX_RESULTS}`;
-
-    let isSuccessfulSearch;
-    let searchResponseData;
-
-    try {
-        const response = await fetch(courseSearchUrl);
-        isSuccessfulSearch = response.ok;
-        searchResponseData = isSuccessfulSearch ? await response.json() : { numberOfMatches: 0, results: [] };
-    } catch {
-        isSuccessfulSearch = false;
-        searchResponseData = { numberOfMatches: 0, results: [] };
+    if (noSearchConducted(searchTerm)) {
+        return { props: {} };
     }
+
+    if (emptySearchConducted(searchTerm)) {
+        return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
+    }
+
+    const { isSuccessfulSearch, searchResponseData } = await searchForCourses(searchTerm);
 
     return {
         props: {
+            searchTerm,
             isSuccessfulSearch,
             searchResults: searchResponseData.results,
             numberOfMatches: searchResponseData.numberOfMatches,
-            searchTerm,
         },
     };
 };

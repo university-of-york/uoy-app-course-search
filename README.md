@@ -1,4 +1,5 @@
 # Course Search
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ad91c322/uoy-app-course-search)
 
 This is the University of York's Course Search application. It allows prospective students to search for courses,
 view results, and follow links to course pages.
@@ -75,6 +76,12 @@ and upon a merge into `dev` or `main` branches on Github as part of `.github/wor
 The application is tested against a number of mobile devices, both emulated and real.
 In the first instance developers use Google Chrome Developer Tools and then finally BrowserStack for testing. 
 The Wiki page [Testing course search rendering on mobile devices](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing-Course-Search-Rendering-on-Mobile-Devices) has more detail on the process.
+
+#### Percy Visual Testing 
+
+The application has a GitHub workflow action so that at a Pull Request it is subject to visual testing using [Percy][Percy](https://percy.io/ad91c322/uoy-app-course-search). 
+Should a difference be detected, then approval is required using Percy prior to a merge. 
+More detail can be found in the York Wiki Service page (University users only): [Testing: Percy, automation in testing with GitHub](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899)
 
 ### Deployment
 

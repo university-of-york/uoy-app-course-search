@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prod": "npm run build && npm run start",
     "build": "next build",
     "start": "next start",
+    "package": "next build && sls package",
     "deploy": "next build && sls deploy --env production",
     "deploy:dev": "next build && sls deploy --env development",
     "undeploy": "sls remove",
@@ -15,10 +17,17 @@
     "lint": "xo .",
     "check": "npm run checkformat && npm run lint && npm run test",
     "formatandcheck": "npm run format && npm run lint && npm run test",
-    "fc": "npm run formatandcheck"
+    "fc": "npm run formatandcheck",
+    "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js",
+    "lighthouse:desktop": "lighthouse --output-path=./lighthouse.desktop.html --config-path=./node_modules/lighthouse/lighthouse-core/config/lr-desktop-config.js --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
+    "lighthouse:mobile": "lighthouse --output-path=./lighthouse.mobile.html --config-path=./node_modules/lighthouse/lighthouse-core/config/lr-mobile-config.js --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
+    "lighthouse-check:desktop": "node src/tests/performance/lighthouseTesting.js",
+    "lighthouse-check:mobile": "node src/tests/performance/lighthouseTesting.js --mobile",
+    "lh": "npm run lighthouse:mobile",
+    "lhc": "npm run lighthouse-check:mobile"
   },
   "dependencies": {
-    "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.1",
+    "@university-of-york/esg-lib-pattern-library-react-components": "^6.1.4",
     "express": "^4.17.1",
     "next": "^10.0.0",
     "path-match": "^1.2.4",
@@ -29,6 +38,8 @@
     "serverless-http": "^2.5.0"
   },
   "devDependencies": {
+    "@actions/core": "^1.2.6",
+    "@percy/script": "^1.1.0",
     "@testing-library/dom": "^7.24.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.2",
@@ -43,8 +54,9 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "jest": "^26.4.2",
     "jest-fetch-mock": "^3.0.3",
+    "lighthouse": "^6.4.1",
     "prettier": "2.1.1",
-    "serverless": "^2.1.1",
+    "serverless": "^2.18.0",
     "serverless-dotenv-plugin": "^3.1.0",
     "xo": "^0.33.1"
   }
