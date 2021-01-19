@@ -1,16 +1,16 @@
 import { render, screen, within } from "@testing-library/react";
-import { TagList } from "../../components/TagList";
-import { ArrayTag, Tag } from "../../components/Tag";
+import { RichTagList } from "../../components/RichTagList";
+import { ArrayTag, RichTag } from "../../components/RichTag";
 import React from "react";
 
 describe("TagList", () => {
     it("displays tags labelled with given inputs", () => {
         render(
-            <TagList>
-                <Tag topIcon="institution" title="foo bar" subText="something else" />
-                <Tag topIcon="key" title="fruit salad" />
-                <Tag topIcon="plane" title="" subText="hot pudding" />
-            </TagList>
+            <RichTagList>
+                <RichTag topIcon="institution" title="foo bar" subText="something else" />
+                <RichTag topIcon="key" title="fruit salad" />
+                <RichTag topIcon="plane" title="" subText="hot pudding" />
+            </RichTagList>
         );
 
         const tags = screen.getAllByRole("listitem");
@@ -28,7 +28,7 @@ describe("TagList", () => {
 
     it("displays extra tags as per inputs", () => {
         render(
-            <TagList>
+            <RichTagList>
                 <ArrayTag
                     title="Extras"
                     content={[
@@ -46,7 +46,7 @@ describe("TagList", () => {
                         { icon: "mortar-board", text: "Integrated Masters" },
                     ]}
                 />
-            </TagList>
+            </RichTagList>
         );
 
         const tags = screen.getAllByRole("listitem");

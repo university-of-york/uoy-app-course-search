@@ -1,15 +1,15 @@
 import React from "react";
 import { COURSE_MODEL } from "../constants/CourseModel";
-import { TagList } from "./TagList";
-import { Tag } from "./Tag";
+import { RichTagList } from "./RichTagList";
+import { RichTag } from "./RichTag";
 import PropTypes from "prop-types";
 
 const CourseDetails = ({ course }) => {
     return (
-        <TagList>
+        <RichTagList>
             <LevelAndAwardTag level={course.level} award={course.award} />
             <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
-        </TagList>
+        </RichTagList>
     );
 };
 
@@ -19,7 +19,7 @@ CourseDetails.propTypes = {
 
 const LevelAndAwardTag = ({ level, award }) => {
     if (level || award) {
-        return <Tag topIcon="mortar-board" title={level} subText={award} />;
+        return <RichTag topIcon="mortar-board" title={level} subText={award} />;
     }
 
     return null;
@@ -33,7 +33,7 @@ LevelAndAwardTag.propTypes = {
 const StartDateAndLengthTag = ({ yearOfEntry, length }) => {
     if (yearOfEntry || length) {
         const startYear = yearOfEntry ? `Start ${yearOfEntry.slice(0, 4)}` : null;
-        return <Tag topIcon="clock-o" title={startYear} subText={length} />;
+        return <RichTag topIcon="clock-o" title={startYear} subText={length} />;
     }
 
     return null;

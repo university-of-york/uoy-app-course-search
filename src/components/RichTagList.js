@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TagList = (props) => {
+const RichTagList = (props) => {
     return <ul className="rich-tag-list">{props.children}</ul>;
 };
 
-TagList.propTypes = {
+RichTagList.propTypes = {
     children: PropTypes.node,
 };
 
-export { TagList };
+export { RichTagList };

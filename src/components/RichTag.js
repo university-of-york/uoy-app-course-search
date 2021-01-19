@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-const Tag = ({ topIcon, title, subText }) => (
+const RichTag = ({ topIcon, title, subText }) => (
     <li className="rich-tag">
         {topIcon && <i aria-hidden className={`c-icon c-icon--${topIcon} c-icon--2x`} data-testid="tag-icon" />}
         <p className="rich-tag__title">{title}</p>
@@ -9,7 +9,7 @@ const Tag = ({ topIcon, title, subText }) => (
     </li>
 );
 
-Tag.propTypes = {
+RichTag.propTypes = {
     topIcon: PropTypes.string,
     title: PropTypes.string,
     subText: PropTypes.string,
@@ -45,4 +45,4 @@ ArrayTagContent.propTypes = {
     label: PropTypes.string,
 };
 
-export { Tag, ArrayTag };
+export { RichTag, ArrayTag };
