@@ -3,8 +3,7 @@ import React from "react";
 import { CourseDetails } from "../../components/CourseDetails";
 
 describe("Course details", () => {
-    /* Commenting out the following test until the hard-coded extras tags are removed */
-    /* it("works with no metadata", () => {
+    it("works with no metadata", () => {
         const exampleCourse = {};
 
         render(<CourseDetails course={exampleCourse} />);
@@ -13,7 +12,6 @@ describe("Course details", () => {
 
         expect(tagList).toBeEmptyDOMElement();
     });
-    */
 
     it("displays level and award tag when both level and award are present", () => {
         const exampleCourse = {
@@ -30,7 +28,7 @@ describe("Course details", () => {
         expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--mortar-board");
     });
 
-    it("displays level and award tag when both only level is present", () => {
+    it("displays level and award tag when only level is present", () => {
         const exampleCourse = {
             level: "undergraduate",
         };
@@ -111,14 +109,7 @@ describe("Course details", () => {
 
         render(<CourseDetails course={exampleCourse} />);
 
-        const tag = screen.queryAllByRole("listitem");
-
-        if (tag.length === 0) {
-            const tagList = screen.getByRole("list");
-            expect(tagList).toBeEmptyDOMElement();
-        } else {
-            expect(tag[0]).toHaveTextContent("year abroad");
-            expect(within(tag[0]).queryByTestId("tag-icon")).toBe(null);
-        }
+        const tagList = screen.getByRole("list");
+        expect(tagList).toBeEmptyDOMElement();
     });
 });

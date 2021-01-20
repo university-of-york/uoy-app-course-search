@@ -22,7 +22,7 @@ const ArrayTag = ({ title, content }) => {
 
     return (
         <li className="rich-tag">
-            {title && <dt className="rich-tag__title">{title}</dt>}
+            {title && <p className="rich-tag__title">{title}</p>}
             <ul className="c-icon--ul">{contents}</ul>
         </li>
     );
