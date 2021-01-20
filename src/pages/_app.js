@@ -1,14 +1,14 @@
 import "../../styles.css";
 import PropTypes from "prop-types";
 
-// This default export is required in a new `pages/_app.js` file.
-const MyApp = ({ Component, pageProps }) => {
+// Required for Next to use a global stylesheet - see README
+const CourseSearchApp = ({ Component, pageProps }) => {
     return <Component {...pageProps} />;
 };
 
-MyApp.propTypes = {
+CourseSearchApp.propTypes = {
     Component: PropTypes.any,
     pageProps: PropTypes.any,
 };
 
-export default MyApp;
+export default CourseSearchApp;
