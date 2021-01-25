@@ -9,7 +9,6 @@
 .rich-tag {
     box-sizing: border-box;
     background-color: #f0f2e9;
-    text-transform: capitalize;
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 4px;
@@ -30,9 +29,19 @@
     margin: 0; /* for paragraphs */
 }
 
+.rich-tag__title::first-letter {
+    text-transform: capitalize;
+}
+
 .rich-tag__text {
     font-size: 14px;
     font-size: 0.875rem;
     margin: 0;
     line-height: 1.45;
 }
+
+.rich-tag__text::first-letter {
+    text-transform: capitalize;
+}
+
+
