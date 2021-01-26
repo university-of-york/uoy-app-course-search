@@ -29,17 +29,9 @@
     margin: 0; /* for paragraphs */
 }
 
-.rich-tag__title::first-letter {
-    text-transform: capitalize;
-}
-
 .rich-tag__text {
     font-size: 14px;
     font-size: 0.875rem;
     margin: 0;
     line-height: 1.45;
-}
-
-.rich-tag__text::first-letter {
-    text-transform: capitalize;
 }
