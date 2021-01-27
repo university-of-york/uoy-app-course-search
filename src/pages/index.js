@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
+    Breadcrumbs,
     GridBoxFull,
     GridRow,
     UniversityFooter,
     UniversityHeaderWithSearch,
     UniversityTitleBar,
-    WrappedMainGrid,
+    WrappedMainGrid
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { CourseSearchResults } from "../components/CourseSearchResults";
 import { COURSE_MODEL } from "../constants/CourseModel";
@@ -14,6 +15,7 @@ import { PageHead } from "../components/PageHead";
 import { Search } from "../components/Search";
 import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
 import { searchForCourses } from "../utils/searchForCourses";
+import { HeroBanner } from "../components/HeroBanner";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -22,16 +24,20 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
             <UniversityHeaderWithSearch />
             <UniversityTitleBar title="Courses" />
 
+            <HeroBanner>
+                <Breadcrumbs screenBreadcrumbs={[
+                    { label: 'Breadcrumb one', link: 'relative-url1' },
+                    { label: 'Breadcrumb two' },
+                ]} />
+                <h1>Search undergraduate courses</h1>
+                <Search
+                  searchTerm={searchTerm}
+                  numberOfMatches={numberOfMatches}
+                  numberOfResultsShown={searchResults?.length}
+                />
+            </HeroBanner>
+
             <WrappedMainGrid>
-                <GridRow>
-                    <GridBoxFull>
-                        <Search
-                            searchTerm={searchTerm}
-                            numberOfMatches={numberOfMatches}
-                            numberOfResultsShown={searchResults?.length}
-                        />
-                    </GridBoxFull>
-                </GridRow>
                 <GridRow>
                     <GridBoxFull>
                         <CourseSearchResults
