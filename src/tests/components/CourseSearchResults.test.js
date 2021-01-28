@@ -10,8 +10,10 @@ describe("CourseSearchResults", () => {
 
         render(<CourseSearchResults isSuccessfulSearch searchResults={searchResults} searchTerm="foobar" />);
 
-        expect(screen.getByRole("link", { name: "Maths" })).toBeInTheDocument();
-        expect(screen.getByRole("link", { name: "Physics" })).toBeInTheDocument();
+        const headings = screen.getAllByRole("heading");
+
+        expect(headings[0]).toHaveTextContent("Maths");
+        expect(headings[1]).toHaveTextContent("Physics");
     });
 
     it("displays an appropriate message when the course search failed", () => {

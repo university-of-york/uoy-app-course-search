@@ -1,16 +1,15 @@
 import React from "react";
 import { COURSE_MODEL } from "../constants/CourseModel";
-import { TagList } from "./TagList";
-import { Tag } from "./Tag";
+import { RichTagList } from "./RichTagList";
+import { RichTag } from "./RichTag";
 import PropTypes from "prop-types";
 
 const CourseDetails = ({ course }) => {
     return (
-        <TagList>
-            <AwardTag award={course.award} />
-            <StartDateTag yearOfEntry={course.yearOfEntry} />
-            <LengthCourseTag length={course.length} />
-        </TagList>
+        <RichTagList>
+            <LevelAndAwardTag level={course.level} award={course.award} />
+            <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
+        </RichTagList>
     );
 };
 
@@ -18,40 +17,30 @@ CourseDetails.propTypes = {
     course: COURSE_MODEL,
 };
 
-const AwardTag = ({ award }) => {
-    if (award) {
-        return <Tag icon="university" mainText={award} />;
+const LevelAndAwardTag = ({ level, award }) => {
+    if (level || award) {
+        return <RichTag topIcon="mortar-board" title={level} subText={award} />;
     }
 
     return null;
 };
 
-AwardTag.propTypes = {
+LevelAndAwardTag.propTypes = {
+    level: PropTypes.string,
     award: PropTypes.string,
 };
 
-const StartDateTag = ({ yearOfEntry }) => {
-    if (yearOfEntry) {
-        const startYear = yearOfEntry.slice(0, 4);
-        return <Tag icon="calendar" mainText={`Starts ${startYear}`} />;
+const StartDateAndLengthTag = ({ yearOfEntry, length }) => {
+    if (yearOfEntry || length) {
+        const startYear = yearOfEntry ? `Start ${yearOfEntry.slice(0, 4)}` : null;
+        return <RichTag topIcon="clock-o" title={startYear} subText={length} />;
     }
 
     return null;
 };
 
-StartDateTag.propTypes = {
+StartDateAndLengthTag.propTypes = {
     yearOfEntry: PropTypes.string,
-};
-
-const LengthCourseTag = ({ length }) => {
-    if (length) {
-        return <Tag icon="clock-o" mainText={length} />;
-    }
-
-    return null;
-};
-
-LengthCourseTag.propTypes = {
     length: PropTypes.string,
 };
 
