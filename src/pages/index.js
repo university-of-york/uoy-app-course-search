@@ -18,32 +18,35 @@ import { searchForCourses } from "../utils/searchForCourses";
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
         <>
-            <PageHead search={searchTerm} />
-            <UniversityHeaderWithSearch />
-            <UniversityTitleBar title="Courses" />
+            <div className="app-wrapper">
+                <div className="app-body">
+                    <PageHead search={searchTerm} />
+                    <UniversityHeaderWithSearch />
+                    <UniversityTitleBar title="Courses" />
 
-            <WrappedMainGrid>
-                <GridRow>
-                    <GridBoxFull>
-                        <Search
-                            searchTerm={searchTerm}
-                            numberOfMatches={numberOfMatches}
-                            numberOfResultsShown={searchResults?.length}
-                        />
-                    </GridBoxFull>
-                </GridRow>
-                <GridRow>
-                    <GridBoxFull>
-                        <CourseSearchResults
-                            isSuccessfulSearch={isSuccessfulSearch}
-                            searchResults={searchResults}
-                            searchTerm={searchTerm}
-                        />
-                    </GridBoxFull>
-                </GridRow>
-            </WrappedMainGrid>
-
-            <UniversityFooter />
+                    <WrappedMainGrid>
+                        <GridRow>
+                            <GridBoxFull>
+                                <Search
+                                    searchTerm={searchTerm}
+                                    numberOfMatches={numberOfMatches}
+                                    numberOfResultsShown={searchResults?.length}
+                                />
+                            </GridBoxFull>
+                        </GridRow>
+                        <GridRow>
+                            <GridBoxFull>
+                                <CourseSearchResults
+                                    isSuccessfulSearch={isSuccessfulSearch}
+                                    searchResults={searchResults}
+                                    searchTerm={searchTerm}
+                                />
+                            </GridBoxFull>
+                        </GridRow>
+                    </WrappedMainGrid>
+                </div>
+                <UniversityFooter />
+            </div>
         </>
     );
 };

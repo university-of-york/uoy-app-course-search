@@ -35,3 +35,13 @@
     margin: 0;
     line-height: 1.45;
 }
+
+/* A full height wrapper used to push the footer to the bottom of the page */
+.app-wrapper {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+}
+.app-body {
+    flex-grow: 1;
+}
