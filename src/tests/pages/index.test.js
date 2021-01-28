@@ -37,10 +37,8 @@ describe("App", () => {
     it("displays the titles from course search results", () => {
         render(<App isSuccessfulSearch searchResults={searchResults} searchTerm="foobar" />);
 
-        const headings = screen.getAllByRole("heading");
-
-        expect(headings[2]).toHaveTextContent("Maths");
-        expect(headings[3]).toHaveTextContent("Physics");
+        expect(screen.getByRole("heading", { name: "Maths" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Physics" })).toBeInTheDocument();
     });
 });
 
