@@ -57,8 +57,12 @@ npm ERR! 404 Not Found - GET https://registry.npmjs.org/@university-of-york%2fes
 npm ERR! 404
 npm ERR! 404  '@university-of-york/esg-lib-pattern-library-react-components@4.3.4' is not in the npm registry.
 ```
-#### A pages/_app.js file exists so an internal css file can be used
-See the [Next Built-In CSS Support - Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support) documentation
+#### Use of local 'styles.css' file
+The pages/_app.js file exists so this internal css file can be used - 
+see the [Next Built-In CSS Support - Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support) documentation.
+The rich tags are currently being defined in this file as part of the application, but may be moved to the React Pattern library in future, 
+depending on the outcome of discussions with the Digital Platforms team. 
+
 ### Testing
 
 Tests live in `src/tests`. To run them:
