@@ -35,3 +35,7 @@
     margin: 0;
     line-height: 1.45;
 }
+
+h2.c-listings-item__title {
+    font-weight: bold;
+}
