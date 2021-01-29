@@ -276,3 +276,7 @@ using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a
 ## Licence
 
 MIT
+
+## Final thoughts
+
+Be excellent to each other, and party on dudes!
