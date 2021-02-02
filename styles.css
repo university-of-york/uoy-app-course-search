@@ -37,7 +37,7 @@
 }
 
 .c-hero__banner {
-    background: linear-gradient(180deg, #138BB3 7.81%, #0F7799 100%);
+    background: linear-gradient(180deg, #138bb3 7.81%, #0f7799 100%);
     color: white;
     margin-left: 25%;
     margin-right: 25%;
@@ -47,6 +47,7 @@
     padding-left: 0;
 }
 
-.c-hero__banner .c-breadcrumb, .c-hero__banner .c-breadcrumb a{
+.c-hero__banner .c-breadcrumb,
+.c-hero__banner .c-breadcrumb a {
     color: white;
 }
