@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 const HeroBanner = ({ children }) => (
-    <figure className="c-hero">
+    <div className="c-hero">
         <div className="c-hero__banner">
             <div className="o-wrapper">
                 <div className="o-grid">
@@ -12,7 +12,7 @@ const HeroBanner = ({ children }) => (
                 </div>
             </div>
         </div>
-    </figure>
+    </div>
 );
 
 HeroBanner.propTypes = {
