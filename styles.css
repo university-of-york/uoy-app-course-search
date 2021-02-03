@@ -43,11 +43,7 @@
     margin-right: 25%;
 }
 
-.c-hero__banner .c-breadcrumb__items {
-    padding-left: 0;
-}
-
-.c-hero__banner .c-breadcrumb,
-.c-hero__banner .c-breadcrumb a {
-    color: white;
+.c-hero__banner h1 {
+    /*Styling to pad the title so its not pressed against the title bar. We will likely want to remove this when we add the breadcrumbs.*/
+    padding-top: 10px;
 }
