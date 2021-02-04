@@ -57,7 +57,8 @@ npm ERR! 404 Not Found - GET https://registry.npmjs.org/@university-of-york%2fes
 npm ERR! 404
 npm ERR! 404  '@university-of-york/esg-lib-pattern-library-react-components@4.3.4' is not in the npm registry.
 ```
-
+#### A pages/_app.js file exists so an internal css file can be used
+See the [Next Built-In CSS Support - Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support) documentation
 ### Testing
 
 Tests live in `src/tests`. To run them:

@@ -37,8 +37,8 @@ describe("App", () => {
     it("displays the titles from course search results", () => {
         render(<App isSuccessfulSearch searchResults={searchResults} searchTerm="foobar" />);
 
-        expect(screen.getByRole("link", { name: "Maths" })).toBeInTheDocument();
-        expect(screen.getByRole("link", { name: "Physics" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Maths" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Physics" })).toBeInTheDocument();
     });
 });
 
