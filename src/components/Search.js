@@ -26,7 +26,7 @@ const Search = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
                                 defaultValue={searchTerm}
                             />
                             <BasicSubmitButton aria-label="Search">
-                                <SearchIcon />
+                                <SearchIcon ariaHidden />
                             </BasicSubmitButton>
                         </FormElement>
                     </Form>

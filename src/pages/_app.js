@@ -1,4 +1,4 @@
-import "../../styles.css";
+import "../../public/stylesheets/styles.css";
 import PropTypes from "prop-types";
 
 // Required for Next to use a global stylesheet - see README
