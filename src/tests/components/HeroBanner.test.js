@@ -5,8 +5,8 @@ describe("HeroBanner", () => {
     it("renders as expected", () => {
         const children = <h2>Hi there</h2>;
 
-        let banner = render(<HeroBanner>{children}</HeroBanner>);
+        let {asFragment} = render(<HeroBanner>{children}</HeroBanner>);
 
-        expect(banner).toMatchSnapshot();
+        expect(asFragment()).toMatchSnapshot();
     });
 });
