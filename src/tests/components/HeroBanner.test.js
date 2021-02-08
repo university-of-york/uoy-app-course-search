@@ -1,14 +1,12 @@
-import { getByText, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { HeroBanner } from "../../components/HeroBanner";
 
 describe("HeroBanner", () => {
-    it("wraps content inside a hero banner", () => {
+    it("renders as expected", () => {
         const children = <h2>Hi there</h2>;
 
-        render(<HeroBanner>{children}</HeroBanner>);
+        let banner = render(<HeroBanner>{children}</HeroBanner>);
 
-        const container = document.querySelector(".c-hero__banner");
-
-        expect(getByText(container, "Hi there")).toBeInTheDocument();
+        expect(banner).toMatchSnapshot();
     });
 });
