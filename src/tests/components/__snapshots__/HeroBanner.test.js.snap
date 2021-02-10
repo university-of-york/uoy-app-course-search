@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroBanner renders as expected 1`] = `
+<DocumentFragment>
+  <div
+    class="c-hero"
+  >
+    <div
+      class="c-hero__banner"
+    >
+      <div
+        class="o-wrapper"
+      >
+        <div
+          class="o-grid"
+        >
+          <div
+            class="o-grid__row"
+          >
+            <div
+              class="o-grid__box o-grid__box--full"
+            >
+              <h2>
+                Hi there
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

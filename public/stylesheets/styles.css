@@ -20,6 +20,17 @@
     min-width: 206px;
     flex: 1 1 206px;
 }
+@media only screen and (max-width: 40em) {
+    .rich-tag {
+        max-width: 48%;
+    }
+}
+
+@media only screen and (min-width: 40em) and (max-width: 52.5em) {
+    .rich-tag {
+        max-width: 31%;
+    }
+}
 
 .rich-tag__title {
     font-family: museo-sans, Helvetica, Arial, sans-serif;
@@ -34,4 +45,16 @@
     font-size: 0.875rem;
     margin: 0;
     line-height: 1.45;
+}
+
+.c-hero__banner {
+    background: linear-gradient(180deg, #138bb3 7.81%, #0f7799 100%);
+    color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.c-hero__banner .c-breadcrumb a,
+.c-hero__banner .c-breadcrumb .c-breadcrumb__separator {
+    color: white;
 }
