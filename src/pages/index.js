@@ -6,6 +6,8 @@ import {
     UniversityFooter,
     UniversityHeaderWithSearch,
     UniversityTitleBar,
+    UniversityWrapper,
+    UniversityBody,
     WrappedMainGrid,
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { CourseSearchResults } from "../components/CourseSearchResults";
@@ -17,37 +19,35 @@ import { searchForCourses } from "../utils/searchForCourses";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
-        <>
-            <div className="app-wrapper">
-                <div className="app-body">
-                    <PageHead search={searchTerm} />
-                    <UniversityHeaderWithSearch />
-                    <UniversityTitleBar title="Courses" />
+        <UniversityWrapper>
+            <UniversityBody>
+                <PageHead search={searchTerm} />
+                <UniversityHeaderWithSearch />
+                <UniversityTitleBar title="Courses" />
 
-                    <WrappedMainGrid>
-                        <GridRow>
-                            <GridBoxFull>
-                                <Search
-                                    searchTerm={searchTerm}
-                                    numberOfMatches={numberOfMatches}
-                                    numberOfResultsShown={searchResults?.length}
-                                />
-                            </GridBoxFull>
-                        </GridRow>
-                        <GridRow>
-                            <GridBoxFull>
-                                <CourseSearchResults
-                                    isSuccessfulSearch={isSuccessfulSearch}
-                                    searchResults={searchResults}
-                                    searchTerm={searchTerm}
-                                />
-                            </GridBoxFull>
-                        </GridRow>
-                    </WrappedMainGrid>
-                </div>
-                <UniversityFooter />
-            </div>
-        </>
+                <WrappedMainGrid>
+                    <GridRow>
+                        <GridBoxFull>
+                            <Search
+                                searchTerm={searchTerm}
+                                numberOfMatches={numberOfMatches}
+                                numberOfResultsShown={searchResults?.length}
+                            />
+                        </GridBoxFull>
+                    </GridRow>
+                    <GridRow>
+                        <GridBoxFull>
+                            <CourseSearchResults
+                                isSuccessfulSearch={isSuccessfulSearch}
+                                searchResults={searchResults}
+                                searchTerm={searchTerm}
+                            />
+                        </GridBoxFull>
+                    </GridRow>
+                </WrappedMainGrid>
+            </UniversityBody>
+            <UniversityFooter />
+        </UniversityWrapper>
     );
 };
 
