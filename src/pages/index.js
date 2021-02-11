@@ -21,36 +21,38 @@ import { HeroBanner } from "../components/HeroBanner";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
-        <UniversityWrapper>
-            <UniversityBody>
-                <PageHead search={searchTerm} />
-                <UniversityHeaderWithSearch />
-                <UniversityTitleBar title="Courses" />
+        <>
+            <PageHead search={searchTerm} />
+            <UniversityWrapper>
+                <UniversityBody>
+                    <UniversityHeaderWithSearch />
+                    <UniversityTitleBar title="Courses" />
 
-                <HeroBanner>
-                    <Breadcrumbs screenBreadcrumbs={[{ label: "Course search", link: "/" }]} />
-                    <h1>Search undergraduate courses</h1>
-                    <Search
-                        searchTerm={searchTerm}
-                        numberOfMatches={numberOfMatches}
-                        numberOfResultsShown={searchResults?.length}
-                    />
-                </HeroBanner>
+                    <HeroBanner>
+                        <Breadcrumbs screenBreadcrumbs={[{ label: "Course search", link: "/" }]} />
+                        <h1>Search undergraduate courses</h1>
+                        <Search
+                            searchTerm={searchTerm}
+                            numberOfMatches={numberOfMatches}
+                            numberOfResultsShown={searchResults?.length}
+                        />
+                    </HeroBanner>
 
-                <WrappedMainGrid>
-                    <GridRow>
-                        <GridBoxFull>
-                            <CourseSearchResults
-                                isSuccessfulSearch={isSuccessfulSearch}
-                                searchResults={searchResults}
-                                searchTerm={searchTerm}
-                            />
-                        </GridBoxFull>
-                    </GridRow>
-                </WrappedMainGrid>
-            </UniversityBody>
-            <UniversityFooter />
-        </UniversityWrapper>
+                    <WrappedMainGrid>
+                        <GridRow>
+                            <GridBoxFull>
+                                <CourseSearchResults
+                                    isSuccessfulSearch={isSuccessfulSearch}
+                                    searchResults={searchResults}
+                                    searchTerm={searchTerm}
+                                />
+                            </GridBoxFull>
+                        </GridRow>
+                    </WrappedMainGrid>
+                </UniversityBody>
+                <UniversityFooter />
+            </UniversityWrapper>
+        </>
     );
 };
 
