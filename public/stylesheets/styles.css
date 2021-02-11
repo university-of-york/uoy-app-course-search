@@ -46,3 +46,15 @@
     margin: 0;
     line-height: 1.45;
 }
+
+.c-hero__banner {
+    background: linear-gradient(180deg, #138bb3 7.81%, #0f7799 100%);
+    color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.c-hero__banner .c-breadcrumb a,
+.c-hero__banner .c-breadcrumb .c-breadcrumb__separator {
+    color: white;
+}
