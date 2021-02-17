@@ -11,7 +11,7 @@ import {
 import React from "react";
 import PropTypes from "prop-types";
 
-const Search = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
+const Search = ({ searchTerm }) => {
     return (
         <Grid>
             <GridRow>
@@ -32,42 +32,12 @@ const Search = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
                     </Form>
                 </GridBoxFull>
             </GridRow>
-            <GridRow>
-                <GridBoxFull>
-                    <SearchResultsDescription
-                        searchTerm={searchTerm}
-                        numberOfMatches={numberOfMatches}
-                        numberOfResultsShown={numberOfResultsShown}
-                    />
-                </GridBoxFull>
-            </GridRow>
         </Grid>
     );
 };
 
 Search.propTypes = {
     searchTerm: PropTypes.string,
-    numberOfMatches: PropTypes.number,
-    numberOfResultsShown: PropTypes.number,
-};
-
-const SearchResultsDescription = ({ searchTerm, numberOfMatches, numberOfResultsShown }) => {
-    if (!numberOfResultsShown) {
-        return null;
-    }
-
-    return (
-        <p data-testid="search-results-description">
-            Showing {numberOfMatches > numberOfResultsShown ? "the top" : "all"} {numberOfResultsShown} results for{" "}
-            <strong>{searchTerm}</strong>
-        </p>
-    );
-};
-
-SearchResultsDescription.propTypes = {
-    searchTerm: PropTypes.string,
-    numberOfMatches: PropTypes.number,
-    numberOfResultsShown: PropTypes.number,
 };
 
 export { Search };

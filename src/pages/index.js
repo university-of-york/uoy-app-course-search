@@ -18,6 +18,7 @@ import { Search } from "../components/Search";
 import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
 import { searchForCourses } from "../utils/searchForCourses";
 import { HeroBanner } from "../components/HeroBanner";
+import { SearchResultsDescription } from "../components/SearchResultsDescription";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -39,6 +40,15 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                     </HeroBanner>
 
                     <WrappedMainGrid>
+                        <GridRow>
+                            <GridBoxFull>
+                                <SearchResultsDescription
+                                    searchTerm={searchTerm}
+                                    numberOfMatches={numberOfMatches}
+                                    numberOfResultsShown={searchResults?.length}
+                                />
+                            </GridBoxFull>
+                        </GridRow>
                         <GridRow>
                             <GridBoxFull>
                                 <CourseSearchResults

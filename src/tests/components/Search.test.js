@@ -22,24 +22,4 @@ describe("Search", () => {
 
         expect(getByRole("textbox", { name: "Search" }).value).toEqual("French");
     });
-
-    it("informs the user that only a limited number of results are being shown when the number of matches is greater than the number of results", () => {
-        render(<Search searchTerm="Maths" numberOfMatches={25} numberOfResultsShown={23} />);
-
-        expect(screen.getByTestId("search-results-description")).toHaveTextContent(
-            "Showing the top 23 results for Maths"
-        );
-    });
-
-    it("informs the user that all results are shown when the number of matches is equal to the number of results", () => {
-        render(<Search searchTerm="Maths" numberOfMatches={5} numberOfResultsShown={5} />);
-
-        expect(screen.getByTestId("search-results-description")).toHaveTextContent("Showing all 5 results for Maths");
-    });
-
-    it("does not display any text when there are no search results", () => {
-        render(<Search numberOfResultsShown={0} />);
-
-        expect(screen.queryByText(/./)).not.toBeInTheDocument();
-    });
 });
