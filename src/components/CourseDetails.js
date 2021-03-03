@@ -2,12 +2,13 @@ import React from "react";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import { RichTagList } from "./RichTagList";
 import { RichTag } from "./RichTag";
+import { sentenceCase } from "../utils/formatting";
 import PropTypes from "prop-types";
 
 const CourseDetails = ({ course }) => {
     return (
         <RichTagList>
-            <LevelAndAwardTag level={course.level} award={course.award} />
+            <LevelAndAwardTag level={sentenceCase(course.level)} award={course.award} />
             <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
         </RichTagList>
     );

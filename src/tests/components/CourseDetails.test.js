@@ -23,7 +23,7 @@ describe("Course details", () => {
 
         const tag = screen.getAllByRole("listitem");
 
-        expect(tag[0]).toHaveTextContent("undergraduate");
+        expect(tag[0]).toHaveTextContent("Undergraduate");
         expect(tag[0]).toHaveTextContent("BA (Hons)");
         expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--mortar-board");
     });
@@ -37,7 +37,7 @@ describe("Course details", () => {
 
         const tag = screen.getAllByRole("listitem");
 
-        expect(tag[0]).toHaveTextContent(/^undergraduate$/); // exactly matching undergraduate
+        expect(tag[0]).toHaveTextContent(/^Undergraduate$/); // exactly matching undergraduate
         expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--mortar-board");
     });
 
