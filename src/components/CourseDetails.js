@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 const CourseDetails = ({ course }) => {
     return (
         <RichTagList>
-            <LevelAndAwardTag level={sentenceCase(course.level)} award={course.award} />
+            <LevelAndAwardTag level={course.level} award={course.award} />
             <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
         </RichTagList>
     );
@@ -20,7 +20,7 @@ CourseDetails.propTypes = {
 
 const LevelAndAwardTag = ({ level, award }) => {
     if (level || award) {
-        return <RichTag topIcon="mortar-board" title={level} subText={award} />;
+        return <RichTag topIcon="mortar-board" title={sentenceCase(level)} subText={award} />;
     }
 
     return null;
