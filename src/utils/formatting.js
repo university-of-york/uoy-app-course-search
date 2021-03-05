@@ -1,5 +1,5 @@
 const sentenceCase = (string) => {
-    if (!string) return null;
+    if (!string) return "";
 
     const head = string.slice(0, 1);
     const tail = string.slice(1);
