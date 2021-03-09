@@ -2,6 +2,7 @@ import React from "react";
 import { COURSE_MODEL } from "../constants/CourseModel";
 import { RichTagList } from "./RichTagList";
 import { RichTag } from "./RichTag";
+import { sentenceCase } from "../utils/formatting";
 import PropTypes from "prop-types";
 
 const CourseDetails = ({ course }) => {
@@ -19,7 +20,7 @@ CourseDetails.propTypes = {
 
 const LevelAndAwardTag = ({ level, award }) => {
     if (level || award) {
-        return <RichTag topIcon="mortar-board" title={level} subText={award} />;
+        return <RichTag topIcon="mortar-board" title={sentenceCase(level)} subText={award} />;
     }
 
     return null;
