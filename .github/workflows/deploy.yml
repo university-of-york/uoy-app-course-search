@@ -57,3 +57,14 @@ jobs:
           DEPLOY_ENVIRONMENT: prod
           SSL_CERTIFICATE_ARN: ${{ secrets.PRODUCTION_SSL_CERTIFICATE_ARN }}
           DOMAIN_NAME: courses.app.york.ac.uk
+
+      - name: Deploy - google optimize experiment
+        if: github.ref == 'refs/heads/CFIN-453'
+        run: npm run deploy:dev
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCOUNT_ID: ${{ secrets.DEV_AWS_ACCOUNT_ID }}
+          DEPLOY_ENVIRONMENT: dev
+          SSL_CERTIFICATE_ARN: arn:aws:acm:eu-west-1:098107509664:certificate/73e0eef3-636b-4555-ab14-7c9b6e73937e
+          DOMAIN_NAME: courses.googleoptimize.dev.app.york.ac.uk
