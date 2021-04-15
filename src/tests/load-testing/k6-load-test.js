@@ -8,10 +8,17 @@ import { sleep } from "k6";
 
 export const options = {
     vus: 3, // number of virtual users
-    duration: "10s", // duration of test
+    duration: "5s", // duration of test
 };
 
 export default function main() {
-    http.get("https://wwwtest.york.ac.uk/study-453/undergraduate/courses/search?q=english&level=undergraduate");
+    let response = http.get(
+        "https://wwwtest.york.ac.uk/study-453/undergraduate/courses/search?q=english&level=undergraduate"
+    );
+    console.log(
+        `Virtual user: ${__VU}  -  iteration: ${__ITER}\nResponse status: ${
+            response.status
+        }\nResponse headers: ${JSON.stringify(response.headers)}`
+    );
     sleep(1);
 }
