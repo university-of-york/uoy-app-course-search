@@ -5,7 +5,6 @@ on:
     branches:
       - dev
       - main
-      - CFIN-453
   workflow_dispatch:
 
 jobs:
