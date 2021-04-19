@@ -56,7 +56,7 @@ describe("Course", () => {
         expect(screen.getByRole("link", { name: "A Course - Award" })).toBeInTheDocument();
     });
 
-    it("the the accessibility tree link name is generated ok when award is not present", async () => {
+    it("the accessibility tree link name is generated ok when award is not present", async () => {
         const course = {
             title: "A Course",
             liveUrl: "https://fakecourse.notadomain/",
