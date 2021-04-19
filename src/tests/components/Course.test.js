@@ -42,4 +42,17 @@ describe("Course", () => {
         expect(within(link).getByRole("heading", { name: "A Course - Award" })).toBeInTheDocument();
         expect(within(link).getByTestId("tag-icon")).toBeInTheDocument();
     });
+
+    it("uses the course title plus award as the link name", async () => {
+        const course = {
+            title: "A Course",
+            liveUrl: "https://fakecourse.notadomain/",
+            level: "undergraduate",
+            award: "Award",
+        };
+
+        render(<Course course={course} />);
+
+        expect(screen.getByRole("link", { name: "A Course - Award" })).toBeInTheDocument();
+    });
 });
