@@ -17,10 +17,17 @@
     justify-content: space-around;
     align-items: center;
     max-width: 23%;
-    min-width: 206px;
-    flex: 1 1 206px;
+    min-width: 120px;
+    flex: 1 1 120px;
 }
-@media only screen and (max-width: 40em) {
+
+@media only screen and (max-width: 30em) {
+    .rich-tag {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (min-width: 30em) and (max-width: 40em) {
     .rich-tag {
         max-width: 48%;
     }
