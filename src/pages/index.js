@@ -19,6 +19,7 @@ import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
 import { searchForCourses } from "../utils/searchForCourses";
 import { HeroBanner } from "../components/HeroBanner";
 import { SearchResultsDescription } from "../components/SearchResultsDescription";
+import { GlobalNotice } from "../components/GlobalNotice";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -26,6 +27,10 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
             <PageHead search={searchTerm} />
             <UniversityWrapper>
                 <UniversityBody>
+                    <GlobalNotice>
+                        This is a new service. Please help us improve it by sharing your{" "}
+                        <a href="https://york.qualtrics.com/jfe/form/SV_6R4pMhXXDs92mii">feedback</a> with us
+                    </GlobalNotice>
                     <UniversityHeaderWithSearch />
                     <UniversityTitleBar title="Courses" />
 
