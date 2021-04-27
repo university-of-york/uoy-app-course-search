@@ -22,7 +22,7 @@ describe("App", () => {
         expect(screen.getByRole("heading", { name: "Courses" })).toBeInTheDocument();
     });
 
-    it("contains the undergraduate menu navigation", () => {
+    it("displays the undergraduate menu navigation", () => {
         render(<App />);
 
         expect(screen.getByRole("navigation", { name: "Main Navigation" })).toBeInTheDocument();
@@ -32,6 +32,13 @@ describe("App", () => {
         render(<App />);
 
         expect(screen.getByRole("navigation", { name: "Breadcrumb" })).toBeInTheDocument();
+    });
+
+    it("displays the undergraduate side menu", () => {
+        render(<App />);
+
+        expect(screen.getByRole("navigation", { name: "Subnavigation Courses" })).toBeInTheDocument();
+        expect(screen.getByRole("navigation", { name: "Subnavigation Other Sections" })).toBeInTheDocument();
     });
 
     it("displays the search element", () => {

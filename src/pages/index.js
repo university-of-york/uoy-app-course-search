@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-    GridBoxFull,
+    GridBoxQuarter,
+    GridBoxThreeQuarters,
     GridRow,
     UniversityFooter,
     UniversityHeaderWithSearch,
@@ -21,6 +22,7 @@ import { SearchResultsDescription } from "../components/SearchResultsDescription
 import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
 import { CoronavirusNotice } from "../components/CoronavirusNotice";
+import { UndergraduateSubnavigation } from "../components/UndergraduateSubnavigation";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -46,22 +48,21 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
 
                         <WrappedMainGrid>
                             <GridRow>
-                                <GridBoxFull>
+                                <GridBoxQuarter>
+                                    <UndergraduateSubnavigation />
+                                </GridBoxQuarter>
+                                <GridBoxThreeQuarters>
                                     <SearchResultsDescription
                                         searchTerm={searchTerm}
                                         numberOfMatches={numberOfMatches}
                                         numberOfResultsShown={searchResults?.length}
                                     />
-                                </GridBoxFull>
-                            </GridRow>
-                            <GridRow>
-                                <GridBoxFull>
                                     <CourseSearchResults
                                         isSuccessfulSearch={isSuccessfulSearch}
                                         searchResults={searchResults}
                                         searchTerm={searchTerm}
                                     />
-                                </GridBoxFull>
+                                </GridBoxThreeQuarters>
                             </GridRow>
                         </WrappedMainGrid>
                     </div>
