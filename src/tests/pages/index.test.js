@@ -52,6 +52,12 @@ describe("App", () => {
         expect(screen.getByRole("heading", { name: "Maths" })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: "Physics" })).toBeInTheDocument();
     });
+
+    it("displays the coronavirus alert notice", () => {
+        render(<App />);
+
+        expect(screen.getByText("Coronavirus information for staff and students")).toBeVisible();
+    });
 });
 
 describe("getServerSideProps", () => {

@@ -20,6 +20,7 @@ import { HeroBanner } from "../components/HeroBanner";
 import { SearchResultsDescription } from "../components/SearchResultsDescription";
 import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
+import { CoronavirusNotice } from "../components/CoronavirusNotice";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -27,6 +28,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
             <PageHead search={searchTerm} />
             <UniversityWrapper>
                 <UniversityBody>
+                    <CoronavirusNotice />
                     <UniversityHeaderWithSearch />
                     <UniversityTitleBar title="Courses" />
                     <UndergraduateMenuNavigation />
