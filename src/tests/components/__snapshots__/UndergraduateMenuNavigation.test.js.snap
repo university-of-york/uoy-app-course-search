@@ -68,23 +68,19 @@ exports[`UndergraduateMenuNavigation renders as expected 1`] = `
       <li
         class="c-nav__item"
       >
-        <span
-          class="currentbranch0"
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/courses/"
         >
-          <a
-            class="c-nav__link"
-            href="https://www.york.ac.uk/"
-          >
-            Courses
-          </a>
-        </span>
+          Courses
+        </a>
       </li>
       <li
         class="c-nav__item"
       >
         <a
           class="c-nav__link"
-          href="https://www.york.ac.uk/"
+          href="https://www.york.ac.uk/study/undergraduate/applying/"
         >
           Applying
         </a>
