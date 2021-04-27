@@ -19,6 +19,7 @@ import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
 import { searchForCourses } from "../utils/searchForCourses";
 import { HeroBanner } from "../components/HeroBanner";
 import { SearchResultsDescription } from "../components/SearchResultsDescription";
+import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -28,6 +29,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                 <UniversityBody>
                     <UniversityHeaderWithSearch />
                     <UniversityTitleBar title="Courses" />
+                    <UndergraduateMenuNavigation />
 
                     <div role="main">
                         <HeroBanner>

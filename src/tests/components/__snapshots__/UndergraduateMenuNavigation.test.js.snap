@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UndergraduateMenuNavigation renders as expected 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="Main Navigation"
+    class="c-nav c-nav--main"
+    id="Main-Navigation"
+    role="navigation"
+  >
+    <h4
+      class="c-nav__header"
+    >
+      Courses 2021/22
+    </h4>
+    <ul
+      class="c-nav__list c-nav__list c-nav__list--associative"
+    >
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/courses/all"
+        >
+          All courses
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/courses-2021/teaching-learning/"
+        >
+          Teaching and learning
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/international/applying/pathways/"
+        >
+          International foundation programme
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/about/term-dates/"
+        >
+          Term dates
+        </a>
+      </li>
+    </ul>
+    <h4
+      class="c-nav__header"
+    >
+      Other sections
+    </h4>
+    <ul
+      class="c-nav__list c-nav__list c-nav__list--structural"
+    >
+      <li
+        class="c-nav__item"
+      >
+        <span
+          class="currentbranch0"
+        >
+          <a
+            class="c-nav__link"
+            href="https://www.york.ac.uk/"
+          >
+            Courses
+          </a>
+        </span>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/"
+        >
+          Applying
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/visits/"
+        >
+          Visit us
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/fees-funding/"
+        >
+          Fees and funding
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/accommodation/undergraduate/"
+        >
+          Accommodation
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/student-life/"
+        >
+          Student life
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/careers-skills/"
+        >
+          Careers and skills
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/study-abroad/"
+        >
+          Study abroad
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/international/"
+        >
+          International students
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/prospectus/"
+        >
+          Prospectus
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/schools-and-colleges/"
+        >
+          Schools and colleges
+        </a>
+      </li>
+      <li
+        class="c-nav__item"
+      >
+        <a
+          class="c-nav__link"
+          href="https://www.york.ac.uk/study/undergraduate/why-york/"
+        >
+          Why York?
+        </a>
+      </li>
+      <li
+        class="c-nav__item c-nav__item--more"
+      >
+        <a
+          class="c-nav__link"
+        >
+          More...
+        </a>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;

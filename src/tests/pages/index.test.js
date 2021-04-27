@@ -22,6 +22,12 @@ describe("App", () => {
         expect(screen.getByRole("heading", { name: "Courses" })).toBeInTheDocument();
     });
 
+    it("contains the undergraduate menu navigation", () => {
+        render(<App />);
+
+        expect(screen.getByRole("navigation", { name: "Main Navigation" })).toBeInTheDocument();
+    });
+
     it("displays the search element", () => {
         render(<App />);
 

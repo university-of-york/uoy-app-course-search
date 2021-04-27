@@ -42,4 +42,29 @@ describe("Course", () => {
         expect(within(link).getByRole("heading", { name: "A Course - Award" })).toBeInTheDocument();
         expect(within(link).getByTestId("tag-icon")).toBeInTheDocument();
     });
+
+    it("uses the course title plus award as the accessibility tree link name, when award is present", async () => {
+        const course = {
+            title: "A Course",
+            liveUrl: "https://fakecourse.notadomain/",
+            level: "undergraduate",
+            award: "Award",
+        };
+
+        render(<Course course={course} />);
+
+        expect(screen.getByRole("link", { name: "A Course - Award" })).toBeInTheDocument();
+    });
+
+    it("the accessibility tree link name is generated ok when award is not present", async () => {
+        const course = {
+            title: "A Course",
+            liveUrl: "https://fakecourse.notadomain/",
+            level: "undergraduate",
+        };
+
+        render(<Course course={course} />);
+
+        expect(screen.getByRole("link", { name: "A Course" })).toBeInTheDocument();
+    });
 });
