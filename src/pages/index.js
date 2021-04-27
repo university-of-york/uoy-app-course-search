@@ -29,7 +29,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                 <UniversityBody>
                     <GlobalNotice>
                         This is a new service. Please help us improve it by sharing your{" "}
-                        <a href="https://york.qualtrics.com/jfe/form/SV_6R4pMhXXDs92mii">feedback</a> with us
+                        <a href="https://york.qualtrics.com/jfe/form/SV_6R4pMhXXDs92mii">feedback</a> with us.
                     </GlobalNotice>
                     <UniversityHeaderWithSearch />
                     <UniversityTitleBar title="Courses" />
