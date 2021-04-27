@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-    Breadcrumbs,
     GridBoxFull,
     GridRow,
     UniversityFooter,
@@ -20,6 +19,7 @@ import { searchForCourses } from "../utils/searchForCourses";
 import { HeroBanner } from "../components/HeroBanner";
 import { SearchResultsDescription } from "../components/SearchResultsDescription";
 import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
+import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -33,7 +33,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
 
                     <div role="main">
                         <HeroBanner>
-                            <Breadcrumbs screenBreadcrumbs={[{ label: "Course search", link: "/" }]} />
+                            <UndergraduateBreadcrumbs />
                             <h1>Search undergraduate courses</h1>
                             <Search
                                 searchTerm={searchTerm}

@@ -28,6 +28,12 @@ describe("App", () => {
         expect(screen.getByRole("navigation", { name: "Main Navigation" })).toBeInTheDocument();
     });
 
+    it("displays the undergraduate breadcrumbs", () => {
+        render(<App />);
+
+        expect(screen.getByRole("navigation", { name: "Breadcrumb" })).toBeInTheDocument();
+    });
+
     it("displays the search element", () => {
         render(<App />);
 
