@@ -19,7 +19,7 @@ describe("App", () => {
     it("displays an appropriate page heading", () => {
         render(<App />);
 
-        expect(screen.getByRole("heading", { name: "Courses" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Undergraduate" })).toBeInTheDocument();
     });
 
     it("displays the undergraduate menu navigation", () => {

@@ -32,7 +32,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                 <UniversityBody>
                     <CoronavirusNotice />
                     <UniversityHeaderWithSearch />
-                    <UniversityTitleBar title="Courses" />
+                    <UniversityTitleBar title="Undergraduate" />
                     <UndergraduateMenuNavigation />
 
                     <div role="main">
