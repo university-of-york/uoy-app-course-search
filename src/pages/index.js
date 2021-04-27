@@ -34,36 +34,38 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                     <UniversityHeaderWithSearch />
                     <UniversityTitleBar title="Courses" />
 
-                    <HeroBanner>
-                        <Breadcrumbs screenBreadcrumbs={[{ label: "Course search", link: "/" }]} />
-                        <h1>Search undergraduate courses</h1>
-                        <Search
-                            searchTerm={searchTerm}
-                            numberOfMatches={numberOfMatches}
-                            numberOfResultsShown={searchResults?.length}
-                        />
-                    </HeroBanner>
+                    <div role="main">
+                        <HeroBanner>
+                            <Breadcrumbs screenBreadcrumbs={[{ label: "Course search", link: "/" }]} />
+                            <h1>Search undergraduate courses</h1>
+                            <Search
+                                searchTerm={searchTerm}
+                                numberOfMatches={numberOfMatches}
+                                numberOfResultsShown={searchResults?.length}
+                            />
+                        </HeroBanner>
 
-                    <WrappedMainGrid>
-                        <GridRow>
-                            <GridBoxFull>
-                                <SearchResultsDescription
-                                    searchTerm={searchTerm}
-                                    numberOfMatches={numberOfMatches}
-                                    numberOfResultsShown={searchResults?.length}
-                                />
-                            </GridBoxFull>
-                        </GridRow>
-                        <GridRow>
-                            <GridBoxFull>
-                                <CourseSearchResults
-                                    isSuccessfulSearch={isSuccessfulSearch}
-                                    searchResults={searchResults}
-                                    searchTerm={searchTerm}
-                                />
-                            </GridBoxFull>
-                        </GridRow>
-                    </WrappedMainGrid>
+                        <WrappedMainGrid>
+                            <GridRow>
+                                <GridBoxFull>
+                                    <SearchResultsDescription
+                                        searchTerm={searchTerm}
+                                        numberOfMatches={numberOfMatches}
+                                        numberOfResultsShown={searchResults?.length}
+                                    />
+                                </GridBoxFull>
+                            </GridRow>
+                            <GridRow>
+                                <GridBoxFull>
+                                    <CourseSearchResults
+                                        isSuccessfulSearch={isSuccessfulSearch}
+                                        searchResults={searchResults}
+                                        searchTerm={searchTerm}
+                                    />
+                                </GridBoxFull>
+                            </GridRow>
+                        </WrappedMainGrid>
+                    </div>
                 </UniversityBody>
                 <UniversityFooter />
             </UniversityWrapper>
