@@ -23,6 +23,7 @@ import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavi
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
 import { CoronavirusNotice } from "../components/CoronavirusNotice";
 import { UndergraduateSubnavigation } from "../components/UndergraduateSubnavigation";
+import { GlobalNotice } from "../components/GlobalNotice";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -31,6 +32,10 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
             <UniversityWrapper>
                 <UniversityBody>
                     <CoronavirusNotice />
+                    <GlobalNotice>
+                        This is a new service. Please help us improve it by sharing your{" "}
+                        <a href="https://york.qualtrics.com/jfe/form/SV_6R4pMhXXDs92mii">feedback</a> with us.
+                    </GlobalNotice>
                     <UniversityHeaderWithSearch />
                     <UniversityTitleBar title="Undergraduate" />
                     <UndergraduateMenuNavigation />

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GloablNotice renders child content as expected 1`] = `
+<DocumentFragment>
+  <div
+    class="c-global-notice c-global-notice--highlighted"
+  >
+    <h2>
+      This is a notice
+    </h2>
+  </div>
+</DocumentFragment>
+`;
