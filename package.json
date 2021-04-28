@@ -56,6 +56,8 @@
     "jest-fetch-mock": "^3.0.3",
     "lighthouse": "^6.4.1",
     "prettier": "2.1.1",
+    "puppeteer": "^9.0.0",
+    "puppeteer-loadtest": "^1.0.7",
     "serverless": "^2.18.0",
     "serverless-dotenv-plugin": "^3.1.0",
     "xo": "^0.33.1"
