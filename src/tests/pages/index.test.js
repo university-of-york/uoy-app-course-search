@@ -34,13 +34,6 @@ describe("App", () => {
         expect(screen.getByRole("navigation", { name: "Breadcrumb" })).toBeInTheDocument();
     });
 
-    it("displays the undergraduate side menu", () => {
-        render(<App />);
-
-        expect(screen.getByRole("navigation", { name: "Subnavigation Courses" })).toBeInTheDocument();
-        expect(screen.getByRole("navigation", { name: "Subnavigation Other Sections" })).toBeInTheDocument();
-    });
-
     it("displays the search element", () => {
         render(<App />);
 

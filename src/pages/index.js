@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-    GridBoxQuarter,
-    GridBoxThreeQuarters,
+    GridBoxFull,
     GridRow,
     UniversityFooter,
     UniversityHeaderWithSearch,
@@ -22,7 +21,6 @@ import { SearchResultsDescription } from "../components/SearchResultsDescription
 import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
 import { CoronavirusNotice } from "../components/CoronavirusNotice";
-import { UndergraduateSubnavigation } from "../components/UndergraduateSubnavigation";
 import { GlobalNotice } from "../components/GlobalNotice";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
@@ -53,10 +51,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
 
                         <WrappedMainGrid>
                             <GridRow>
-                                <GridBoxQuarter>
-                                    <UndergraduateSubnavigation />
-                                </GridBoxQuarter>
-                                <GridBoxThreeQuarters>
+                                <GridBoxFull>
                                     <SearchResultsDescription
                                         searchTerm={searchTerm}
                                         numberOfMatches={numberOfMatches}
@@ -67,7 +62,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                                         searchResults={searchResults}
                                         searchTerm={searchTerm}
                                     />
-                                </GridBoxThreeQuarters>
+                                </GridBoxFull>
                             </GridRow>
                         </WrappedMainGrid>
                     </div>
