@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const PageHead = ({ search }) => {
     return (
         <Head>
-            <script src="https://www.googleoptimize.com/optimize.js?id=OPT-PCBTPN9" />
+            <script async src="https://www.googleoptimize.com/optimize.js?id=OPT-PCBTPN9" />
 
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="author" content="University of York" />
