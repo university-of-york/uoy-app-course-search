@@ -19,7 +19,19 @@ describe("App", () => {
     it("displays an appropriate page heading", () => {
         render(<App />);
 
-        expect(screen.getByRole("heading", { name: "Courses" })).toBeInTheDocument();
+        expect(screen.getByRole("heading", { name: "Undergraduate" })).toBeInTheDocument();
+    });
+
+    it("displays the undergraduate menu navigation", () => {
+        render(<App />);
+
+        expect(screen.getByRole("navigation", { name: "Main Navigation" })).toBeInTheDocument();
+    });
+
+    it("displays the undergraduate breadcrumbs", () => {
+        render(<App />);
+
+        expect(screen.getByRole("navigation", { name: "Breadcrumb" })).toBeInTheDocument();
     });
 
     it("displays the search element", () => {
@@ -39,6 +51,12 @@ describe("App", () => {
 
         expect(screen.getByRole("heading", { name: "Maths" })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: "Physics" })).toBeInTheDocument();
+    });
+
+    it("displays the coronavirus alert notice", () => {
+        render(<App />);
+
+        expect(screen.getByText("Coronavirus information for staff and students")).toBeVisible();
     });
 });
 

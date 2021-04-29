@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-    Breadcrumbs,
     GridBoxFull,
     GridRow,
     UniversityFooter,
@@ -19,6 +18,9 @@ import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
 import { searchForCourses } from "../utils/searchForCourses";
 import { HeroBanner } from "../components/HeroBanner";
 import { SearchResultsDescription } from "../components/SearchResultsDescription";
+import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
+import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
+import { CoronavirusNotice } from "../components/CoronavirusNotice";
 import { GlobalNotice } from "../components/GlobalNotice";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
@@ -27,16 +29,18 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
             <PageHead search={searchTerm} />
             <UniversityWrapper>
                 <UniversityBody>
+                    <CoronavirusNotice />
                     <GlobalNotice>
                         This is a new service. Please help us improve it by sharing your{" "}
                         <a href="https://york.qualtrics.com/jfe/form/SV_6R4pMhXXDs92mii">feedback</a> with us.
                     </GlobalNotice>
                     <UniversityHeaderWithSearch />
-                    <UniversityTitleBar title="Courses" />
+                    <UniversityTitleBar title="Undergraduate" />
+                    <UndergraduateMenuNavigation />
 
                     <div role="main">
                         <HeroBanner>
-                            <Breadcrumbs screenBreadcrumbs={[{ label: "Course search", link: "/" }]} />
+                            <UndergraduateBreadcrumbs />
                             <h1>Search undergraduate courses</h1>
                             <Search
                                 searchTerm={searchTerm}
@@ -53,10 +57,6 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                                         numberOfMatches={numberOfMatches}
                                         numberOfResultsShown={searchResults?.length}
                                     />
-                                </GridBoxFull>
-                            </GridRow>
-                            <GridRow>
-                                <GridBoxFull>
                                     <CourseSearchResults
                                         isSuccessfulSearch={isSuccessfulSearch}
                                         searchResults={searchResults}
