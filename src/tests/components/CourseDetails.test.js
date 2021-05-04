@@ -75,7 +75,7 @@ describe("Course details", () => {
 
         expect(tag[0]).toHaveTextContent("Start 2021");
         expect(tag[0]).toHaveTextContent("4 years full-time");
-        expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--clock-o");
+        expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--calendar");
     });
 
     it("displays tag with start year and length of course when only year of entry is present", () => {
@@ -88,7 +88,7 @@ describe("Course details", () => {
         const tag = screen.getAllByRole("listitem");
 
         expect(tag[0]).toHaveTextContent(/^Start 2021$/); // exactly matching 'Start 2021'
-        expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--clock-o");
+        expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--calendar");
     });
 
     it("displays tag with start year and length of course only length is present", () => {
@@ -101,7 +101,7 @@ describe("Course details", () => {
         const tag = screen.getAllByRole("listitem");
 
         expect(tag[0]).toHaveTextContent(/^4 years full-time$/); // exactly matching '4 years full-time'
-        expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--clock-o");
+        expect(within(tag[0]).getByTestId("tag-icon")).toHaveClass("c-icon--calendar");
     });
 
     it("does not display tag with start year and length of course when neither are present", () => {
