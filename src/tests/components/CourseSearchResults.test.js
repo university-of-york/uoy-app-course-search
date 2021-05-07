@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { CourseSearchResults } from "../../components/CourseSearchResults";
+import { CourseSearchResults } from "../../components/CourseSearchResults.js";
 
 describe("CourseSearchResults", () => {
     it("displays the titles from course search results", () => {

@@ -1,5 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
-import { Course } from "../../components/Course";
+import { Course } from "../../components/Course.js";
 
 describe("Course", () => {
     it("displays the course title and award", () => {

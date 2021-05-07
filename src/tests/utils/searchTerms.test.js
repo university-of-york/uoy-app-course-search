@@ -1,4 +1,4 @@
-import { noSearchConducted, emptySearchConducted } from "../../utils/searchTerms";
+import { noSearchConducted, emptySearchConducted } from "../../utils/searchTerms.js";
 
 describe("noSearchConducted", () => {
     it.each`

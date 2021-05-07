@@ -10,18 +10,18 @@ import {
     UniversityBody,
     WrappedMainGrid,
 } from "@university-of-york/esg-lib-pattern-library-react-components";
-import { CourseSearchResults } from "../components/CourseSearchResults";
-import { COURSE_MODEL } from "../constants/CourseModel";
-import { PageHead } from "../components/PageHead";
-import { Search } from "../components/Search";
-import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms";
-import { searchForCourses } from "../utils/searchForCourses";
-import { HeroBanner } from "../components/HeroBanner";
-import { SearchResultsDescription } from "../components/SearchResultsDescription";
-import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
-import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
-import { CoronavirusNotice } from "../components/CoronavirusNotice";
-import { GlobalNotice } from "../components/GlobalNotice";
+import { CourseSearchResults } from "../components/CourseSearchResults.js";
+import { COURSE_MODEL } from "../constants/CourseModel.js";
+import { PageHead } from "../components/PageHead.js";
+import { Search } from "../components/Search.js";
+import { emptySearchConducted, noSearchConducted } from "../utils/searchTerms.js";
+import { searchForCourses } from "../utils/searchForCourses.js";
+import { HeroBanner } from "../components/HeroBanner.js";
+import { SearchResultsDescription } from "../components/SearchResultsDescription.js";
+import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation.js";
+import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs.js";
+import { CoronavirusNotice } from "../components/CoronavirusNotice.js";
+import { GlobalNotice } from "../components/GlobalNotice.js";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (

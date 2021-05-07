@@ -1,9 +1,9 @@
-import { Course } from "./Course";
-import PropTypes from "prop-types";
-import { COURSE_MODEL } from "../constants/CourseModel";
 import React from "react";
+import PropTypes from "prop-types";
 import { Alert } from "@university-of-york/esg-lib-pattern-library-react-components";
-import { noSearchConducted } from "../utils/searchTerms";
+import { Course } from "./Course.js";
+import { COURSE_MODEL } from "../constants/CourseModel.js";
+import { noSearchConducted } from "../utils/searchTerms.js";
 
 const CourseSearchResults = ({ isSuccessfulSearch, searchResults, searchTerm }) => {
     if (noSearchConducted(searchTerm)) {

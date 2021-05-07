@@ -1,6 +1,6 @@
 import React from "react";
-import { COURSE_MODEL } from "../constants/CourseModel";
-import { CourseDetails } from "./CourseDetails";
+import { COURSE_MODEL } from "../constants/CourseModel.js";
+import { CourseDetails } from "./CourseDetails.js";
 
 const Course = ({ course }) => {
     const title = () => {

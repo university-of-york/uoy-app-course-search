@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import React from "react";
-import { CourseDetails } from "../../components/CourseDetails";
+import { CourseDetails } from "../../components/CourseDetails.js";
 
 describe("Course details", () => {
     it("works with no metadata", () => {

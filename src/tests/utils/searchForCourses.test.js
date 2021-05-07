@@ -1,4 +1,4 @@
-import { searchForCourses } from "../../utils/searchForCourses";
+import { searchForCourses } from "../../utils/searchForCourses.js";
 
 beforeEach(() => {
     fetch.resetMocks();

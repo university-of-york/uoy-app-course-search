@@ -1,4 +1,4 @@
-import { sentenceCase } from "../../utils/formatting";
+import { sentenceCase } from "../../utils/formatting.js";
 
 describe("sentenceCase", () => {
     it("Capitalises the first letter of the input string", async () => {

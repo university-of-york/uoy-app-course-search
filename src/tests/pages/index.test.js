@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import App, { getServerSideProps } from "../../pages";
-import { searchForCourses } from "../../utils/searchForCourses";
+import App, { getServerSideProps } from "../../pages/index.js";
+import { searchForCourses } from "../../utils/searchForCourses.js";
 
 jest.mock("../../utils/searchForCourses");
 

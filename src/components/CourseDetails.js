@@ -1,9 +1,9 @@
 import React from "react";
-import { COURSE_MODEL } from "../constants/CourseModel";
-import { RichTagList } from "./RichTagList";
-import { RichTag } from "./RichTag";
-import { sentenceCase } from "../utils/formatting";
 import PropTypes from "prop-types";
+import { COURSE_MODEL } from "../constants/CourseModel.js";
+import { RichTagList } from "./RichTagList.js";
+import { RichTag } from "./RichTag.js";
+import { sentenceCase } from "../utils/formatting.js";
 
 const CourseDetails = ({ course }) => {
     return (

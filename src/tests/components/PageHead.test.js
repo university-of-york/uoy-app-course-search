@@ -1,4 +1,4 @@
-import { pageTitle } from "../../components/PageHead";
+import { pageTitle } from "../../components/PageHead.js";
 
 describe("Page title", () => {
     it("Renders a standard title if no search term is entered", () => {

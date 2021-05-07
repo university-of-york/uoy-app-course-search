@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { GlobalNotice } from "../../components/GlobalNotice";
+import { GlobalNotice } from "../../components/GlobalNotice.js";
 
 describe("GloablNotice", () => {
     it("renders child content as expected", () => {

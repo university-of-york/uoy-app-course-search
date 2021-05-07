@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { SearchResultsDescription } from "../../components/SearchResultsDescription";
+import { SearchResultsDescription } from "../../components/SearchResultsDescription.js";
 
 describe("SearchResultsDescription", () => {
     it("informs the user that only a limited number of results are being shown when the number of matches is greater than the number of results", () => {

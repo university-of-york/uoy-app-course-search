@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
-import { RichTagList } from "../../components/RichTagList";
-import { RichTag } from "../../components/RichTag";
+import { RichTagList } from "../../components/RichTagList.js";
+import { RichTag } from "../../components/RichTag.js";
 import React from "react";
 
 describe("TagList", () => {

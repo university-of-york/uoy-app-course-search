@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { UndergraduateMenuNavigation } from "../../components/UndergraduateMenuNavigation";
+import { UndergraduateMenuNavigation } from "../../components/UndergraduateMenuNavigation.js";
 
 describe("UndergraduateMenuNavigation", () => {
     it("renders as expected", () => {

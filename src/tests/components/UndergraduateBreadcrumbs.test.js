@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { UndergraduateBreadcrumbs } from "../../components/UndergraduateBreadcrumbs";
+import { UndergraduateBreadcrumbs } from "../../components/UndergraduateBreadcrumbs.js";
 
 describe("UndergraduateBreadcrumbs", () => {
     it("renders as expected", () => {

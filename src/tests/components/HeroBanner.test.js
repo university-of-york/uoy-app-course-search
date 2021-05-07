@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { HeroBanner } from "../../components/HeroBanner";
+import { HeroBanner } from "../../components/HeroBanner.js";
 
 describe("HeroBanner", () => {
     it("renders as expected", () => {
