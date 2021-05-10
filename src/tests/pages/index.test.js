@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
+import { cleanCookies } from "universal-cookie/lib/utils";
 import App, { getServerSideProps } from "../../pages";
 import { searchForCourses } from "../../utils/searchForCourses";
 
@@ -57,6 +58,23 @@ describe("App", () => {
         render(<App />);
 
         expect(screen.getByText("Coronavirus information for staff and students")).toBeVisible();
+    });
+
+    it("displays the cookie banner", () => {
+        cleanCookies();
+        render(<App />);
+
+        expect(screen.getByText("our use of cookies")).toBeVisible();
+    });
+
+    it("hides cookie banner when dismiss clicked", async () => {
+        cleanCookies();
+        render(<App />);
+        const banner = document.querySelector("#cookie-banner");
+        const bannerIcon = banner.querySelector("i");
+        fireEvent.click(bannerIcon);
+        const displayStyle = window.getComputedStyle(banner);
+        expect(displayStyle.display).toBe("none");
     });
 });
 
