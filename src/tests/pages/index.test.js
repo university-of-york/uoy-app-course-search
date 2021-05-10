@@ -70,9 +70,9 @@ describe("App", () => {
     it("hides cookie banner when dismiss clicked", async () => {
         cleanCookies();
         render(<App />);
-        const icons = document.querySelectorAll("i");
-        fireEvent.click(icons[3]);
         const banner = document.querySelector("#cookie-banner");
+        const bannerIcon = banner.querySelector("i");
+        fireEvent.click(bannerIcon);
         const displayStyle = window.getComputedStyle(banner);
         expect(displayStyle.display).toBe("none");
     });
