@@ -157,4 +157,16 @@ describe("getServerSideProps", () => {
         expect(response.props.searchResults).toEqual([]);
         expect(response.props.numberOfMatches).toEqual(0);
     });
+
+    it("can handle query parameter 'q' as synonym for 'search'", async () => {
+        searchForCourses.mockResolvedValue({
+            isSuccessfulSearch: true,
+            searchResponseData: { numberOfMatches: 0, results: [] },
+        });
+
+        await getServerSideProps({ query: { q: "biology" } });
+
+        expect(searchForCourses).toHaveBeenCalledTimes(1);
+        expect(searchForCourses).toHaveBeenCalledWith("biology");
+    });
 });
