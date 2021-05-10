@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import {
     GridBoxFull,
     GridRow,
+    UniversityBody,
+    UniversityCookieBanner,
     UniversityFooter,
     UniversityHeaderWithSearch,
     UniversityTitleBar,
     UniversityWrapper,
-    UniversityBody,
     WrappedMainGrid,
 } from "@university-of-york/esg-lib-pattern-library-react-components";
 import { CourseSearchResults } from "../components/CourseSearchResults";
@@ -36,6 +37,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                     </GlobalNotice>
                     <UniversityHeaderWithSearch />
                     <UniversityTitleBar title="Undergraduate" />
+                    <UniversityCookieBanner />
                     <UndergraduateMenuNavigation />
 
                     <div role="main">
