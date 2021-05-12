@@ -34,7 +34,7 @@ LevelAndAwardTag.propTypes = {
 const StartDateAndLengthTag = ({ yearOfEntry, length }) => {
     if (yearOfEntry || length) {
         const startYear = yearOfEntry ? `Start ${yearOfEntry.slice(0, 4)}` : null;
-        return <RichTag topIcon="clock-o" title={startYear} subText={length} />;
+        return <RichTag topIcon="calendar" title={startYear} subText={length} />;
     }
 
     return null;

@@ -27,7 +27,7 @@
     "lhc": "npm run lighthouse-check:mobile"
   },
   "dependencies": {
-    "@university-of-york/esg-lib-pattern-library-react-components": "^7.1.0",
+    "@university-of-york/esg-lib-pattern-library-react-components": "^7.2.0",
     "express": "^4.17.1",
     "next": "^10.0.0",
     "path-match": "^1.2.4",
@@ -35,7 +35,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "serverless-apigw-binary": "^0.4.4",
-    "serverless-http": "^2.5.0"
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "@actions/core": "^1.2.6",
@@ -56,8 +56,8 @@
     "jest-fetch-mock": "^3.0.3",
     "lighthouse": "^6.4.1",
     "prettier": "2.1.1",
-    "serverless": "^2.18.0",
-    "serverless-dotenv-plugin": "^3.1.0",
+    "serverless": "^2.41.0",
+    "serverless-dotenv-plugin": "^3.9.0",
     "xo": "^0.33.1"
   }
 }
