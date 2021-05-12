@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, fireEvent, screen, within } from "@testing-library/react";
 import { cleanCookies } from "universal-cookie/lib/utils";
 import App, { getServerSideProps } from "../../pages";
 import { searchForCourses } from "../../utils/searchForCourses";
@@ -70,11 +70,13 @@ describe("App", () => {
     it("hides cookie banner when dismiss clicked", async () => {
         cleanCookies();
         render(<App />);
-        const banner = document.querySelector("#cookie-banner");
-        const bannerIcon = banner.querySelector("i");
-        fireEvent.click(bannerIcon);
-        const displayStyle = window.getComputedStyle(banner);
-        expect(displayStyle.display).toBe("none");
+
+        const cookieBanner = screen.getByRole("region", { name: "Cookie banner" });
+        const dismissButton = within(cookieBanner).getByRole("button", { name: "Dismiss this notification" });
+
+        fireEvent.click(dismissButton);
+
+        expect(screen.getByText("our use of cookies")).not.toBeVisible();
     });
 });
 

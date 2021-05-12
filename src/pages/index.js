@@ -37,7 +37,6 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                     </GlobalNotice>
                     <UniversityHeaderWithSearch />
                     <UniversityTitleBar title="Undergraduate" />
-                    <UniversityCookieBanner />
                     <UndergraduateMenuNavigation />
 
                     <div role="main">
@@ -68,6 +67,7 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                             </GridRow>
                         </WrappedMainGrid>
                     </div>
+                    <UniversityCookieBanner />
                 </UniversityBody>
                 <UniversityFooter />
             </UniversityWrapper>
