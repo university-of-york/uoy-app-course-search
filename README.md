@@ -1,15 +1,9 @@
-# Course Search
+# Course Search (not yet released)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ad91c322/uoy-app-course-search)
 
 This is the University of York's Course Search application. It allows prospective students to search for courses,
-view results, and follow links to course pages.
-
-See our [GitHub Wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and related developer guides.
-
-**This project is a work-in-progress and search results may not meet expectations**
-
-Live URL: https://courses.app.york.ac.uk/
-Dev URL: https://courses.dev.app.york.ac.uk/
+view results, and follow links to course pages. 
+Both the [live system](https://courses.app.york.ac.uk/) and a [test system](https://courses.dev.app.york.ac.uk/) are available.
 
 ## Related Repos
 
@@ -17,77 +11,56 @@ Dev URL: https://courses.dev.app.york.ac.uk/
 - [Funnelback Courses API](https://github.com/university-of-york/uoy-config-funnelback-courses) - the underlying Funnelback search provider configuration that powers searches.
 - [Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components) - suite of React components for incorporating university style into the application.
 
+
 ## Development
+
+See the [wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and related developer guides.
 
 ### Prerequisites
 
-You will need [Node.js](https://nodejs.org/en/download/) (LTS version) installed on your machine.
+ - You will need [Node.js](https://nodejs.org/en/download/) (v12) installed on your machine.
+ - You will need to have configured a `.npmrc` file with a GitHub token that has read access to packages from the [Digital Services Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components) library.
 
 ### Local Development
 
 This application uses [Next.js](https://nextjs.org/). The entry point
-for the application is `src/pages/index.js`. To run the
-application locally in development mode using the command line:
+for the application is `src/pages/index.js`. 
+
+#### Command line
+
+To run the application locally in development mode using the command line:
 
 ```
 npm run dev
 ```
 
-Alternatively, in Intellij, open the `npm` window (right click
-on `package.json` and select `Show npm scripts`) and double-click on
-`dev`.
+#### IntelliJ IDEA
 
-Go to [http://localhost:3000](http://localhost:3000)
-to use the application.
+Open the `npm` window (right click on `package.json` and select `Show npm scripts`) and double-click on `dev`.
 
-To stop the application, on the command line press `ctrl-c`, or in
-Intellij, press the square red `Stop` button.
+Navigate to [http://localhost:3000](http://localhost:3000) to use the application.
 
-#### Pattern Library dependency requires `.npmrc`
-
-The application has a dependency on [ESG Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components).
-Fetching this dependency requires the project to have appropriate credentials
-for the `@university-of-york` Github registry configured. 
-See the [Pattern Library README](https://github.com/university-of-york/esg-lib-pattern-library-react-components)
-for instructions on setting up a `.npmrc` file for this. Without it, running
-`npm install` may produce errors like:
-
-```
-npm ERR! 404 Not Found - GET https://registry.npmjs.org/@university-of-york%2fesg-lib-pattern-library-react-components - Not found
-npm ERR! 404
-npm ERR! 404  '@university-of-york/esg-lib-pattern-library-react-components@4.3.4' is not in the npm registry.
-```
-#### A pages/_app.js file exists so an internal css file can be used
-See the [Next Built-In CSS Support - Adding a Global Stylesheet](https://nextjs.org/docs/basic-features/built-in-css-support) documentation
 ### Testing
 
 Tests live in `src/tests`. To run them:
+
+#### Command line
 
 ```
 npm test
 ```
 
-Or, in Intellij, open the `npm` window and double-click on `test`, or in package.json, click on the green arrow next to the "test": "jest" entry.
+#### IntelliJ IDEA
 
-Tests are run automatically upon creation of a pull request, configured in `.github/workflows/checks.yml`, 
-and upon a merge into `dev` or `main` branches on Github as part of `.github/workflows/deploy.yml`
+Open the `npm` window and double-click on `test`, or in `package.json` click on the green arrow next to the `test` entry.
 
-#### Mobile devices testing
+#### Visual Testing 
 
-The application is tested against a number of mobile devices, both emulated and real.
-In the first instance developers use Google Chrome Developer Tools and then finally BrowserStack for testing. 
-The Wiki page [Testing course search rendering on mobile devices](https://github.com/university-of-york/uoy-app-course-search/wiki/Testing-Course-Search-Rendering-on-Mobile-Devices) has more detail on the process.
-
-#### Percy Visual Testing 
-
-The application has a GitHub workflow action so that at a Pull Request it is subject to visual testing using [Percy][Percy](https://percy.io/ad91c322/uoy-app-course-search). 
-Should a difference be detected, then approval is required using Percy prior to a merge. 
-More detail can be found in the York Wiki Service page (University users only): [Testing: Percy, automation in testing with GitHub](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899)
+We use [Percy][Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request. More details can be found in the [University of York Wiki page](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899) (University users only).
 
 ### Deployment
 
-Deployment to the development and production environments happen through GitHub actions that trigger automatically when 
-new code is merged into the `dev` and `main` branches. 
+Deployment to the development and production environments happens through GitHub actions that trigger automatically when new code is merged into the `dev` and `main` branches. 
 
 ### Domain setup
 
