@@ -95,6 +95,12 @@ package:
     - node_modules/es-abstract/**
     - node_modules/string.prototype.trimstart/**
     - node_modules/string.prototype.trimend/**
+    - node_modules/**/CHANGELOG*
+    - node_modules/**/README*
+    - node_modules/*/test/**
+    - node_modules/**/.github/**
+    - node_modules/@opentelemetry/**
+    - node_modules/encoding/**
 
 resources:
   Conditions:
