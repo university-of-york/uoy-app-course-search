@@ -1,12 +1,12 @@
-name: "Publish C4 Model"
+name: publish architecture
 
 on:
+  workflow_dispatch:
   push:
     branches:
-    - main
+    - dev
     paths:
     - 'docs/architecture/*.dsl'
-  workflow_dispatch:
 
 jobs:
   publish:

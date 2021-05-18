@@ -1,10 +1,14 @@
-name: Run Prettier and XO checks, and tests
+name: build
+
 on:
-  pull_request:
   workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - dev
 
 jobs:
-  run-checks:
+  deploy_to_aws:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the application's source code
@@ -23,11 +27,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-      - name: Check code is formatted correctly
-        run: npm run checkformat
-
-      - name: Check code conforms to linting rules
-        run: npm run lint
-
       - name: Check tests run
-        run: npm run test
+        run: npm run package

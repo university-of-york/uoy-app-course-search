@@ -1,13 +1,14 @@
-name: Run visual tests with Percy
+name: tests
+
 on:
-  pull_request:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - dev
 
 jobs:
-  visual-tests:
+  run-checks:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the application's source code
@@ -26,16 +27,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-      - name: Build the application
-        run: npm run build
-
-      - name: Run the application in the background
-        run: (npm start &)
-
-      - name: Wait for the application to start
-        run: sleep 10
-
-      - name: Run percy visual tests
-        run: npm run percy
-        env:
-          PERCY_TOKEN: ${{secrets.PERCY_TOKEN}}
+      - name: Check tests run
+        run: npm run test

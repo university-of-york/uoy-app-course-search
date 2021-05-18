@@ -1,7 +1,11 @@
-name: Run performance tests with Lighthouse
+name: performance checks
+
 on:
-  pull_request:
   workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - dev
 
 jobs:
   performance-tests:
