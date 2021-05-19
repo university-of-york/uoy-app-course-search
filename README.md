@@ -5,27 +5,24 @@ This is the University of York's Course Search application. It allows prospectiv
 view results, and follow links to course pages. 
 Both the [live system](https://courses.app.york.ac.uk/) and a [test system](https://courses.dev.app.york.ac.uk/) are available.
 
+See the [wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and developer guides.
+
 ## Related Repos
 
 - [Courses API](https://github.com/university-of-york/uoy-api-courses) - the API that provides Course Search functionality and in turn calls the Funnelback Courses API.
 - [Funnelback Courses API](https://github.com/university-of-york/uoy-config-funnelback-courses) - the underlying Funnelback search provider configuration that powers searches.
 - [Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components) - suite of React components for incorporating university style into the application.
 
-
-## Development
-
-See the [wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and related developer guides.
-
-### Prerequisites
+## Dependencies
 
  - You will need [Node.js](https://nodejs.org/en/download/) (v12) installed on your machine.
  - You will need to have configured a `.npmrc` file with a GitHub token that has read access to packages from the [Digital Services Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components) library.
 
-### Local Development
+## Development
 
 This application uses [Next.js](https://nextjs.org/). The entry point for the application is `src/pages/index.js`.
 
-To run the application:
+To build and run the application:
 
 ```
 npm run dev
@@ -33,7 +30,7 @@ npm run dev
 
 Once started, the system is accessible at [http://localhost:3000](http://localhost:3000).
 
-### Testing
+## Tests
 
 Tests live in `src/tests`. To run them:
 
@@ -41,15 +38,19 @@ Tests live in `src/tests`. To run them:
 npm test
 ```
 
-#### Visual Testing 
+### Visual tests
 
-This repo uses [Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request. More details can be found in the [University of York Wiki page](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899) (University users only).
+This repo uses [Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request. More details can be found in the [University of York wiki](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899) (University users only).
 
-### Deployment
+### Performance tests
+
+We use [Lighthouse](https://developers.google.com/web/tools/lighthouse/) to run performance tests against the application on each new build and pull request. Performance scores below 85 are marked as a failing build.
+
+## Deployment
 
 Deployment to the development and production environments happens through GitHub actions that trigger automatically when new code is merged into the `dev` and `main` branches. See the [deployment wiki page](https://github.com/university-of-york/uoy-app-course-search/wiki/Deployment) for more details.
 
-#### Deploying to your own AWS account
+### Deploying to your own AWS account
 
 You can run Course Search in your own AWS account. Make sure you've got an active token under `~/.aws/credentials` (e.g. by logging into your account with `saml2aws`) and then run:
 
@@ -63,13 +64,13 @@ If you want to deploy a version that queries the production version of the Cours
 npm run deploy
 ```
 
-### Code style
+## Code style
 
 The project defines rules for code formatting and style. Code is checked against these
 rules upon creation of a pull request, configured in `.github/workflows/checks.yml`, 
 and upon a merge into `dev` or `main` branches on Github as part of `.github/workflows/deploy.yml`
 
-#### Formatting
+## Formatting
 
 This project uses [prettier](https://prettier.io/) to format code and to check that code
 is correctly formatted. Overrides to its default formatting rules are agreed by the team and
