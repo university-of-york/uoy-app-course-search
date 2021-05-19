@@ -13,7 +13,7 @@ Both a [live system](https://courses.app.york.ac.uk/) and a [test system](https:
 
 See the [wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and developer guides.
 
-## Related Repos
+## Related repositories
 
 - [Courses API](https://github.com/university-of-york/uoy-api-courses) - the API that provides Course Search functionality and in turn calls the Funnelback Courses API.
 - [Funnelback Courses API](https://github.com/university-of-york/uoy-config-funnelback-courses) - the underlying Funnelback search provider configuration that powers searches.
