@@ -3,7 +3,7 @@
 
 This is the University of York's Course Search application. It allows prospective students to search for courses,
 view results, and follow links to course pages. 
-Both the [live system](https://courses.app.york.ac.uk/) and a [test system](https://courses.dev.app.york.ac.uk/) are available.
+Both a [live system](https://courses.app.york.ac.uk/) and a [test system](https://courses.dev.app.york.ac.uk/) are available.
 
 See the [wiki](https://github.com/university-of-york/uoy-app-course-search/wiki) for architectural decisions and developer guides.
 
