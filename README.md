@@ -23,106 +23,54 @@ See the [wiki](https://github.com/university-of-york/uoy-app-course-search/wiki)
 
 ### Local Development
 
-This application uses [Next.js](https://nextjs.org/). The entry point
-for the application is `src/pages/index.js`. 
+This application uses [Next.js](https://nextjs.org/). The entry point for the application is `src/pages/index.js`.
 
-#### Command line
+Once started, the system is accessible at [http://localhost:3000](http://localhost:3000).
 
-To run the application locally in development mode using the command line:
+#### Run via command line
 
 ```
 npm run dev
 ```
 
-#### IntelliJ IDEA
+#### Run via IntelliJ IDEA
 
 Open the `npm` window (right click on `package.json` and select `Show npm scripts`) and double-click on `dev`.
-
-Navigate to [http://localhost:3000](http://localhost:3000) to use the application.
 
 ### Testing
 
 Tests live in `src/tests`. To run them:
 
-#### Command line
+#### Run via command line
 
 ```
 npm test
 ```
 
-#### IntelliJ IDEA
+#### Run via IntelliJ IDEA
 
 Open the `npm` window and double-click on `test`, or in `package.json` click on the green arrow next to the `test` entry.
 
 #### Visual Testing 
 
-We use [Percy][Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request. More details can be found in the [University of York Wiki page](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899) (University users only).
+Thi repo uses [Percy][Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request. More details can be found in the [University of York Wiki page](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899) (University users only).
 
 ### Deployment
 
-Deployment to the development and production environments happens through GitHub actions that trigger automatically when new code is merged into the `dev` and `main` branches. 
+Deployment to the development and production environments happens through GitHub actions that trigger automatically when new code is merged into the `dev` and `main` branches. See the [deployment wiki page](https://github.com/university-of-york/uoy-app-course-search/wiki/Deployment) for more details.
 
-### Domain setup
+#### Deploying to your own AWS account
 
-This application is automatically deployed to a custom domain by serverless and CloudFormation
-if the environment is appropriately configured (by setting environment variables `DOMAIN_NAME`
-and `SSL_CERTIFICATE_ARN`). For local sandbox development, you are unlikely to need to use a
-custom domain name, and therefore don't need to set these environment variables. For `dev` and 
-`production` environments, these environment variables are populated as part of the CI/CD 
-pipeline in `.github/workflows/deploy.yml`, though the sensitive values are stored securely 
-in the `Secrets` section of the GitHub repo settings.
+You can run Course Search in your own AWS sandbox. Make sure you've got an active token under `~/.aws/credentials` (e.g. by logging into your account with `saml2aws`) and then run:
 
-Provided that the [SSL certificate has been provisioned beforehand](https://github.com/university-of-york/uoy-app-course-search/wiki/Creating-and-Validating-an-SSL-Certificate-in-AWS),
-serverless will do all the work necessary to set up the environment, as detailed in `serverless.yml`. This involves setting up a custom domain name
-in API Gateway and mapping this to the API endpoint that serves our Next.js application. 
+```
+npm run deploy:dev
+```
+If you want to deploy a version that queries the production version of the Courses API, run:
 
-### Development and production environments
-
-Development environment variables are configured in `.env.development` and production
-environment variables are configured in `.env.production`. 
-The CI/CD pipeline is configured so that pushes to the `dev` branch will trigger a
-deployment to the ESG development AWS account using development environment variables,
-and pushes to the `main` branch will trigger a deployment to the ESG production AWS account
-using production environment variables.
-
-For local development, environment variables can be overridden by creating 
-`.env.development.local` and `.env.production.local`. These files will be ignored by Git.
-
-When running in AWS Lambda, this application's environment variables are set in Lambda
-by Serverless during the deployment process, thanks to the
-[Serverless dotenv plugin](https://www.serverless.com/plugins/serverless-dotenv-plugin).
-
-#### Switching between development and production Courses API
-
-This application fetches course data using the [Courses API](https://github.com/university-of-york/uoy-api-courses).
-Its URL is configured as an environment variable so that each deployment can use 
-the appropriate Courses API version. The development and production versions of 
-Course Search use the development and production versions of the Courses API respectively. 
-
-##### Local development
-
-When running Course Search locally using `npm run dev`, development environment variables
-will be used. To switch between development and
-production Courses API, create a file `.env.development.local` and add the production
-Courses API URL to it.
-
-##### Developer AWS sandbox
-
-When running Course Search in your AWS sandbox, use `npm run deploy` to deploy using
-production environment variables (and therefore the production Courses API), and 
-`npm run deploy:dev` to deploy using development environment variables (and
- therefore the development Courses API).
-
-##### courses.dev.app.york.ac.uk
-
-To change the development version of Course Search so that it uses the production version
-of the Courses API
-* checkout the `dev` branch of Course Search
-* log in to AWS using `saml2aws`
-* select the ESG Dev write user
-* run `npm run deploy`
-
-To change it back to using the development version of the Courses API, run `npm run deploy:dev`.
+```
+npm run deploy
+```
 
 ### Code style
 
