@@ -8,7 +8,7 @@ on:
       - dev
 
 jobs:
-  deploy_to_aws:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the application's source code
@@ -27,5 +27,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-      - name: Check tests run
-        run: npm run package
+      - name: Run build
+        run: npm run build
