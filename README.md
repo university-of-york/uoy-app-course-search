@@ -52,7 +52,12 @@ Deployment to the development and production environments happens through GitHub
 
 ### Deploying to your own AWS account
 
-You can run Course Search in your own AWS account. Make sure you've got an active token under `~/.aws/credentials` (e.g. by logging into your account with `saml2aws`) and then run:
+You can run Course Search in your own AWS account. You will need to do the following:
+
+- Make sure you've got an active token under `~/.aws/credentials` (e.g. by logging into your account with `saml2aws`)
+- Define an environment variable called `AWS_ACCOUNT_ID` populated with your AWS account ID
+   
+Then run:
 
 ```
 npm run deploy:dev
@@ -64,100 +69,19 @@ If you want to deploy a version that queries the production version of the Cours
 npm run deploy
 ```
 
-## Code style
-
-The project defines rules for code formatting and style. Code is checked against these
-rules upon creation of a pull request, configured in `.github/workflows/checks.yml`, 
-and upon a merge into `dev` or `main` branches on Github as part of `.github/workflows/deploy.yml`
-
-## Formatting
-
-This project uses [prettier](https://prettier.io/) to format code and to check that code
-is correctly formatted. Overrides to its default formatting rules are agreed by the team and
-configured in `.prettierrc.json` in the root folder. You can use `npm run format` to format
-all code in the project.
-
-##### Intellij
-
-You can configure Intellij to format code, using `prettier`, when you save a file and when 
-you run Intellij's formatting command (`Ctrl-Alt-L`). To do this:
-* install the `prettier` plugin (under `File` > `Settings` > `Plugins`)
-* go to `File` > `Settings` > `Languages & Frameworks` > `Javascript` > `Prettier` and
-check the options `on save` and `on code reformat`
-
-To make Intellij use the `prettier` formatting rules while you edit code, open
-`package.json` and above the code window it will prompt you to `Use code style based on prettier for this project?`
-which you can accept.
-
-#### Linting
-
-This project uses [XO](https://github.com/xojs/xo) to check code style. 
-XO is based on [ESLint](https://eslint.org/). Overrides to default linting rules are agreed
-by the team and configured in `.xo-config.json` in the root folder. You can use `npm run lint`
-to check whether the code conforms to the linting rules.
-
-### Useful commands
-
-**`npm run dev`**
-
-Start the application locally (running at http://localhost:3000 by default).
-
-**`npm run build`**
-
-Build the application. The build folder is `.next`.
-
-**`npm run start`**
-
-Start the application that has been built. This will use the code in the `.next` folder rather than the current source code.
-
-**`npm run deploy`**
-
-Deploy the application to AWS. To deploy to your AWS sandbox, you will need to 
-* be logged in to AWS using [saml2aws](https://wiki.york.ac.uk/display/AWS/2.+Command+Line+Access)
-* have defined an environment variable called `AWS_ACCOUNT_ID` with the account id of your sandbox:
+To undeploy the application from your AWS account:
 
 ```
-set AWS_ACCOUNT_ID=012345678
+npm run undeploy
 ```
 
-You can find your sandbox AWS account id by logging in to AWS either via
-the web console or via saml2aws - it is displayed when you select which
-account you want to use.
+## Code formatting and linting
 
-This will deploy the app using production environment variables (configured in
-`.env.production`).
+This project uses [prettier](https://prettier.io/) for code formatting and [XO](https://github.com/xojs/xo) for static analysis. To run these checks:
 
-**`npm run deploy:dev`**
-
-As above, but will use development environment variables (configured in `.env.development`).
-
-**`npm run undeploy`**
-
-Remove the application from AWS.
-
-**`npm run test`**
-
-Run the application's tests.
-
-**`npm run format`**
-
-Format all code using the team's agreed formatting rules. This uses `prettier`.
-
-**`npm run checkformat`**
-
-Check all code is correctly formatted according to agreed rules. Uses `prettier`.
-
-**`npm run lint`**
-
-Check to see if code meets the team's agreed coding standards. This uses `XO` (which in turn uses `eslint`).
-
-**`npm run check`**
-
-Checks code formatting (`prettier`), checks coding standards (`XO`), then runs tests.
-
-**`npm run formatandcheck`**
-
-Fixes code formatting (`prettier`), checks coding standards (`XO`), then runs tests.
+```
+npm run fc
+```
 
 ## TroubleShooting
 
