@@ -71,15 +71,10 @@ You can run Course Search in your own AWS account. You will need to do the follo
 - Make sure you've got an active token under `~/.aws/credentials` (e.g. by logging into your account with `saml2aws`)
 - Define an environment variable called `AWS_ACCOUNT_ID` populated with your AWS account ID
    
-Then run:
+Then run one of the following, depending on whether you want to query the development or production version of the Courses API:
 
 ```
 npm run deploy:dev
-```
-
-If you want to deploy a version that queries the production version of the Courses API, run:
-
-```
 npm run deploy
 ```
 
