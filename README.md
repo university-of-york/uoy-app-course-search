@@ -11,12 +11,12 @@ See the [wiki](https://github.com/university-of-york/uoy-app-course-search/wiki)
 
 - [Courses API](https://github.com/university-of-york/uoy-api-courses) - the API that provides Course Search functionality and in turn calls the Funnelback Courses API.
 - [Funnelback Courses API](https://github.com/university-of-york/uoy-config-funnelback-courses) - the underlying Funnelback search provider configuration that powers searches.
-- [Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components) - suite of React components for incorporating university style into the application.
+- [Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components) - a suite of React components for incorporating university style into the application.
 
 ## Dependencies
 
  - You will need [Node.js](https://nodejs.org/en/download/) (v12) installed on your machine.
- - You will need to have configured a `.npmrc` file with a GitHub token that has read access to packages from the [Digital Services Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components) library.
+ - You will need to have configured a `.npmrc` file with a GitHub token that has read access to packages from [Pattern Library React Components](https://github.com/university-of-york/esg-lib-pattern-library-react-components).
 
 ## Development
 
