@@ -52,6 +52,14 @@ We use the [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-
 
 To reinforce an accessibility-first approach, we use ARIA roles and reference these in automated tests where possible.
 
+## Code formatting and linting
+
+This project uses [prettier](https://prettier.io/) for code formatting and [XO](https://github.com/xojs/xo) for static analysis. To run these checks:
+
+```
+npm run fc
+```
+
 ## Deployment
 
 Deployment to the development and production environments happens through GitHub actions that trigger automatically when new code is merged into the `dev` and `main` branches. See the [deployment wiki page](https://github.com/university-of-york/uoy-app-course-search/wiki/Deployment) for more details.
@@ -79,14 +87,6 @@ To undeploy the application from your AWS account:
 
 ```
 npm run undeploy
-```
-
-## Code formatting and linting
-
-This project uses [prettier](https://prettier.io/) for code formatting and [XO](https://github.com/xojs/xo) for static analysis. To run these checks:
-
-```
-npm run fc
 ```
 
 ## TroubleShooting
