@@ -1,4 +1,10 @@
 # Course Search (not yet released)
+
+[![build](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/build.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/build.yml)
+[![tests](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/tests.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/tests.yml)
+[![code formatting](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/code-formatting.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/code-formatting.yml)
+[![linting](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/linting.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/linting.yml)
+[![performance checks](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/performance-checks.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/performance-checks.yml)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ad91c322/uoy-app-course-search)
 
 This is the University of York's Course Search application. It allows prospective students to search for courses,
