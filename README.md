@@ -25,35 +25,25 @@ See the [wiki](https://github.com/university-of-york/uoy-app-course-search/wiki)
 
 This application uses [Next.js](https://nextjs.org/). The entry point for the application is `src/pages/index.js`.
 
-Once started, the system is accessible at [http://localhost:3000](http://localhost:3000).
-
-#### Run via command line
+To run the application:
 
 ```
 npm run dev
 ```
 
-#### Run via IntelliJ IDEA
-
-Open the `npm` window (right click on `package.json` and select `Show npm scripts`) and double-click on `dev`.
+Once started, the system is accessible at [http://localhost:3000](http://localhost:3000).
 
 ### Testing
 
 Tests live in `src/tests`. To run them:
 
-#### Run via command line
-
 ```
 npm test
 ```
 
-#### Run via IntelliJ IDEA
-
-Open the `npm` window and double-click on `test`, or in `package.json` click on the green arrow next to the `test` entry.
-
 #### Visual Testing 
 
-Thi repo uses [Percy][Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request. More details can be found in the [University of York Wiki page](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899) (University users only).
+Thi repo uses [Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request. More details can be found in the [University of York Wiki page](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899) (University users only).
 
 ### Deployment
 
@@ -61,11 +51,12 @@ Deployment to the development and production environments happens through GitHub
 
 #### Deploying to your own AWS account
 
-You can run Course Search in your own AWS sandbox. Make sure you've got an active token under `~/.aws/credentials` (e.g. by logging into your account with `saml2aws`) and then run:
+You can run Course Search in your own AWS account. Make sure you've got an active token under `~/.aws/credentials` (e.g. by logging into your account with `saml2aws`) and then run:
 
 ```
 npm run deploy:dev
 ```
+
 If you want to deploy a version that queries the production version of the Courses API, run:
 
 ```
