@@ -182,8 +182,7 @@ using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a
 
 ## Contact
 
-- [Digital Platforms and Developments Team](mailto:marketing-support@york.ac.uk)
-- [Enterprise Systems Teaching and Learning Team](mailto:esg-teaching-and-learning-group@york.ac.uk)
+- [Digital Services Teaching and Learning Service Delivery Team](mailto:esg-teaching-and-learning-group@york.ac.uk)
 
 ## Licence
 
