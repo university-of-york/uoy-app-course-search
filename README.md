@@ -60,7 +60,7 @@ To reinforce an accessibility-first approach, we use ARIA roles and reference th
 
 ## Code formatting and linting
 
-This project uses [prettier](https://prettier.io/) for code formatting and [XO](https://github.com/xojs/xo) for static analysis. To run these checks:
+This project uses [prettier](https://prettier.io/) for code formatting and [XO](https://github.com/xojs/xo) for linting. To run these checks:
 
 ```
 npm run fc
