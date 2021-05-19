@@ -8,7 +8,7 @@ on:
       - dev
 
 jobs:
-  run-checks:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the application's source code
