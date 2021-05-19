@@ -32,7 +32,7 @@ Once started, the system is accessible at [http://localhost:3000](http://localho
 
 ## Tests
 
-Tests live in `src/tests`. To run them:
+Automated tests live in `src/tests`. To run them:
 
 ```
 npm test
@@ -40,11 +40,17 @@ npm test
 
 ### Visual tests
 
-This repo uses [Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request. More details can be found in the [University of York wiki](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899) (University users only).
+We use [Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing - this allows us to see UI changes as a result of each pull request.
 
 ### Performance tests
 
 We use [Lighthouse](https://developers.google.com/web/tools/lighthouse/) to run performance tests against the application on each new build and pull request. Performance scores below 85 are marked as a failing build.
+
+### Accessibility tests
+
+We use the [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) to perform basic accessibility checks. We also run manual accessibility tests against the application, including testing with users of assistive technologies.
+
+To reinforce an accessibility-first approach, we use ARIA roles and reference these in automated tests where possible.
 
 ## Deployment
 
@@ -99,11 +105,6 @@ instead of a next error page or suspicious errors with nothing in the console.
 ## Automated BugFixes (Dependabot)
 We have experienced issues with Dependabot updates breaking the application in the past. Before merging in an automated security 
 PR/Dependabot PR we should check out and deploy the code to a sandbox account, to ensure there aren't any breaking changes.
-
-## Accessibility
-
-The application's linting process checks for conformance to accessibility standards
-using [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y).
 
 ## Contact
 
