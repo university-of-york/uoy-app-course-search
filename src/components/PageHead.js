@@ -22,7 +22,7 @@ const PageHead = ({ search }) => {
             <script language="application/javascript">Typekit.load();</script>
 
             <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-1621853-1" />
-            <script src="/js/analytics.js" />
+            <script src="/wibble/js/analytics.js" />
         </Head>
     );
 };
