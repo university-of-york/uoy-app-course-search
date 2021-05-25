@@ -5,7 +5,11 @@
 [![code formatting](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/code-formatting.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/code-formatting.yml)
 [![linting](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/linting.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/linting.yml)
 [![performance checks](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/performance-checks.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/performance-checks.yml)
+
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/ad91c322/uoy-app-course-search)
+[![GitHub](https://img.shields.io/github/license/university-of-york/uoy-app-course-search?color=blue)](https://github.com/university-of-york/uoy-app-course-search/blob/update-status-badges/LICENSE)
 
 This is the University of York's Course Search application. It allows prospective students to search for courses,
 view results, and follow links to course pages. 
