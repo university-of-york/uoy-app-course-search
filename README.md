@@ -97,7 +97,3 @@ npm run undeploy
 ## Contact
 
 - [Digital Services Teaching and Learning Service Delivery Team](mailto:esg-teaching-and-learning-group@york.ac.uk)
-
-## Licence
-
-MIT
