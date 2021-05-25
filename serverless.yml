@@ -1,4 +1,4 @@
-service: uoy-app-course-search
+service: uoy-app-course-search-testwwwhost
 
 provider:
   name: aws

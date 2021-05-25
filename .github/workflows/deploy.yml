@@ -5,6 +5,7 @@ on:
     branches:
       - dev
       - main
+      - CFIN-524
   workflow_dispatch:
 
 jobs:
@@ -57,3 +58,14 @@ jobs:
           DEPLOY_ENVIRONMENT: prod
           SSL_CERTIFICATE_ARN: ${{ secrets.PRODUCTION_SSL_CERTIFICATE_ARN }}
           DOMAIN_NAME: courses.app.york.ac.uk
+
+      - name: Deploy - york hosting test
+        if: github.ref == 'refs/heads/CFIN-524'
+        run: npm run deploy:dev
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCOUNT_ID: ${{ secrets.DEV_AWS_ACCOUNT_ID }}
+          DEPLOY_ENVIRONMENT: dev
+          SSL_CERTIFICATE_ARN: arn:aws:acm:eu-west-1:098107509664:certificate/a589628e-c5f9-4d89-9dd0-77bc0b634398
+          DOMAIN_NAME: courses.yorkhosted.dev.app.york.ac.uk
