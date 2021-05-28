@@ -32,13 +32,22 @@ functions:
 plugins:
   - serverless-apigw-binary
   - serverless-dotenv-plugin
+  - serverless-api-cloudfront
 
 custom:
   apigwBinary:
     types:
       - "*/*"
   domainName: ${env:DOMAIN_NAME, ''}
-  sslCertificateArn: ${env:SSL_CERTIFICATE_ARN, ''}
+  # Use serverless-api-cloudfront to put a CloudFront distribution in front of the application's API
+  # See https://github.com/Droplr/serverless-api-cloudfront for configuration options
+  # Note that the following requires an SSL certificate for the above domain name to have been created in region us-east-1
+  apiCloudFront:
+    domain: ${self:custom.domainName}
+    certificate: arn:aws:acm:us-east-1:098107509664:certificate/f90b1537-4e1e-4066-bc69-127f8fc126b0
+    compress: true
+    priceClass: PriceClass_100
+    minimumProtocolVersion: TLSv1
 
 # Exclude files and next.js dependencies that are not needed at runtime
 package:
@@ -110,30 +119,10 @@ resources:
         - ""
 
   Resources:
-    ApiGatewayCustomDomainName:
-      Type: AWS::ApiGateway::DomainName
-      Condition: UseCustomDomainName
-      Properties:
-        RegionalCertificateArn: ${self:custom.sslCertificateArn}
-        DomainName: ${self:custom.domainName}
-        EndpointConfiguration:
-          Types:
-            - REGIONAL
-
-    BasePathMapping:
-      Type: AWS::ApiGateway::BasePathMapping
-      Condition: UseCustomDomainName
-      DependsOn: ApiGatewayDeployment${sls:instanceId}
-      Properties:
-        BasePath: ""
-        DomainName: !Ref ApiGatewayCustomDomainName
-        RestApiId: !Ref ApiGatewayRestApi
-        Stage: ${self:provider.stage}
-
     AppCNAME:
       Type: Custom::CNAME
       Condition: UseCustomDomainName
       Properties:
         ServiceToken: arn:aws:sns:eu-west-1:230504789214:RequestRecordSet
         Source: ${self:custom.domainName}.
-        Target: !Join ["", [!GetAtt ApiGatewayCustomDomainName.RegionalDomainName, "."]]
+        Target: !Join ["", [!GetAtt ApiDistribution.DomainName, "."]]

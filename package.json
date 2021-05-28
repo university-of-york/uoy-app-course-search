@@ -57,6 +57,7 @@
     "lighthouse": "^7.4.0",
     "prettier": "2.1.1",
     "serverless": "^2.41.0",
+    "serverless-api-cloudfront": "^0.9.5",
     "serverless-dotenv-plugin": "^3.9.0",
     "xo": "^0.33.1"
   }
