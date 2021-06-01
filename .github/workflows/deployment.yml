@@ -1,14 +1,14 @@
-name: Deploy to AWS
+name: deployment
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - dev
       - main
-  workflow_dispatch:
 
 jobs:
-  deploy_to_aws:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the application's source code
