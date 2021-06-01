@@ -50,7 +50,7 @@ npm test
 
 ### Visual tests
 
-We use [Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing. This adds snapshots of UI changes to each pull request. More detail can be found in the York Wiki Service page (University users only): [Testing: Percy, automation in testing with GitHub](https://wiki.york.ac.uk/pages/viewpage.action?pageId=220921899)
+We use [Percy](https://percy.io/ad91c322/uoy-app-course-search) for visual testing. This adds snapshots of UI changes to each pull request.
 
 ### Performance tests
 
