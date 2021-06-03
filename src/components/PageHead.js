@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 const PageHead = ({ search }) => {
     return (
         <Head>
-            <script src="https://www.googleoptimize.com/optimize.js?id=OPT-PCBTPN9" />
-
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="author" content="University of York" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,9 +18,6 @@ const PageHead = ({ search }) => {
             <link rel="stylesheet" href="https://www.york.ac.uk/static/globalalert/covid19styles.css" media="screen" />
             <script src="//use.typekit.net/dvj8rpp.js" />
             <script language="application/javascript">Typekit.load();</script>
-
-            <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-1621853-1" />
-            <script src="/js/analytics.js" />
         </Head>
     );
 };
