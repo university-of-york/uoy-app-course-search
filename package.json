@@ -46,6 +46,7 @@
     "@testing-library/user-event": "^12.1.6",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.3.0",
+    "cypress": "^7.4.0",
     "dotenv": "^8.2.0",
     "eslint-config-xo-nextjs": "^1.6.0",
     "eslint-config-xo-react": "^0.23.0",
