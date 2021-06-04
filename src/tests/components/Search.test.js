@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import {render, screen, within} from "@testing-library/react";
 import { Search } from "../../components/Search";
 
 describe("Search", () => {
@@ -22,4 +22,11 @@ describe("Search", () => {
 
         expect(getByRole("textbox", { name: "Search" }).value).toEqual("French");
     });
+
+    //
+    it("contains a level parameter for comparing analytics", () => {
+        const { getByTestId } = render(<Search searchTerm="Maths" />);
+
+        expect(getByTestId("temporaryLevelParameter")).toHaveValue("undergraduate");
+    })
 });
