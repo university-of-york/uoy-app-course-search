@@ -1,9 +1,9 @@
 {
   "plugins": ["jsx-a11y"],
-  "extends": ["xo-react", "prettier", "prettier/react", "plugin:jsx-a11y/recommended"],
+  "extends": ["xo-react", "prettier", "prettier/react", "plugin:jsx-a11y/recommended", "plugin:cypress/recommended"],
   "overrides": [
     {
-      "files": ["**/*.test.js", "e2e/**", "jest/*"],
+      "files": ["**/*.test.js", "e2e/**", "jest/*", "cypress/*"],
       "envs": ["browser", "jest"]
     }
   ],
