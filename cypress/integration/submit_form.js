@@ -7,7 +7,7 @@ context('Form Submission', () => {
 
   describe('visiting the search', () => {
 
-    it('can type in the text box', () => {
+    it('submits a level parameter when searching', () => {
       cy.get('input[name=search]').type('maths')
         .should('have.value', 'maths')
 
