@@ -23,7 +23,7 @@ describe("Search", () => {
         expect(getByRole("textbox", { name: "Search" }).value).toEqual("French");
     });
 
-    it("contains a level parameter for comparing analytics", () => {
+    it("contains a 'level' query parameter for comparing analytics between this app and Course Finder", () => {
         const { getByTestId } = render(<Search searchTerm="Maths" />);
 
         expect(getByTestId("temporaryLevelParameter")).toHaveValue("undergraduate");
