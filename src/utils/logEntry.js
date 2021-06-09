@@ -8,7 +8,7 @@ const logEntry = (request, logType, additionalDetails) => {
     const getHeaderInfo = () => {
         const requestHeaders = request?.headers;
 
-        const ipAddresses = requestHeaders ? requestHeaders["X-Forwarded-For"].split(",") : null;
+        const ipAddresses = requestHeaders ? requestHeaders["X-Forwarded-For"]?.split(",") : null;
         const previousIP = ipAddresses?.length > 0 ? ipAddresses[ipAddresses.length - 1].trim() : null;
 
         const sourcePort = requestHeaders ? requestHeaders["X-Forwarded-Port"] : null;
