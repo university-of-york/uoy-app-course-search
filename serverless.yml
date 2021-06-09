@@ -101,6 +101,8 @@ package:
     - node_modules/**/.github/**
     - node_modules/@opentelemetry/**
     - node_modules/encoding/**
+  include:
+    - src/constants/basePath.js # required by server.js
 
 resources:
   Conditions:
