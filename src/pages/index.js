@@ -23,6 +23,8 @@ import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavi
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
 import { CoronavirusNotice } from "../components/CoronavirusNotice";
 import { GlobalNotice } from "../components/GlobalNotice";
+import { logEntry } from "../utils/logEntry";
+import { LOG_TYPES } from "../constants/LogTypes";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -84,6 +86,8 @@ App.propTypes = {
 
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search === undefined ? context.query.q : context.query.search;
+
+    console.log(logEntry(context.req, LOG_TYPES.AUDIT));
 
     if (noSearchConducted(searchTerm)) {
         return { props: {} };
