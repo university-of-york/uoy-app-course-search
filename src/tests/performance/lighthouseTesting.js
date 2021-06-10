@@ -4,8 +4,9 @@ const lighthouse = require("lighthouse");
 const { computeMedianRun } = require("lighthouse/lighthouse-core/lib/median-run");
 const mobileConfig = require("lighthouse/lighthouse-core/config/lr-mobile-config");
 const desktopConfig = require("lighthouse/lighthouse-core/config/lr-desktop-config");
+const { applicationBasePath } = require("../../constants/basePath");
 
-const TEST_URL = "http://localhost:3000?search=maths";
+const TEST_URL = `http://localhost:3000${applicationBasePath}?search=maths`;
 const ITERATIONS = 5;
 const MINIMUM_DESKTOP_SCORE = 90;
 const MINIMUM_MOBILE_SCORE = 85;
