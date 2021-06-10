@@ -16,7 +16,14 @@ const Search = ({ searchTerm }) => {
         <Grid>
             <GridRow>
                 <GridBoxFull>
-                    <Form action="" autoComplete="off" method="get" role="search" aria-label="Courses">
+                    <Form
+                        action=""
+                        autoComplete="off"
+                        method="get"
+                        role="search"
+                        id="course-search-form"
+                        aria-label="Courses"
+                    >
                         <FormElement>
                             <FormInputText
                                 name="search"
@@ -24,6 +31,12 @@ const Search = ({ searchTerm }) => {
                                 ariaLabel="Search"
                                 placeholder="Search for your course"
                                 defaultValue={searchTerm}
+                            />
+                            <input
+                                type="hidden"
+                                name="level"
+                                value="undergraduate"
+                                data-testid="temporaryLevelParameter"
                             />
                             <BasicSubmitButton aria-label="Search">
                                 <SearchIcon ariaHidden />
