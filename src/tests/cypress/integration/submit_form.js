@@ -1,8 +1,9 @@
 /// <reference types="cypress" />
+const { applicationBasePath } = require("../../../constants/basePath");
 
 context("Form Submission", () => {
     beforeEach(() => {
-        cy.visit("/");
+        cy.visit(applicationBasePath);
     });
 
     describe("visiting the search", () => {
