@@ -35,9 +35,6 @@ describe("Request Logging", () => {
                 "X-Forwarded-Port": "443",
                 "X-Forwarded-Proto": "https",
             },
-            queryStringParameters: {
-                search: "biology",
-            },
             statusCode: 200,
             requestContext: {
                 identity: {
@@ -47,7 +44,11 @@ describe("Request Logging", () => {
             },
         };
 
-        expect(logEntry(event, LOG_TYPES.AUDIT)).toEqual(
+        const queryStringParameters = {
+            search: "biology",
+        };
+
+        expect(logEntry(event, LOG_TYPES.AUDIT, queryStringParameters)).toEqual(
             JSON.stringify({
                 timestamp: new Date().toISOString(),
                 ip: {

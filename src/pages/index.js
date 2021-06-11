@@ -87,7 +87,7 @@ App.propTypes = {
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search === undefined ? context.query.q : context.query.search;
 
-    console.log(logEntry(context.req, LOG_TYPES.AUDIT));
+    console.log(logEntry(context.req, LOG_TYPES.AUDIT, context.query));
 
     if (noSearchConducted(searchTerm)) {
         return { props: {} };

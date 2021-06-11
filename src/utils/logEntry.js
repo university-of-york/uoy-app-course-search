@@ -2,9 +2,11 @@
  *
  * @param {http.IncomingMessage} request
  * @param {String} logType
+ * @param {Object} queryParameters
  * @param {Object} additionalDetails Added directly to the log
  */
-const logEntry = (request, logType, additionalDetails) => {
+
+const logEntry = (request, logType, queryParameters, additionalDetails) => {
     const getHeaderInfo = () => {
         const requestHeaders = request?.headers;
 
@@ -41,7 +43,7 @@ const logEntry = (request, logType, additionalDetails) => {
         sensitive: false,
         schemaURI: "https://github.com/university-of-york/uoy-app-course-search",
         type: logType,
-        queryStringParameters: request?.queryStringParameters,
+        queryStringParameters: queryParameters,
         additionalDetails,
     });
 };
