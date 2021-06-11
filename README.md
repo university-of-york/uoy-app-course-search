@@ -62,16 +62,6 @@ We use the [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-
 
 To reinforce an accessibility-first approach, we use ARIA roles and reference these in automated tests where possible.
 
-### Functional tests
-
-We use [Cypress](https://www.cypress.io) for functional tests. To execute them, start the application locally and then run
-
-```
-npx cypress open
-```
-
-This will launch the Cypress desktop app, which will display the functional tests and allow you to execute them.
-
 ## Code formatting and linting
 
 This project uses [Prettier](https://prettier.io/) for code formatting and [XO](https://github.com/xojs/xo) for linting. To format the code and run these checks:
