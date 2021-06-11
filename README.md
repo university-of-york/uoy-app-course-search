@@ -38,7 +38,7 @@ To build and run the application:
 npm run dev
 ```
 
-Once started, the system is accessible at [http://localhost:3000](http://localhost:3000).
+Once started, the system is accessible at [http://localhost:3000/courses](http://localhost:3000/courses).
 
 ## Tests
 
