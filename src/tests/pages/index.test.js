@@ -173,7 +173,7 @@ describe("getServerSideProps", () => {
     });
 
     it("creates a log entry when a course search is conducted", async () => {
-        console.log = jest.fn();
+        console.info = jest.fn();
 
         searchForCourses.mockResolvedValue({
             isSuccessfulSearch: true,
@@ -182,9 +182,9 @@ describe("getServerSideProps", () => {
 
         const response = await getServerSideProps(contextWithSearchTerm);
 
-        expect(console.log).toHaveBeenCalledTimes(1);
-        expect(console.log).toHaveBeenCalledWith(expect.stringContaining('"type":"audit"'));
-        expect(console.log).toHaveBeenCalledWith(
+        expect(console.info).toHaveBeenCalledTimes(1);
+        expect(console.info).toHaveBeenCalledWith(expect.stringContaining('"type":"audit"'));
+        expect(console.info).toHaveBeenCalledWith(
             expect.stringContaining('"queryStringParameters":{"search":"english"}')
         );
     });
