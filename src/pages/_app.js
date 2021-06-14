@@ -1,8 +1,14 @@
 import "../../public/stylesheets/styles.css";
 import PropTypes from "prop-types";
+import React, { useEffect } from "react";
+import TagManager from "react-gtm-module";
 
-// Required for Next to use a global stylesheet - see README
 const CourseSearchApp = ({ Component, pageProps }) => {
+    useEffect(() => {
+        // Enable Google Tag Manager with the university's GTM container ID
+        TagManager.initialize({ gtmId: "GTM-WXLX54" });
+    }, []);
+    // Required for Next to use a global stylesheet
     return <Component {...pageProps} />;
 };
 
