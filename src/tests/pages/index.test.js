@@ -171,4 +171,52 @@ describe("getServerSideProps", () => {
         expect(searchForCourses).toHaveBeenCalledTimes(1);
         expect(searchForCourses).toHaveBeenCalledWith("biology");
     });
+
+    it("creates a log entry when a course search is conducted", async () => {
+        console.log = jest.fn();
+
+        searchForCourses.mockResolvedValue({
+            isSuccessfulSearch: true,
+            searchResponseData: { numberOfMatches: 0, results: [] },
+        });
+
+        const response = await getServerSideProps(contextWithSearchTerm);
+
+        expect(console.log).toHaveBeenCalledTimes(1);
+        expect(console.log).toHaveBeenCalledWith(expect.stringContaining('"type":"audit"'));
+        expect(console.log).toHaveBeenCalledWith(
+            expect.stringContaining('"queryStringParameters":{"search":"english"}')
+        );
+    });
+
+    it("logs an error when the course search failed", async () => {
+        console.error = jest.fn();
+
+        searchForCourses.mockResolvedValue({
+            isSuccessfulSearch: false,
+            searchResponseData: { numberOfMatches: 0, results: [] },
+        });
+
+        const response = await getServerSideProps(contextWithSearchTerm);
+
+        expect(console.error).toHaveBeenCalledTimes(1);
+        expect(console.error).toHaveBeenCalledWith(expect.stringContaining('"type":"error"'));
+        expect(console.error).toHaveBeenCalledWith(
+            expect.stringContaining('"queryStringParameters":{"search":"english"}')
+        );
+        expect(console.error).toHaveBeenCalledWith(expect.stringContaining('"additionalDetails":{"results":[]}'));
+    });
+
+    it("does not log an error when the course search succeeds", async () => {
+        console.error = jest.fn();
+
+        searchForCourses.mockResolvedValue({
+            isSuccessfulSearch: true,
+            searchResponseData: { numberOfMatches: 0, results: [] },
+        });
+
+        const response = await getServerSideProps(contextWithSearchTerm);
+
+        expect(console.error).not.toHaveBeenCalled();
+    });
 });
