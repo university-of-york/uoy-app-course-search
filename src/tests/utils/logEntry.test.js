@@ -48,7 +48,11 @@ describe("Request Logging", () => {
             search: "biology",
         };
 
-        expect(logEntry(event, LOG_TYPES.AUDIT, queryStringParameters)).toEqual(
+        const additionalDetails = {
+            results: [],
+        };
+
+        expect(logEntry(event, LOG_TYPES.AUDIT, queryStringParameters, additionalDetails)).toEqual(
             JSON.stringify({
                 timestamp: new Date().toISOString(),
                 ip: {
@@ -73,6 +77,7 @@ describe("Request Logging", () => {
                 queryStringParameters: {
                     search: "biology",
                 },
+                additionalDetails: { results: [] },
             })
         );
     });
