@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { GlobalNotice } from "../../components/GlobalNotice";
 
-describe("GloablNotice", () => {
+describe("GlobalNotice", () => {
     it("renders child content as expected", () => {
         const children = <h2>This is a notice</h2>;
 
