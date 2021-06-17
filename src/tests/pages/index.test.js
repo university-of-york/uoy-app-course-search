@@ -171,4 +171,46 @@ describe("getServerSideProps", () => {
         expect(searchForCourses).toHaveBeenCalledTimes(1);
         expect(searchForCourses).toHaveBeenCalledWith("biology");
     });
+
+    it("creates a log entry when a course search is conducted", async () => {
+        searchForCourses.mockResolvedValue({
+            isSuccessfulSearch: true,
+            searchResponseData: { numberOfMatches: 0, results: [] },
+        });
+
+        await getServerSideProps(contextWithSearchTerm);
+
+        expect(console.info).toHaveBeenCalledTimes(1);
+        expect(console.info).toHaveBeenCalledWith(expect.stringContaining('"type":"audit"'));
+        expect(console.info).toHaveBeenCalledWith(
+            expect.stringContaining('"queryStringParameters":{"search":"english"}')
+        );
+    });
+
+    it("logs an error when the course search failed", async () => {
+        searchForCourses.mockResolvedValue({
+            isSuccessfulSearch: false,
+            searchResponseData: { numberOfMatches: 0, results: [] },
+        });
+
+        await getServerSideProps(contextWithSearchTerm);
+
+        expect(console.error).toHaveBeenCalledTimes(1);
+        expect(console.error).toHaveBeenCalledWith(expect.stringContaining('"type":"error"'));
+        expect(console.error).toHaveBeenCalledWith(
+            expect.stringContaining('"queryStringParameters":{"search":"english"}')
+        );
+        expect(console.error).toHaveBeenCalledWith(expect.stringContaining('"additionalDetails":{"results":[]}'));
+    });
+
+    it("does not log an error when the course search succeeds", async () => {
+        searchForCourses.mockResolvedValue({
+            isSuccessfulSearch: true,
+            searchResponseData: { numberOfMatches: 0, results: [] },
+        });
+
+        await getServerSideProps(contextWithSearchTerm);
+
+        expect(console.error).not.toHaveBeenCalled();
+    });
 });

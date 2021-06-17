@@ -23,6 +23,8 @@ import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavi
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
 import { CoronavirusNotice } from "../components/CoronavirusNotice";
 import { GlobalNotice } from "../components/GlobalNotice";
+import { logEntry } from "../utils/logEntry";
+import { LOG_TYPES } from "../constants/LogTypes";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -85,6 +87,8 @@ App.propTypes = {
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search === undefined ? context.query.q : context.query.search;
 
+    console.info(logEntry(context.req, LOG_TYPES.AUDIT, context.query));
+
     if (noSearchConducted(searchTerm)) {
         return { props: {} };
     }
@@ -94,6 +98,10 @@ const getServerSideProps = async (context) => {
     }
 
     const { isSuccessfulSearch, searchResponseData } = await searchForCourses(searchTerm);
+
+    if (!isSuccessfulSearch) {
+        console.error(logEntry(context.req, LOG_TYPES.ERROR, context.query, { results: searchResponseData.results }));
+    }
 
     return {
         props: {
