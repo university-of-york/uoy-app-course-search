@@ -173,8 +173,6 @@ describe("getServerSideProps", () => {
     });
 
     it("creates a log entry when a course search is conducted", async () => {
-        console.info = jest.fn();
-
         searchForCourses.mockResolvedValue({
             isSuccessfulSearch: true,
             searchResponseData: { numberOfMatches: 0, results: [] },
@@ -190,8 +188,6 @@ describe("getServerSideProps", () => {
     });
 
     it("logs an error when the course search failed", async () => {
-        console.error = jest.fn();
-
         searchForCourses.mockResolvedValue({
             isSuccessfulSearch: false,
             searchResponseData: { numberOfMatches: 0, results: [] },
@@ -208,8 +204,6 @@ describe("getServerSideProps", () => {
     });
 
     it("does not log an error when the course search succeeds", async () => {
-        console.error = jest.fn();
-
         searchForCourses.mockResolvedValue({
             isSuccessfulSearch: true,
             searchResponseData: { numberOfMatches: 0, results: [] },
