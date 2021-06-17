@@ -178,7 +178,7 @@ describe("getServerSideProps", () => {
             searchResponseData: { numberOfMatches: 0, results: [] },
         });
 
-        const response = await getServerSideProps(contextWithSearchTerm);
+        await getServerSideProps(contextWithSearchTerm);
 
         expect(console.info).toHaveBeenCalledTimes(1);
         expect(console.info).toHaveBeenCalledWith(expect.stringContaining('"type":"audit"'));
@@ -193,7 +193,7 @@ describe("getServerSideProps", () => {
             searchResponseData: { numberOfMatches: 0, results: [] },
         });
 
-        const response = await getServerSideProps(contextWithSearchTerm);
+        await getServerSideProps(contextWithSearchTerm);
 
         expect(console.error).toHaveBeenCalledTimes(1);
         expect(console.error).toHaveBeenCalledWith(expect.stringContaining('"type":"error"'));
@@ -209,7 +209,7 @@ describe("getServerSideProps", () => {
             searchResponseData: { numberOfMatches: 0, results: [] },
         });
 
-        const response = await getServerSideProps(contextWithSearchTerm);
+        await getServerSideProps(contextWithSearchTerm);
 
         expect(console.error).not.toHaveBeenCalled();
     });
