@@ -21,10 +21,7 @@
     "percy": "percy exec -- node src/tests/visual/percyVisualTesting.js",
     "lighthouse:desktop": "lighthouse --output-path=./lighthouse.desktop.html --config-path=./node_modules/lighthouse/lighthouse-core/config/lr-desktop-config.js --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
     "lighthouse:mobile": "lighthouse --output-path=./lighthouse.mobile.html --config-path=./node_modules/lighthouse/lighthouse-core/config/lr-mobile-config.js --chrome-flags=\"--headless\" http://localhost:3000/?search=maths --view",
-    "lighthouse-check:desktop": "node src/tests/performance/lighthouseTesting.js",
-    "lighthouse-check:mobile": "node src/tests/performance/lighthouseTesting.js --mobile",
-    "lh": "npm run lighthouse:mobile",
-    "lhc": "npm run lighthouse-check:mobile"
+    "lh": "npm run lighthouse:mobile"
   },
   "dependencies": {
     "@university-of-york/esg-lib-pattern-library-react-components": "^9.0.0",
