@@ -36,8 +36,19 @@ jobs:
       - name: Wait for the application to start
         run: sleep 10
 
-      - name: Check Lighthouse performance score for desktop devices
-        run: npm run lighthouse-check:desktop
+      - name: Check Lighthouse performance score
+        uses: university-of-york/esg-action-performance-check@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          iterations: 5
+          minimum-desktop-score: 90
+          minimum-mobile-score: 60
+          urls: |
+            http://localhost:3000/courses?search=maths
 
-      - name: Check Lighthouse performance score for mobile devices
-        run: npm run lighthouse-check:mobile
+      - name: Upload performance reports as artifact
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: reports
+          path: ./reports
