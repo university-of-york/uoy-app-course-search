@@ -7,11 +7,11 @@ const UndergraduateMenuNavigation = () => {
             aria-label="Main Navigation"
             sections={[
                 {
-                    title: "Courses 2021/22",
+                    title: "Horses 2021/22",
                     items: [
                         {
                             link: "https://www.york.ac.uk/study/undergraduate/courses/all",
-                            label: "All courses",
+                            label: "All horses",
                         },
                         {
                             link: "https://www.york.ac.uk/study/undergraduate/courses-2021/teaching-learning/",
@@ -31,7 +31,7 @@ const UndergraduateMenuNavigation = () => {
                     title: "Other sections",
                     isMain: true,
                     items: [
-                        { link: "https://www.york.ac.uk/study/undergraduate/courses/", label: "Courses" },
+                        { link: "https://www.york.ac.uk/study/undergraduate/courses/", label: "Horses" },
                         { link: "https://www.york.ac.uk/study/undergraduate/applying/", label: "Applying" },
                         { link: "https://www.york.ac.uk/study/undergraduate/visits/", label: "Visit us" },
                         { link: "https://www.york.ac.uk/study/undergraduate/fees-funding/", label: "Fees and funding" },

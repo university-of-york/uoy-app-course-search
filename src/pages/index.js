@@ -34,17 +34,17 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
                 <UniversityBody>
                     <CoronavirusNotice />
                     <GlobalNotice>
-                        This is a new Course Search. Please help us improve it by sharing your{" "}
+                        This is a new Horse Search. Please help us improve it by sharing your{" "}
                         <a href="https://york.qualtrics.com/jfe/form/SV_6R4pMhXXDs92mii">feedback</a> with us.
                     </GlobalNotice>
                     <UniversityHeaderWithSearch />
-                    <UniversityTitleBar title="Undergraduate" />
+                    <UniversityTitleBar title="Horse Search" />
                     <UndergraduateMenuNavigation />
 
                     <div role="main">
                         <HeroBanner>
                             <UndergraduateBreadcrumbs />
-                            <h1>Search undergraduate courses</h1>
+                            <h1>Search for horses</h1>
                             <Search
                                 searchTerm={searchTerm}
                                 numberOfMatches={numberOfMatches}
@@ -97,20 +97,37 @@ const getServerSideProps = async (context) => {
         return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
     }
 
-    const { isSuccessfulSearch, searchResponseData } = await searchForCourses(searchTerm);
-
-    if (!isSuccessfulSearch) {
-        console.error(logEntry(context.req, LOG_TYPES.ERROR, context.query, { results: searchResponseData.results }));
-    }
-
     return {
         props: {
-            searchTerm,
-            isSuccessfulSearch,
-            searchResults: searchResponseData.results,
-            numberOfMatches: searchResponseData.numberOfMatches,
+            searchTerm: "Horses",
+            isSuccessfulSearch: true,
+            searchResults: [
+                {
+                    title: "Gordon the Brown",
+                    liveUrl:
+                        "https://www.google.com/search?q=horses&sxsrf=ALeKk03nFSAnCKQL73JlnAd9UgiNJmEn4A:1629726362491&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjm86rno8fyAhWDRkEAHVoNCgcQ_AUoAXoECAEQAw&biw=1848&bih=1010",
+                },
+            ],
+            numberOfMatches: 1,
         },
     };
+
+    // const { isSuccessfulSearch, searchResponseData } = await searchForCourses(searchTerm);
+    //
+    // if (!isSuccessfulSearch) {
+    //     console.error(logEntry(context.req, LOG_TYPES.ERROR, context.query, { results: searchResponseData.results }));
+    // }
+    //
+    // console.log(searchResponseData.results[0]);
+    //
+    // return {
+    //     props: {
+    //         searchTerm,
+    //         isSuccessfulSearch,
+    //         searchResults: searchResponseData.results,
+    //         numberOfMatches: searchResponseData.numberOfMatches,
+    //     },
+    // };
 };
 
 export { App as default, getServerSideProps };

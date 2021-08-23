@@ -7,11 +7,11 @@ const UndergraduateBreadcrumbs = () => {
                     <span className="c-icon__sr-text">Home</span>
                 </a>
                 <span className="c-breadcrumb__separator">&gt;</span>
-                <a href="https://www.york.ac.uk/study/">Study at York</a>
+                <a href="https://www.york.ac.uk/study/">York</a>
                 <span className="c-breadcrumb__separator">&gt;</span>
-                <a href="https://www.york.ac.uk/study/undergraduate/">Undergraduate</a>
+                <a href="https://www.york.ac.uk/study/undergraduate/">Equestrian</a>
                 <span className="c-breadcrumb__separator">&gt;</span>
-                <a href="https://www.york.ac.uk/study/undergraduate/courses-2021/">Courses 2021/22</a>
+                <a href="https://www.york.ac.uk/study/undergraduate/courses-2021/">Horses 2021/22</a>
             </div>
         </nav>
     );
