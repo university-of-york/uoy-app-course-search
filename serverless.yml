@@ -101,6 +101,9 @@ package:
     - node_modules/**/.github/**
     - node_modules/@opentelemetry/**
     - node_modules/encoding/**
+    - node_modules/@next/swc-win32-x64-msvc/**
+    - node_modules/next/dist/compiled/babel/**
+    - node_modules/next/dist/compiled/babel-packages/**
   include:
     - src/constants/basePath.js # required by server.js
 
