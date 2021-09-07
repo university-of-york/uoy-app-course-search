@@ -102,6 +102,9 @@ package:
     - node_modules/@opentelemetry/**
     - node_modules/encoding/**
     - node_modules/@next/swc-win32-x64-msvc/**
+    - node_modules/@next/swc-darwin-arm64/**
+    - node_modules/@next/swc-darwin-x64/**
+    - node_modules/@next/swc-linux-x64-gnu/**
     - node_modules/next/dist/compiled/babel/**
     - node_modules/next/dist/compiled/babel-packages/**
   include:
