@@ -48,9 +48,9 @@ exports[`UndergraduateBreadcrumbs renders as expected 1`] = `
         &gt;
       </span>
       <a
-        href="https://www.york.ac.uk/study/undergraduate/courses-2021/"
+        href="https://www.york.ac.uk/study/undergraduate/courses/"
       >
-        Courses 2021/22
+        Courses 2022/23
       </a>
     </div>
   </nav>

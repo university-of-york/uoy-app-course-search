@@ -11,7 +11,7 @@ const UndergraduateBreadcrumbs = () => {
                 <span className="c-breadcrumb__separator">&gt;</span>
                 <a href="https://www.york.ac.uk/study/undergraduate/">Undergraduate</a>
                 <span className="c-breadcrumb__separator">&gt;</span>
-                <a href="https://www.york.ac.uk/study/undergraduate/courses-2021/">Courses 2021/22</a>
+                <a href="https://www.york.ac.uk/study/undergraduate/courses/">Courses 2022/23</a>
             </div>
         </nav>
     );
