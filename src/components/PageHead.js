@@ -15,7 +15,6 @@ const PageHead = ({ search }) => {
             <link rel="shortcut icon" href="https://www.york.ac.uk/static/stable/img/favicon.ico" />
             <link rel="icon" type="image/x-icon" href="https://www.york.ac.uk/static/stable/img/favicon.ico" />
             <link rel="stylesheet" href="https://www.york.ac.uk/static/stable/css/styles.min.css" media="screen" />
-            <link rel="stylesheet" href="https://www.york.ac.uk/static/globalalert/covid19styles.css" media="screen" />
             <script src="//use.typekit.net/dvj8rpp.js" />
             <script language="application/javascript">Typekit.load();</script>
         </Head>

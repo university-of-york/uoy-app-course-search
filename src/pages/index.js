@@ -21,7 +21,6 @@ import { HeroBanner } from "../components/HeroBanner";
 import { SearchResultsDescription } from "../components/SearchResultsDescription";
 import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
-import { CoronavirusNotice } from "../components/CoronavirusNotice";
 import { GlobalNotice } from "../components/GlobalNotice";
 import { logEntry } from "../utils/logEntry";
 import { LOG_TYPES } from "../constants/LogTypes";
@@ -32,7 +31,6 @@ const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm })
             <PageHead search={searchTerm} />
             <UniversityWrapper>
                 <UniversityBody>
-                    <CoronavirusNotice />
                     <GlobalNotice>
                         This is a new Course Search. Please help us improve it by sharing your{" "}
                         <a href="https://york.qualtrics.com/jfe/form/SV_6R4pMhXXDs92mii">feedback</a> with us.
