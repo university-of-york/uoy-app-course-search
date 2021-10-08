@@ -12,18 +12,15 @@ const searchForCourses = async (searchTerm) => {
             searchResponseData = await response.json();
             searchError = {};
         } else {
-            searchError = {
-                ...searchError,
-                response: {
-                    status: response.status,
-                    statusText: response.statusText,
-                    body: await response.json(),
-                },
+            searchError.response = {
+                status: response.status,
+                statusText: response.statusText,
+                body: await response.json(),
             };
         }
     } catch (error) {
         isSuccessfulSearch = false;
-        searchError = { ...searchError, details: error.message };
+        searchError.details = error.message;
     }
 
     return { isSuccessfulSearch, searchResponseData, searchError };
