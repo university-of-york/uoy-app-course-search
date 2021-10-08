@@ -2,19 +2,31 @@ const searchForCourses = async (searchTerm) => {
     const courseSearchUrl = `${process.env.COURSES_API_BASEURL}?search=${searchTerm}&max=${process.env.COURSES_API_MAX_RESULTS}`;
 
     let isSuccessfulSearch;
-    let searchResponseData;
-    const defaultResponse = { numberOfMatches: 0, results: [] };
+    let searchResponseData = { numberOfMatches: 0, results: [] };
+    let searchError = { message: "Failed to fetch results from Courses API", searchUrl: courseSearchUrl };
 
     try {
         const response = await fetch(courseSearchUrl);
         isSuccessfulSearch = response.ok;
-        searchResponseData = isSuccessfulSearch ? await response.json() : defaultResponse;
-    } catch {
+        if (isSuccessfulSearch) {
+            searchResponseData = await response.json();
+            searchError = {};
+        } else {
+            searchError = {
+                ...searchError,
+                response: {
+                    status: response.status,
+                    statusText: response.statusText,
+                    body: await response.json(),
+                },
+            };
+        }
+    } catch (error) {
         isSuccessfulSearch = false;
-        searchResponseData = defaultResponse;
+        searchError = { ...searchError, details: error.message };
     }
 
-    return { isSuccessfulSearch, searchResponseData };
+    return { isSuccessfulSearch, searchResponseData, searchError };
 };
 
 export { searchForCourses };

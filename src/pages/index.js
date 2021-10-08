@@ -95,10 +95,10 @@ const getServerSideProps = async (context) => {
         return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
     }
 
-    const { isSuccessfulSearch, searchResponseData } = await searchForCourses(searchTerm);
+    const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses(searchTerm);
 
     if (!isSuccessfulSearch) {
-        console.error(logEntry(context.req, LOG_TYPES.ERROR, context.query, { results: searchResponseData.results }));
+        console.error(logEntry(context.req, LOG_TYPES.ERROR, context.query, { searchError }));
     }
 
     return {
