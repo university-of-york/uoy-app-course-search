@@ -99,6 +99,14 @@ describe("searchForCourses", () => {
         });
     });
 
+    it("returns an empty searchError when there are no problems with the search", async () => {
+        fetch.mockResponse(JSON.stringify({ numberOfMatches: 0, results: [] }));
+
+        const { searchError } = await searchForCourses("english");
+
+        expect(searchError).toEqual({});
+    });
+
     it("returns the number of matches from the API", async () => {
         fetch.mockResponse(
             JSON.stringify({
