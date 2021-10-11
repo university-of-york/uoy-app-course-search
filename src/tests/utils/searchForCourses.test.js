@@ -66,23 +66,45 @@ describe("searchForCourses", () => {
     });
 
     it("indicates when the Courses API search failed (http error response)", async () => {
-        fetch.mockResponse("{}", { status: 500 });
+        fetch.mockResponse('{"message":"Missing authentication token"}', { status: 403, statusText: "Forbidden" });
 
-        const { isSuccessfulSearch, searchResponseData } = await searchForCourses("english");
+        const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses("english");
 
         expect(isSuccessfulSearch).toEqual(false);
         expect(searchResponseData.numberOfMatches).toEqual(0);
         expect(searchResponseData.results).toEqual([]);
+        expect(searchError).toEqual({
+            message: "Failed to fetch results from Courses API",
+            searchUrl: "https://test.courses.api.com?search=english&max=20",
+            response: {
+                status: 403,
+                statusText: "Forbidden",
+                body: { message: "Missing authentication token" },
+            },
+        });
     });
 
     it("indicates when the Courses API search failed (network or other error)", async () => {
         fetch.mockReject(new Error("can not resolve host"));
 
-        const { isSuccessfulSearch, searchResponseData } = await searchForCourses("english");
+        const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses("english");
 
         expect(isSuccessfulSearch).toEqual(false);
         expect(searchResponseData.numberOfMatches).toEqual(0);
         expect(searchResponseData.results).toEqual([]);
+        expect(searchError).toEqual({
+            message: "Failed to fetch results from Courses API",
+            searchUrl: "https://test.courses.api.com?search=english&max=20",
+            details: "can not resolve host",
+        });
+    });
+
+    it("returns an empty searchError when there are no problems with the search", async () => {
+        fetch.mockResponse(JSON.stringify({ numberOfMatches: 0, results: [] }));
+
+        const { searchError } = await searchForCourses("english");
+
+        expect(searchError).toEqual({});
     });
 
     it("returns the number of matches from the API", async () => {

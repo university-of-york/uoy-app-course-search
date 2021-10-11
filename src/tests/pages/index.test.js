@@ -185,6 +185,15 @@ describe("getServerSideProps", () => {
         searchForCourses.mockResolvedValue({
             isSuccessfulSearch: false,
             searchResponseData: { numberOfMatches: 0, results: [] },
+            searchError: {
+                message: "Search failed",
+                searchUrl: "http://foo.bar",
+                response: {
+                    status: 403,
+                    statusText: "Forbidden",
+                    body: { message: "Missing authentication token" },
+                },
+            },
         });
 
         await getServerSideProps(contextWithSearchTerm);
@@ -194,7 +203,11 @@ describe("getServerSideProps", () => {
         expect(console.error).toHaveBeenCalledWith(
             expect.stringContaining('"queryStringParameters":{"search":"english"}')
         );
-        expect(console.error).toHaveBeenCalledWith(expect.stringContaining('"additionalDetails":{"results":[]}'));
+        expect(console.error).toHaveBeenCalledWith(
+            expect.stringContaining(
+                '"additionalDetails":{"searchError":{"message":"Search failed","searchUrl":"http://foo.bar","response":{"status":403,"statusText":"Forbidden","body":{"message":"Missing authentication token"}}}'
+            )
+        );
     });
 
     it("does not log an error when the course search succeeds", async () => {
