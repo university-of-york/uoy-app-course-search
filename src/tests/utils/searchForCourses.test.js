@@ -148,4 +148,66 @@ describe("searchForCourses", () => {
             expect(requestUrl).toContain(expectedUri);
         }
     );
+
+    it("Retries an API request if an error occurs", async () => {
+        fetch.mockRejectOnce(new Error("An error has occurred."));
+        fetch.mockResponse(
+            JSON.stringify({
+                numberOfMatches: 2,
+                results: ["english", "english pt2"],
+            })
+        );
+
+        const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses("english");
+
+        expect(fetch.mock.calls.length).toEqual(2);
+
+        expect(isSuccessfulSearch).toEqual(true);
+        expect(searchResponseData.numberOfMatches).toEqual(2);
+        expect(searchResponseData.results).toEqual(["english", "english pt2"]);
+        expect(searchError).toEqual({});
+    });
+
+    it("Retries an API request if a bad response code is received", async () => {
+        fetch.mockResponseOnce(
+            JSON.stringify({
+                message: "Bad response",
+            }),
+            {
+                status: 502,
+            }
+        );
+        fetch.mockResponse(
+            JSON.stringify({
+                numberOfMatches: 3,
+                results: ["maths", "statistics", "accounting"],
+            })
+        );
+
+        const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses("maths");
+
+        expect(fetch.mock.calls.length).toEqual(2);
+
+        expect(isSuccessfulSearch).toEqual(true);
+        expect(searchResponseData.numberOfMatches).toEqual(3);
+        expect(searchResponseData.results).toEqual(["maths", "statistics", "accounting"]);
+        expect(searchError).toEqual({});
+    });
+
+    it("Retries a request up to 3 times before throwing an error", async () => {
+        fetch.mockReject(new Error("A network error has occurred"));
+
+        const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses("history");
+
+        expect(fetch.mock.calls.length).toEqual(4);
+
+        expect(isSuccessfulSearch).toEqual(false);
+        expect(searchResponseData.numberOfMatches).toEqual(0);
+        expect(searchResponseData.results).toEqual([]);
+        expect(searchError).toEqual({
+            message: "Failed to fetch results from Courses API",
+            searchUrl: "https://test.courses.api.com?search=history&max=20",
+            details: "A network error has occurred",
+        });
+    });
 });
