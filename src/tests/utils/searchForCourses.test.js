@@ -227,8 +227,8 @@ describe("searchForCourses", () => {
         expect(console.warn).toBeCalledWith(
             expect.stringContaining('"searchUrl":"https://test.courses.api.com?search=physics&max=20"')
         );
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"attempt":0'));
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"attempt":1'));
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"attempt":2'));
+        expect(console.warn).toHaveBeenNthCalledWith(1, expect.stringContaining('"attempt":0'));
+        expect(console.warn).toHaveBeenNthCalledWith(2, expect.stringContaining('"attempt":1'));
+        expect(console.warn).toHaveBeenNthCalledWith(3, expect.stringContaining('"attempt":2'));
     });
 });
