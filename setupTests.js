@@ -6,6 +6,7 @@ jestFetchMock.enableMocks();
 // Mock out logging functions so that logging can be tested and
 // also to suppress logs (particularly errors) from test output
 console.info = jest.fn();
+console.warn = jest.fn();
 console.error = jest.fn();
 
 // use 'dotenv' to load environment variables for test environment
