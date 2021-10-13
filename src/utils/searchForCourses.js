@@ -1,9 +1,10 @@
 import { StatusCodes } from "http-status-codes";
 import { logEntry } from "./logEntry";
 import { LOG_TYPES } from "../constants/LogTypes";
+import nodeFetch from "node-fetch";
+import fetchRetry from "fetch-retry";
 
-const nodeFetch = require("node-fetch");
-const fetch = require("fetch-retry")(nodeFetch);
+const fetch = fetchRetry(nodeFetch);
 
 const MAX_RETRY_ATTEMPTS = 3;
 const RETRY_HTTP_CODES = new Set([
