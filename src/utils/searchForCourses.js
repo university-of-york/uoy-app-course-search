@@ -1,6 +1,7 @@
 import nodeFetch from "node-fetch";
 import fetchRetry from "fetch-retry";
-import { retryOn } from "./retry";
+import { StatusCodes } from "http-status-codes";
+import { logRetryWarning } from "./logEntry";
 
 const fetch = fetchRetry(nodeFetch);
 
@@ -17,7 +18,7 @@ const searchForCourses = async (searchTerm) => {
     try {
         const response = await fetch(courseSearchUrl, {
             retryDelay: 1000,
-            retryOn: retryOn(searchTerm, courseSearchUrl),
+            retryOn: shouldRetry(searchTerm, courseSearchUrl),
         });
 
         isSuccessfulSearch = response.ok;
@@ -37,6 +38,23 @@ const searchForCourses = async (searchTerm) => {
     }
 
     return { isSuccessfulSearch, searchResponseData, searchError };
+};
+
+const MAX_RETRY_ATTEMPTS = 3;
+const RETRY_HTTP_CODES = new Set([
+    StatusCodes.INTERNAL_SERVER_ERROR,
+    StatusCodes.BAD_GATEWAY,
+    StatusCodes.SERVICE_UNAVAILABLE,
+    StatusCodes.GATEWAY_TIMEOUT,
+]);
+
+const shouldRetry = (searchTerm, courseSearchUrl) => (attempt, error, response) => {
+    if (attempt >= MAX_RETRY_ATTEMPTS) return false;
+
+    if (error !== null || RETRY_HTTP_CODES.has(response?.status)) {
+        logRetryWarning(searchTerm, courseSearchUrl, attempt, error, response);
+        return true;
+    }
 };
 
 export { searchForCourses };
