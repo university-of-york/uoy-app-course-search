@@ -212,7 +212,7 @@ describe("searchForCourses", () => {
         });
     });
 
-    it("Retrying a request logs a warning to the console", async () => {
+    it("logs a warning to the console when retrying a request", async () => {
         fetch.mockReject(new Error("A network error has occurred"));
 
         await searchForCourses("physics");
