@@ -50,6 +50,7 @@ const logEntry = (request, logType, queryParameters, additionalDetails) => {
     });
 };
 
+/* eslint max-params: ["warn", 5] */
 const logRetryWarning = (searchTerm, courseSearchUrl, attempt, error, response) => {
     console.warn(
         logEntry(undefined, LOG_TYPES.WARN, searchTerm, {
