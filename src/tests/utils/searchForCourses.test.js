@@ -169,32 +169,6 @@ describe("searchForCourses", () => {
         expect(searchError).toEqual({});
     });
 
-    it("Retries an API request if a bad response code is received", async () => {
-        fetch.mockResponseOnce(
-            JSON.stringify({
-                message: "Bad response",
-            }),
-            {
-                status: 502,
-            }
-        );
-        fetch.mockResponse(
-            JSON.stringify({
-                numberOfMatches: 3,
-                results: ["maths", "statistics", "accounting"],
-            })
-        );
-
-        const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses("maths");
-
-        expect(fetch.mock.calls.length).toEqual(2);
-
-        expect(isSuccessfulSearch).toEqual(true);
-        expect(searchResponseData.numberOfMatches).toEqual(3);
-        expect(searchResponseData.results).toEqual(["maths", "statistics", "accounting"]);
-        expect(searchError).toEqual({});
-    });
-
     it("Retries a request up to 3 times before throwing an error", async () => {
         fetch.mockReject(new Error("A network error has occurred"));
 
