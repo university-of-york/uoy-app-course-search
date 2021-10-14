@@ -39,9 +39,9 @@ const searchForCourses = async (searchTerm) => {
     return { isSuccessfulSearch, searchResponseData, searchError };
 };
 
-const MAX_RETRY_ATTEMPTS = 3;
-
 const shouldRetry = (searchTerm, courseSearchUrl) => (attempt, error, response) => {
+    const MAX_RETRY_ATTEMPTS = 3;
+
     if (attempt >= MAX_RETRY_ATTEMPTS) return false;
 
     if (error !== null) {
