@@ -2,6 +2,7 @@ import { searchForCourses } from "../../utils/searchForCourses";
 
 beforeEach(() => {
     fetch.resetMocks();
+    console.warn.mockClear();
 });
 
 describe("searchForCourses", () => {
@@ -148,4 +149,60 @@ describe("searchForCourses", () => {
             expect(requestUrl).toContain(expectedUri);
         }
     );
+
+    it("Retries an API request if an error occurs", async () => {
+        fetch.mockRejectOnce(new Error("An error has occurred."));
+        fetch.mockResponse(
+            JSON.stringify({
+                numberOfMatches: 2,
+                results: ["english", "english pt2"],
+            })
+        );
+
+        const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses("english");
+
+        expect(fetch.mock.calls.length).toEqual(2);
+
+        expect(isSuccessfulSearch).toEqual(true);
+        expect(searchResponseData.numberOfMatches).toEqual(2);
+        expect(searchResponseData.results).toEqual(["english", "english pt2"]);
+        expect(searchError).toEqual({});
+    });
+
+    it("Retries a request up to 3 times before throwing an error", async () => {
+        fetch.mockReject(new Error("A network error has occurred"));
+
+        const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses("history");
+
+        expect(fetch.mock.calls.length).toEqual(4);
+
+        expect(isSuccessfulSearch).toEqual(false);
+        expect(searchResponseData.numberOfMatches).toEqual(0);
+        expect(searchResponseData.results).toEqual([]);
+        expect(searchError).toEqual({
+            message: "Failed to fetch results from Courses API",
+            searchUrl: "https://test.courses.api.com?search=history&max=20",
+            details: "A network error has occurred",
+        });
+    });
+
+    it("logs a warning to the console when retrying a request", async () => {
+        fetch.mockReject(new Error("A network error has occurred"));
+
+        await searchForCourses("physics");
+
+        expect(fetch.mock.calls.length).toEqual(4);
+        expect(console.warn).toBeCalledTimes(3);
+
+        expect(console.warn).toBeCalledWith(expect.stringContaining('"type":"warn"'));
+        expect(console.warn).toBeCalledWith(expect.stringContaining('"queryStringParameters":"physics"'));
+        expect(console.warn).toBeCalledWith(expect.stringContaining('"message":"Request failed, retrying"'));
+        expect(console.warn).toBeCalledWith(expect.stringContaining('"error":"A network error has occurred"'));
+        expect(console.warn).toBeCalledWith(
+            expect.stringContaining('"searchUrl":"https://test.courses.api.com?search=physics&max=20"')
+        );
+        expect(console.warn).toHaveBeenNthCalledWith(1, expect.stringContaining('"attempt":0'));
+        expect(console.warn).toHaveBeenNthCalledWith(2, expect.stringContaining('"attempt":1'));
+        expect(console.warn).toHaveBeenNthCalledWith(3, expect.stringContaining('"attempt":2'));
+    });
 });

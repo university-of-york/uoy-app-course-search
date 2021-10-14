@@ -1,3 +1,9 @@
+import nodeFetch from "node-fetch";
+import fetchRetry from "fetch-retry";
+import { logRetryWarning } from "./logEntry";
+
+const fetch = fetchRetry(nodeFetch);
+
 const searchForCourses = async (searchTerm) => {
     const courseSearchUrl =
         process.env.COURSES_API_BASEURL +
@@ -9,7 +15,11 @@ const searchForCourses = async (searchTerm) => {
     let searchError = { message: "Failed to fetch results from Courses API", searchUrl: courseSearchUrl };
 
     try {
-        const response = await fetch(courseSearchUrl);
+        const response = await fetch(courseSearchUrl, {
+            retryDelay: 1000,
+            retryOn: shouldRetry(searchTerm, courseSearchUrl),
+        });
+
         isSuccessfulSearch = response.ok;
         if (isSuccessfulSearch) {
             searchResponseData = await response.json();
@@ -27,6 +37,17 @@ const searchForCourses = async (searchTerm) => {
     }
 
     return { isSuccessfulSearch, searchResponseData, searchError };
+};
+
+const shouldRetry = (searchTerm, courseSearchUrl) => (attempt, error, response) => {
+    const MAX_RETRY_ATTEMPTS = 3;
+
+    if (attempt >= MAX_RETRY_ATTEMPTS) return false;
+
+    if (error !== null) {
+        logRetryWarning(searchTerm, courseSearchUrl, attempt, error, response);
+        return true;
+    }
 };
 
 export { searchForCourses };

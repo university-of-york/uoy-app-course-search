@@ -1,3 +1,5 @@
+import { LOG_TYPES } from "../constants/LogTypes";
+
 /**
  *
  * @param {http.IncomingMessage} request
@@ -48,4 +50,17 @@ const logEntry = (request, logType, queryParameters, additionalDetails) => {
     });
 };
 
-export { logEntry };
+/* eslint max-params: ["warn", 5] */
+const logRetryWarning = (searchTerm, courseSearchUrl, attempt, error, response) => {
+    console.warn(
+        logEntry(undefined, LOG_TYPES.WARN, searchTerm, {
+            message: "Request failed, retrying",
+            searchUrl: courseSearchUrl,
+            attempt,
+            error: error?.message,
+            response: JSON.stringify(response),
+        })
+    );
+};
+
+export { logEntry, logRetryWarning };

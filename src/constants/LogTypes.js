@@ -1,5 +1,6 @@
 const LOG_TYPES = {
     ERROR: "error",
+    WARN: "warn",
     AUDIT: "audit",
 };
 
