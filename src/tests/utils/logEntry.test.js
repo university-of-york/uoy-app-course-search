@@ -1,6 +1,5 @@
 import MockDate from "mockdate";
 import { logEntry } from "../../utils/logEntry";
-import { LOG_TYPES } from "../../constants/LogTypes";
 import { StatusCodes } from "http-status-codes";
 
 describe("Request Logging", () => {
@@ -52,34 +51,13 @@ describe("Request Logging", () => {
             results: [],
         };
 
-        expect(logEntry(event, LOG_TYPES.AUDIT, queryStringParameters, additionalDetails)).toEqual(
-            JSON.stringify({
-                timestamp: new Date().toISOString(),
-                ip: {
-                    client: "144.32.90.155",
-                    source: "130.176.97.157",
-                    sourcePort: "443",
-                },
-                req: {
-                    user: null,
-                    service: "uoy-app-course-search",
-                },
-                correlationId: "theApiId",
-                self: {
-                    application: "uoy-app-course-search",
-                    type: "GET",
-                    statusCode: StatusCodes.OK,
-                    version: "v1",
-                },
-                sensitive: false,
-                schemaURI: "https://github.com/university-of-york/uoy-app-course-search",
-                type: "audit",
-                queryStringParameters: {
-                    search: "biology",
-                },
-                additionalDetails: { results: [] },
-            })
-        );
+        expect(logEntry(event, queryStringParameters, additionalDetails)).toEqual({
+            clientIp: "144.32.90.155",
+            parameters: {
+                search: "biology",
+            },
+            details: { results: [] },
+        });
     });
 
     it("Puts nonexistent fields as null instead of skipping them", () => {
@@ -89,12 +67,8 @@ describe("Request Logging", () => {
             },
         };
 
-        const result = JSON.parse(logEntry(event, StatusCodes.OK, LOG_TYPES.AUDIT));
+        const result = logEntry(event, StatusCodes.OK);
 
-        expect(result.ip.client).toBeNull();
-        expect(result.ip.source).toBeNull();
-        expect(result.ip.sourcePort).toBeNull();
-        expect(result.correlationId).toBeNull();
-        expect(result.self.type).toBeNull();
+        expect(result.clientIp).toBeNull();
     });
 });
