@@ -17,7 +17,7 @@ const searchForCourses = async (searchTerm) => {
     try {
         const response = await fetch(courseSearchUrl, {
             retryDelay: 1000,
-            retryOn: shouldRetry(searchTerm, courseSearchUrl),
+            retryOn: handleRetry(searchTerm, courseSearchUrl),
         });
 
         isSuccessfulSearch = response.ok;
@@ -39,15 +39,17 @@ const searchForCourses = async (searchTerm) => {
     return { isSuccessfulSearch, searchResponseData, searchError };
 };
 
-const shouldRetry = (searchTerm, courseSearchUrl) => (attempt, error, response) => {
+const handleRetry = (searchTerm, courseSearchUrl) => (attempt, error, response) => {
     const MAX_RETRY_ATTEMPTS = 3;
 
     if (attempt >= MAX_RETRY_ATTEMPTS) return false;
 
-    if (error !== null) {
+    if (error) {
         logRetryWarning(searchTerm, courseSearchUrl, attempt, error, response);
         return true;
     }
+
+    return false;
 };
 
 export { searchForCourses };

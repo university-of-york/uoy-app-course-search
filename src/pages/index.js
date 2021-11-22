@@ -22,8 +22,8 @@ import { SearchResultsDescription } from "../components/SearchResultsDescription
 import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
 import { GlobalNotice } from "../components/GlobalNotice";
+import { logger } from "../utils/logger";
 import { logEntry } from "../utils/logEntry";
-import { LOG_TYPES } from "../constants/LogTypes";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -85,11 +85,7 @@ App.propTypes = {
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search === undefined ? context.query.q : context.query.search;
 
-    console.info(logEntry(context.req, LOG_TYPES.AUDIT, context.query));
-
-    if (noSearchConducted(searchTerm)) {
-        return { props: {} };
-    }
+    if (noSearchConducted(searchTerm)) return { props: {} };
 
     if (emptySearchConducted(searchTerm)) {
         return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
@@ -98,8 +94,10 @@ const getServerSideProps = async (context) => {
     const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses(searchTerm);
 
     if (!isSuccessfulSearch) {
-        console.error(logEntry(context.req, LOG_TYPES.ERROR, context.query, { searchError }));
+        logger.error(logEntry(context.req, context.query, null, searchError));
     }
+
+    logger.info(logEntry(context.req, context.query, null));
 
     return {
         props: {

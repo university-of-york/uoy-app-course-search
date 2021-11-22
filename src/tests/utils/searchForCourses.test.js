@@ -1,8 +1,11 @@
 import { searchForCourses } from "../../utils/searchForCourses";
+import { logger } from "../../utils/logger";
+
+jest.mock("../../utils/logger");
 
 beforeEach(() => {
     fetch.resetMocks();
-    console.warn.mockClear();
+    logger.warn.mockClear();
 });
 
 describe("searchForCourses", () => {
@@ -192,17 +195,30 @@ describe("searchForCourses", () => {
         await searchForCourses("physics");
 
         expect(fetch.mock.calls.length).toEqual(4);
-        expect(console.warn).toBeCalledTimes(3);
+        expect(logger.warn).toBeCalledTimes(3);
 
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"type":"warn"'));
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"queryStringParameters":"physics"'));
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"message":"Request failed, retrying"'));
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"error":"A network error has occurred"'));
-        expect(console.warn).toBeCalledWith(
-            expect.stringContaining('"searchUrl":"https://test.courses.api.com?search=physics&max=20"')
+        expect(logger.warn).toBeCalledWith(
+            expect.objectContaining({
+                parameters: {
+                    search: "physics",
+                },
+                details: expect.objectContaining({
+                    message: "Request failed, retrying",
+                    searchUrl: "https://test.courses.api.com?search=physics&max=20",
+                }),
+            })
         );
-        expect(console.warn).toHaveBeenNthCalledWith(1, expect.stringContaining('"attempt":0'));
-        expect(console.warn).toHaveBeenNthCalledWith(2, expect.stringContaining('"attempt":1'));
-        expect(console.warn).toHaveBeenNthCalledWith(3, expect.stringContaining('"attempt":2'));
+        expect(logger.warn).toHaveBeenNthCalledWith(
+            1,
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 0 }) })
+        );
+        expect(logger.warn).toHaveBeenNthCalledWith(
+            2,
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 1 }) })
+        );
+        expect(logger.warn).toHaveBeenNthCalledWith(
+            3,
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 2 }) })
+        );
     });
 });
