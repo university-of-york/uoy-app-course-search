@@ -1,6 +1,5 @@
 import MockDate from "mockdate";
 import { logEntry } from "../../utils/logEntry";
-import { StatusCodes } from "http-status-codes";
 
 const event = {
     method: "GET",
