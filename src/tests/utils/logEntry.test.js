@@ -79,23 +79,9 @@ describe("Request Logging", () => {
         expect(result.clientIp).toEqual("144.32.100.16");
     });
 
-    it("can handle with no http request", () => {
+    it("returns clientIp as null with no http request", () => {
         const result = logEntry(null, parameters, details);
 
         expect(result.clientIp).toBeNull();
-    });
-
-    it("can handle with no http request and an error", () => {
-        const result = logEntry(null, parameters, details, error);
-
-        expect(result.clientIp).toBeNull();
-        expect(result.error).toEqual(error);
-    });
-
-    it("can handle with a http request and an error", () => {
-        const result = logEntry(event, parameters, details, error);
-
-        expect(result.clientIp).toEqual("144.32.100.16");
-        expect(result.error).toEqual(error);
     });
 });
