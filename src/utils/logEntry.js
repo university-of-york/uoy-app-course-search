@@ -5,7 +5,7 @@ import { logger } from "./logger";
  *
  * @param {http.IncomingMessage} request
  * @param {Object} parameters
- * @param {Object} details addiotionaly added directly to the log
+ * @param {Object} details additionally added directly to the log
  * @param {Error} error
  */
 
