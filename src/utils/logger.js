@@ -23,7 +23,7 @@ const logger = pino({
     // We haven't included all fields here as `logEntry` will
     // add the rest otherwise the keys will duplicate
     base: {
-        application: "esg-app-course-search",
+        application: "uoy-app-course-search",
     },
     // Whilst we could use `pino.stdTimeFunctions.isoTime`, it doesn't
     // have a key of `timestamp` which our logging format requires
