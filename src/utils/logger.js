@@ -26,9 +26,9 @@ module.exports.logger = pino({
         application: "esg-app-course-search",
     },
     // Whilst we could use `pino.stdTimeFunctions.isoTime`, it doesn't
-    // have a key of `timestamp` which our AWS policy requires
+    // have a key of `timestamp` which our logging format requires
     timestamp: () => `,"timestamp":"${new Date(Date.now()).toISOString()}"`,
     // Whenever a string is given alongside an object to the logger it's the message.
-    // We're updating it from `msg` to `message` to match our AWS standard
+    // We're updating it from `msg` to `message` to match our logging format standard
     messageKey: "message",
 });
