@@ -1,6 +1,6 @@
-const pino = require("pino");
+import pino from "pino";
 
-module.exports.logger = pino({
+const logger = pino({
     level: "info",
     formatters: {
         // If we don't override the default formatter for level
@@ -32,3 +32,5 @@ module.exports.logger = pino({
     // We're updating it from `msg` to `message` to match our logging format standard
     messageKey: "message",
 });
+
+export { logger };
