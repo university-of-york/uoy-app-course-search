@@ -10,19 +10,11 @@ import { logger } from "./logger";
  */
 
 const logEntry = (request, parameters, details, error) => {
-    if (error) {
-        return {
-            clientIp: request ? getClientIp(request) : null,
-            parameters,
-            details,
-            error,
-        };
-    }
-
     return {
         clientIp: request ? getClientIp(request) : null,
         parameters,
         details,
+        error,
     };
 };
 
