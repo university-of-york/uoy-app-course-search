@@ -6,7 +6,7 @@ import { logger } from "./logger";
  * @param {http.IncomingMessage} request
  * @param {Object} parameters
  * @param {Object} details additionally added directly to the log
- * @param {Error} error
+ * @param {Object} Application log format style error
  */
 
 const logEntry = (request, parameters, details, error) => {

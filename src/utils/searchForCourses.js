@@ -12,7 +12,11 @@ const searchForCourses = async (searchTerm) => {
 
     let isSuccessfulSearch;
     let searchResponseData = { numberOfMatches: 0, results: [] };
-    let searchError = { message: "Failed to fetch results from Courses API", searchUrl: courseSearchUrl };
+    let searchError = {
+        message: "Failed to fetch results from Courses API",
+        type: "SearchError",
+        searchUrl: courseSearchUrl,
+    };
 
     try {
         const response = await fetch(courseSearchUrl, {

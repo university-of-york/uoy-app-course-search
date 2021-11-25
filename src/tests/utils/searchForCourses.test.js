@@ -79,6 +79,7 @@ describe("searchForCourses", () => {
         expect(searchResponseData.results).toEqual([]);
         expect(searchError).toEqual({
             message: "Failed to fetch results from Courses API",
+            type: "SearchError",
             searchUrl: "https://test.courses.api.com?search=english&max=20",
             response: {
                 status: 403,
@@ -98,6 +99,7 @@ describe("searchForCourses", () => {
         expect(searchResponseData.results).toEqual([]);
         expect(searchError).toEqual({
             message: "Failed to fetch results from Courses API",
+            type: "SearchError",
             searchUrl: "https://test.courses.api.com?search=english&max=20",
             details: "can not resolve host",
         });
@@ -184,6 +186,7 @@ describe("searchForCourses", () => {
         expect(searchResponseData.results).toEqual([]);
         expect(searchError).toEqual({
             message: "Failed to fetch results from Courses API",
+            type: "SearchError",
             searchUrl: "https://test.courses.api.com?search=history&max=20",
             details: "A network error has occurred",
         });
