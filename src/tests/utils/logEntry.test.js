@@ -53,10 +53,13 @@ describe("Request Logging", () => {
         MockDate.set(new Date());
 
         expect(logEntry(event, parameters, details)).toEqual({
-            parameters: {
-                search: "biology",
+            details: {
+                clientIp: "144.32.100.16",
+                parameters: {
+                    search: "biology",
+                },
+                results: [],
             },
-            details: { clientIp: "144.32.100.16", results: [] },
         });
     });
 

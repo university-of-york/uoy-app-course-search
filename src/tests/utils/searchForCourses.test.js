@@ -199,10 +199,10 @@ describe("searchForCourses", () => {
 
         expect(logger.warn).toBeCalledWith(
             expect.objectContaining({
-                parameters: {
-                    search: "physics",
-                },
                 details: expect.objectContaining({
+                    parameters: {
+                        search: "physics",
+                    },
                     message: "Request failed, retrying",
                     searchUrl: "https://test.courses.api.com?search=physics&max=20",
                 }),

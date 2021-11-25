@@ -11,7 +11,6 @@ import { logger } from "./logger";
 
 const logEntry = (request, parameters, details, error) => {
     const entry = {
-        parameters,
         details,
         error,
     };
@@ -21,6 +20,7 @@ const logEntry = (request, parameters, details, error) => {
     }
 
     entry.details.clientIp = request ? getClientIp(request) : null;
+    entry.details.parameters = parameters;
 
     return entry;
 };

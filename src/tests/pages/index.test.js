@@ -177,7 +177,9 @@ describe("getServerSideProps", () => {
         await getServerSideProps(contextWithSearchTerm);
 
         expect(logger.info).toHaveBeenCalledTimes(1);
-        expect(logger.info).toHaveBeenCalledWith(expect.objectContaining({ parameters: { search: "english" } }));
+        expect(logger.info).toHaveBeenCalledWith(
+            expect.objectContaining({ details: { clientIp: null, parameters: { search: "english" } } })
+        );
     });
 
     it("logs an error when the course search failed", async () => {
@@ -198,24 +200,25 @@ describe("getServerSideProps", () => {
         await getServerSideProps(contextWithSearchTerm);
 
         expect(logger.error).toHaveBeenCalledTimes(1);
-        expect(logger.error).toHaveBeenCalledWith(
-            expect.objectContaining({
+        expect(logger.error).toHaveBeenCalledWith({
+            details: {
+                clientIp: null,
                 parameters: {
                     search: "english",
                 },
-                error: {
-                    message: "Search failed",
-                    searchUrl: "http://foo.bar",
-                    response: {
-                        status: 403,
-                        statusText: "Forbidden",
-                        body: {
-                            message: "Missing authentication token",
-                        },
+            },
+            error: {
+                message: "Search failed",
+                searchUrl: "http://foo.bar",
+                response: {
+                    status: 403,
+                    statusText: "Forbidden",
+                    body: {
+                        message: "Missing authentication token",
                     },
                 },
-            })
-        );
+            },
+        });
     });
 
     it("does not log an error when the course search succeeds", async () => {
