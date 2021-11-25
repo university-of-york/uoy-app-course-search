@@ -1,8 +1,11 @@
 import { searchForCourses } from "../../utils/searchForCourses";
+import { logger } from "../../utils/logger";
+
+jest.mock("../../utils/logger");
 
 beforeEach(() => {
     fetch.resetMocks();
-    console.warn.mockClear();
+    logger.warn.mockClear();
 });
 
 describe("searchForCourses", () => {
@@ -76,11 +79,14 @@ describe("searchForCourses", () => {
         expect(searchResponseData.results).toEqual([]);
         expect(searchError).toEqual({
             message: "Failed to fetch results from Courses API",
-            searchUrl: "https://test.courses.api.com?search=english&max=20",
-            response: {
-                status: 403,
-                statusText: "Forbidden",
-                body: { message: "Missing authentication token" },
+            type: "SearchError",
+            details: {
+                searchUrl: "https://test.courses.api.com?search=english&max=20",
+                response: {
+                    status: 403,
+                    statusText: "Forbidden",
+                    body: { message: "Missing authentication token" },
+                },
             },
         });
     });
@@ -94,9 +100,11 @@ describe("searchForCourses", () => {
         expect(searchResponseData.numberOfMatches).toEqual(0);
         expect(searchResponseData.results).toEqual([]);
         expect(searchError).toEqual({
-            message: "Failed to fetch results from Courses API",
-            searchUrl: "https://test.courses.api.com?search=english&max=20",
-            details: "can not resolve host",
+            message: "can not resolve host",
+            type: "SearchError",
+            details: {
+                searchUrl: "https://test.courses.api.com?search=english&max=20",
+            },
         });
     });
 
@@ -180,9 +188,11 @@ describe("searchForCourses", () => {
         expect(searchResponseData.numberOfMatches).toEqual(0);
         expect(searchResponseData.results).toEqual([]);
         expect(searchError).toEqual({
-            message: "Failed to fetch results from Courses API",
-            searchUrl: "https://test.courses.api.com?search=history&max=20",
-            details: "A network error has occurred",
+            message: "A network error has occurred",
+            type: "SearchError",
+            details: {
+                searchUrl: "https://test.courses.api.com?search=history&max=20",
+            },
         });
     });
 
@@ -192,17 +202,34 @@ describe("searchForCourses", () => {
         await searchForCourses("physics");
 
         expect(fetch.mock.calls.length).toEqual(4);
-        expect(console.warn).toBeCalledTimes(3);
+        expect(logger.warn).toBeCalledTimes(3);
 
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"type":"warn"'));
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"queryStringParameters":"physics"'));
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"message":"Request failed, retrying"'));
-        expect(console.warn).toBeCalledWith(expect.stringContaining('"error":"A network error has occurred"'));
-        expect(console.warn).toBeCalledWith(
-            expect.stringContaining('"searchUrl":"https://test.courses.api.com?search=physics&max=20"')
+        expect(logger.warn).toBeCalledWith(
+            expect.objectContaining({
+                details: expect.objectContaining({
+                    parameters: {
+                        search: "physics",
+                    },
+
+                    searchUrl: "https://test.courses.api.com?search=physics&max=20",
+                }),
+            }),
+            "Request failed, retrying"
         );
-        expect(console.warn).toHaveBeenNthCalledWith(1, expect.stringContaining('"attempt":0'));
-        expect(console.warn).toHaveBeenNthCalledWith(2, expect.stringContaining('"attempt":1'));
-        expect(console.warn).toHaveBeenNthCalledWith(3, expect.stringContaining('"attempt":2'));
+        expect(logger.warn).toHaveBeenNthCalledWith(
+            1,
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 0 }) }),
+            "Request failed, retrying"
+        );
+        expect(logger.warn).toHaveBeenNthCalledWith(
+            2,
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 1 }) }),
+            "Request failed, retrying"
+        );
+        expect(logger.warn).toHaveBeenNthCalledWith(
+            3,
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 2 }) }),
+            "Request failed, retrying"
+        );
     });
 });

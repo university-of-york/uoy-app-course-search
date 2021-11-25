@@ -12,7 +12,13 @@ const searchForCourses = async (searchTerm) => {
 
     let isSuccessfulSearch;
     let searchResponseData = { numberOfMatches: 0, results: [] };
-    let searchError = { message: "Failed to fetch results from Courses API", searchUrl: courseSearchUrl };
+    let searchError = {
+        message: "Failed to fetch results from Courses API",
+        type: "SearchError",
+        details: {
+            searchUrl: courseSearchUrl,
+        },
+    };
 
     try {
         const response = await fetch(courseSearchUrl, {
@@ -25,7 +31,7 @@ const searchForCourses = async (searchTerm) => {
             searchResponseData = await response.json();
             searchError = {};
         } else {
-            searchError.response = {
+            searchError.details.response = {
                 status: response.status,
                 statusText: response.statusText,
                 body: await response.json(),
@@ -33,7 +39,7 @@ const searchForCourses = async (searchTerm) => {
         }
     } catch (error) {
         isSuccessfulSearch = false;
-        searchError.details = error.message;
+        searchError.message = error.message;
     }
 
     return { isSuccessfulSearch, searchResponseData, searchError };
@@ -44,10 +50,12 @@ const shouldRetry = (searchTerm, courseSearchUrl) => (attempt, error, response) 
 
     if (attempt >= MAX_RETRY_ATTEMPTS) return false;
 
-    if (error !== null) {
+    if (error) {
         logRetryWarning(searchTerm, courseSearchUrl, attempt, error, response);
         return true;
     }
+
+    return false;
 };
 
 export { searchForCourses };

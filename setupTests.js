@@ -1,13 +1,15 @@
 import "@testing-library/jest-dom/extend-expect";
 import jestFetchMock from "jest-fetch-mock";
+import { logger } from "./src/utils/logger";
 
 jestFetchMock.enableMocks();
+jest.mock("./src/utils/logger");
 
 // Mock out logging functions so that logging can be tested and
 // also to suppress logs (particularly errors) from test output
-console.info = jest.fn();
-console.warn = jest.fn();
-console.error = jest.fn();
+logger.info = jest.fn();
+logger.warn = jest.fn();
+logger.error = jest.fn();
 
 // use 'dotenv' to load environment variables for test environment
 // Next.js claims to have built-in support for .env.test
