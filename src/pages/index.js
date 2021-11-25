@@ -96,7 +96,7 @@ const getServerSideProps = async (context) => {
     if (isSuccessfulSearch) {
         logger.info(logEntry(context.req, context.query, null), "User conducted a course search");
     } else {
-        logger.error(logEntry(context.req, context.query, null, searchError), "User failed to conduct a course search");
+        logger.error(logEntry(context.req, context.query, null, searchError), "Course search failed");
     }
 
     return {

@@ -221,7 +221,7 @@ describe("getServerSideProps", () => {
                     },
                 },
             },
-            "User failed to conduct a course search"
+            "Course search failed"
         );
     });
 
