@@ -53,18 +53,17 @@ describe("Request Logging", () => {
         MockDate.set(new Date());
 
         expect(logEntry(event, parameters, details)).toEqual({
-            clientIp: "144.32.100.16",
             parameters: {
                 search: "biology",
             },
-            details: { results: [] },
+            details: { clientIp: "144.32.100.16", results: [] },
         });
     });
 
     it("puts nonexistent fields as null instead of skipping them", () => {
         const result = logEntry(null, parameters, null);
 
-        expect(result.clientIp).toBeNull();
+        expect(result.details.clientIp).toBeNull();
     });
 
     it("can log an error", () => {
@@ -76,12 +75,12 @@ describe("Request Logging", () => {
     it("can parse the http event to find an IP address", () => {
         const result = logEntry(event, null, null);
 
-        expect(result.clientIp).toEqual("144.32.100.16");
+        expect(result.details.clientIp).toEqual("144.32.100.16");
     });
 
     it("returns clientIp as null with no http request", () => {
         const result = logEntry(null, parameters, details);
 
-        expect(result.clientIp).toBeNull();
+        expect(result.details.clientIp).toBeNull();
     });
 });

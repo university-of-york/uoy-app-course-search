@@ -10,12 +10,19 @@ import { logger } from "./logger";
  */
 
 const logEntry = (request, parameters, details, error) => {
-    return {
-        clientIp: request ? getClientIp(request) : null,
+    const entry = {
         parameters,
         details,
         error,
     };
+
+    if (!entry.details) {
+        entry.details = {};
+    }
+
+    entry.details.clientIp = request ? getClientIp(request) : null;
+
+    return entry;
 };
 
 /* eslint max-params: ["warn", 5] */
