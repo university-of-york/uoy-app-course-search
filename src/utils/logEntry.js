@@ -15,9 +15,7 @@ const logEntry = (request, parameters, details, error) => {
         error,
     };
 
-    if (!entry.details) {
-        entry.details = {};
-    }
+    if (!entry.details) entry.details = {};
 
     entry.details.clientIp = request ? getClientIp(request) : null;
     entry.details.parameters = parameters;
