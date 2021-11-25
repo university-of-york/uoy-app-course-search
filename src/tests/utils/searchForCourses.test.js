@@ -203,22 +203,26 @@ describe("searchForCourses", () => {
                     parameters: {
                         search: "physics",
                     },
-                    message: "Request failed, retrying",
+
                     searchUrl: "https://test.courses.api.com?search=physics&max=20",
                 }),
-            })
+            }),
+            "Request failed, retrying"
         );
         expect(logger.warn).toHaveBeenNthCalledWith(
             1,
-            expect.objectContaining({ details: expect.objectContaining({ attempt: 0 }) })
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 0 }) }),
+            "Request failed, retrying"
         );
         expect(logger.warn).toHaveBeenNthCalledWith(
             2,
-            expect.objectContaining({ details: expect.objectContaining({ attempt: 1 }) })
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 1 }) }),
+            "Request failed, retrying"
         );
         expect(logger.warn).toHaveBeenNthCalledWith(
             3,
-            expect.objectContaining({ details: expect.objectContaining({ attempt: 2 }) })
+            expect.objectContaining({ details: expect.objectContaining({ attempt: 2 }) }),
+            "Request failed, retrying"
         );
     });
 });

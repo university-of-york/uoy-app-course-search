@@ -32,13 +32,13 @@ const logRetryWarning = (searchTerm, courseSearchUrl, attempt, error, response) 
             null,
             { search: searchTerm },
             {
-                message: "Request failed, retrying",
                 searchUrl: courseSearchUrl,
                 attempt,
                 response,
             },
             error
-        )
+        ),
+        "Request failed, retrying"
     );
 };
 
