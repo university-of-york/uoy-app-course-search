@@ -80,11 +80,13 @@ describe("searchForCourses", () => {
         expect(searchError).toEqual({
             message: "Failed to fetch results from Courses API",
             type: "SearchError",
-            searchUrl: "https://test.courses.api.com?search=english&max=20",
-            response: {
-                status: 403,
-                statusText: "Forbidden",
-                body: { message: "Missing authentication token" },
+            details: {
+                searchUrl: "https://test.courses.api.com?search=english&max=20",
+                response: {
+                    status: 403,
+                    statusText: "Forbidden",
+                    body: { message: "Missing authentication token" },
+                },
             },
         });
     });
@@ -98,10 +100,11 @@ describe("searchForCourses", () => {
         expect(searchResponseData.numberOfMatches).toEqual(0);
         expect(searchResponseData.results).toEqual([]);
         expect(searchError).toEqual({
-            message: "Failed to fetch results from Courses API",
+            message: "can not resolve host",
             type: "SearchError",
-            searchUrl: "https://test.courses.api.com?search=english&max=20",
-            details: "can not resolve host",
+            details: {
+                searchUrl: "https://test.courses.api.com?search=english&max=20",
+            },
         });
     });
 
@@ -185,10 +188,11 @@ describe("searchForCourses", () => {
         expect(searchResponseData.numberOfMatches).toEqual(0);
         expect(searchResponseData.results).toEqual([]);
         expect(searchError).toEqual({
-            message: "Failed to fetch results from Courses API",
+            message: "A network error has occurred",
             type: "SearchError",
-            searchUrl: "https://test.courses.api.com?search=history&max=20",
-            details: "A network error has occurred",
+            details: {
+                searchUrl: "https://test.courses.api.com?search=history&max=20",
+            },
         });
     });
 
