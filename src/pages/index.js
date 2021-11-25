@@ -93,11 +93,11 @@ const getServerSideProps = async (context) => {
 
     const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses(searchTerm);
 
-    if (!isSuccessfulSearch) {
-        logger.error(logEntry(context.req, context.query, null, searchError));
+    if (isSuccessfulSearch) {
+        logger.info(logEntry(context.req, context.query, null), "User conducted a course search");
+    } else {
+        logger.error(logEntry(context.req, context.query, null, searchError), "User failed to conduct a course search");
     }
-
-    logger.info(logEntry(context.req, context.query, null));
 
     return {
         props: {
