@@ -6,10 +6,16 @@ import { sentenceCase } from "../utils/formatting";
 import PropTypes from "prop-types";
 
 const CourseDetails = ({ course }) => {
+    const inClearing = course.inClearingOnlyHome || course.inClearingOnlyInternational;
+    const inAdjustment = course.inAdjustmentOnlyHome || course.inAdjustmentOnlyInternational;
+
     return (
         <RichTagList>
             <LevelAndAwardTag level={course.level} award={course.award} />
             <StartDateAndLengthTag yearOfEntry={course.yearOfEntry} length={course.length} />
+            {(inClearing || inAdjustment) && (
+                <ClearingAndAdjustment inClearing={inClearing} inAdjustment={inAdjustment} />
+            )}
         </RichTagList>
     );
 };
@@ -43,6 +49,24 @@ const StartDateAndLengthTag = ({ yearOfEntry, length }) => {
 StartDateAndLengthTag.propTypes = {
     yearOfEntry: PropTypes.string,
     length: PropTypes.string,
+};
+
+const ClearingAndAdjustment = ({ inClearing, inAdjustment }) => {
+    const subText =
+        inClearing && inAdjustment
+            ? "Places available"
+            : inClearing
+            ? "Clearing places available"
+            : "Adjustment places available";
+
+    return <RichTag topIcon="clock-o" title="Clearing and adjustment 2021" subText={subText} />;
+};
+
+ClearingAndAdjustment.propTypes = {
+    inClearingOnlyHome: PropTypes.boolean,
+    inClearingOnlyInternational: PropTypes.boolean,
+    inAdjustmentOnlyHome: PropTypes.boolean,
+    inAdjustmentOnlyInternational: PropTypes.boolean,
 };
 
 export { CourseDetails };
