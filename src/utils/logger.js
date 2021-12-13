@@ -16,6 +16,10 @@ const logger = pino({
     serializers: {
         error: pino.stdSerializers.err,
     },
+    // Base controls what fields are included in the JSON
+    // object, by default Pino includes fields like pid which
+    // are not very relevant in a serverless context
+    base: {},
     // Whilst we could use `pino.stdTimeFunctions.isoTime`, it doesn't
     // have a key of `timestamp` which our logging format requires
     timestamp: () => `,"timestamp":"${new Date(Date.now()).toISOString()}"`,
