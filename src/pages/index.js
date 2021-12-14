@@ -24,6 +24,7 @@ import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs
 import { GlobalNotice } from "../components/GlobalNotice";
 import { logger } from "../utils/logger";
 import { logEntry } from "../utils/logEntry";
+import { getClearingCourses, addClearingData } from "../utils/clearing";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -95,7 +96,9 @@ const getServerSideProps = async (context) => {
         return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
     }
 
-    const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses(searchTerm);
+    const [ courses, clearing ] = await Promise.all([searchForCourses(searchTerm), getClearingCourses()]);
+    const { isSuccessfulSearch, searchResponseData, searchError } = courses;
+    const results = addClearingData(searchResponseData.results, clearing);
 
     if (isSuccessfulSearch) {
         logger.info(logEntry(context.req, context.query, null), "User conducted a course search");
@@ -107,7 +110,7 @@ const getServerSideProps = async (context) => {
         props: {
             searchTerm,
             isSuccessfulSearch,
-            searchResults: searchResponseData.results,
+            searchResults: results,
             numberOfMatches: searchResponseData.numberOfMatches,
         },
     };
