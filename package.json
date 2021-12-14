@@ -24,6 +24,7 @@
     "lh": "npm run lighthouse:mobile"
   },
   "dependencies": {
+    "@googleapis/sheets": "^0.3.0",
     "@university-of-york/esg-lib-pattern-library-react-components": "^9.0.0",
     "express": "^4.17.1",
     "fetch-retry": "^5.0.1",
