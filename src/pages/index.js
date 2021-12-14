@@ -85,9 +85,13 @@ App.propTypes = {
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search === undefined ? context.query.q : context.query.search;
 
-    if (noSearchConducted(searchTerm)) return { props: {} };
+    if (noSearchConducted(searchTerm)) {
+        logger.info(logEntry(context.req, context.query, null), "User loaded courses index page");
+        return { props: {} };
+    }
 
     if (emptySearchConducted(searchTerm)) {
+        logger.info(logEntry(context.req, context.query, null), "User conducted an empty search");
         return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
     }
 
