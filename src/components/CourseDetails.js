@@ -63,8 +63,8 @@ const ClearingAndAdjustment = ({ inClearing, inAdjustment }) => {
 };
 
 ClearingAndAdjustment.propTypes = {
-    inClearing: PropTypes.boolean,
-    inAdjustment: PropTypes.boolean,
+    inClearing: PropTypes.bool.isRequired,
+    inAdjustment: PropTypes.bool.isRequired,
 };
 
 export { CourseDetails };
