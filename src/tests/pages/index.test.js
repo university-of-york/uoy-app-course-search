@@ -2,8 +2,10 @@ import { render, fireEvent, screen, within } from "@testing-library/react";
 import { cleanCookies } from "universal-cookie/lib/utils";
 import App, { getServerSideProps } from "../../pages";
 import { searchForCourses } from "../../utils/searchForCourses";
+import { logger } from "../../utils/logger";
 
 jest.mock("../../utils/searchForCourses");
+jest.mock("../../utils/logger");
 
 beforeEach(() => {
     jest.clearAllMocks();
@@ -174,10 +176,10 @@ describe("getServerSideProps", () => {
 
         await getServerSideProps(contextWithSearchTerm);
 
-        expect(console.info).toHaveBeenCalledTimes(1);
-        expect(console.info).toHaveBeenCalledWith(expect.stringContaining('"type":"audit"'));
-        expect(console.info).toHaveBeenCalledWith(
-            expect.stringContaining('"queryStringParameters":{"search":"english"}')
+        expect(logger.info).toHaveBeenCalledTimes(1);
+        expect(logger.info).toHaveBeenCalledWith(
+            expect.objectContaining({ details: { clientIp: null, parameters: { search: "english" } } }),
+            "User conducted a course search"
         );
     });
 
@@ -198,15 +200,28 @@ describe("getServerSideProps", () => {
 
         await getServerSideProps(contextWithSearchTerm);
 
-        expect(console.error).toHaveBeenCalledTimes(1);
-        expect(console.error).toHaveBeenCalledWith(expect.stringContaining('"type":"error"'));
-        expect(console.error).toHaveBeenCalledWith(
-            expect.stringContaining('"queryStringParameters":{"search":"english"}')
-        );
-        expect(console.error).toHaveBeenCalledWith(
-            expect.stringContaining(
-                '"additionalDetails":{"searchError":{"message":"Search failed","searchUrl":"http://foo.bar","response":{"status":403,"statusText":"Forbidden","body":{"message":"Missing authentication token"}}}'
-            )
+        expect(logger.error).toHaveBeenCalledTimes(1);
+        expect(logger.error).toHaveBeenCalledWith(
+            {
+                details: {
+                    clientIp: null,
+                    parameters: {
+                        search: "english",
+                    },
+                },
+                error: {
+                    message: "Search failed",
+                    searchUrl: "http://foo.bar",
+                    response: {
+                        status: 403,
+                        statusText: "Forbidden",
+                        body: {
+                            message: "Missing authentication token",
+                        },
+                    },
+                },
+            },
+            "Course search failed"
         );
     });
 
@@ -218,6 +233,6 @@ describe("getServerSideProps", () => {
 
         await getServerSideProps(contextWithSearchTerm);
 
-        expect(console.error).not.toHaveBeenCalled();
+        expect(logger.error).not.toHaveBeenCalled();
     });
 });

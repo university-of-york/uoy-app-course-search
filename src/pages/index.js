@@ -22,8 +22,8 @@ import { SearchResultsDescription } from "../components/SearchResultsDescription
 import { UndergraduateMenuNavigation } from "../components/UndergraduateMenuNavigation";
 import { UndergraduateBreadcrumbs } from "../components/UndergraduateBreadcrumbs";
 import { GlobalNotice } from "../components/GlobalNotice";
+import { logger } from "../utils/logger";
 import { logEntry } from "../utils/logEntry";
-import { LOG_TYPES } from "../constants/LogTypes";
 
 const App = ({ isSuccessfulSearch, searchResults, numberOfMatches, searchTerm }) => {
     return (
@@ -85,20 +85,22 @@ App.propTypes = {
 const getServerSideProps = async (context) => {
     const searchTerm = context.query.search === undefined ? context.query.q : context.query.search;
 
-    console.info(logEntry(context.req, LOG_TYPES.AUDIT, context.query));
-
     if (noSearchConducted(searchTerm)) {
+        logger.info(logEntry(context.req, context.query, null), "User loaded courses index page");
         return { props: {} };
     }
 
     if (emptySearchConducted(searchTerm)) {
+        logger.info(logEntry(context.req, context.query, null), "User conducted an empty search");
         return { props: { searchTerm, isSuccessfulSearch: true, searchResults: [], numberOfMatches: 0 } };
     }
 
     const { isSuccessfulSearch, searchResponseData, searchError } = await searchForCourses(searchTerm);
 
-    if (!isSuccessfulSearch) {
-        console.error(logEntry(context.req, LOG_TYPES.ERROR, context.query, { searchError }));
+    if (isSuccessfulSearch) {
+        logger.info(logEntry(context.req, context.query, null), "User conducted a course search");
+    } else {
+        logger.error(logEntry(context.req, context.query, null, searchError), "Course search failed");
     }
 
     return {

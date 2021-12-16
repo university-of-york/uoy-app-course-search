@@ -97,6 +97,25 @@ npm run deploy:dev
 npm run deploy
 ```
 
+If the above command executes successfully, it should output the URL of the application running in your AWS sandbox account:
+
+```
+Serverless: Stack update finished...                              
+Service Information                                               
+service: uoy-app-course-search                                    
+...                                                            
+endpoints:                                                        
+  ANY - https://j81u5u0jqi.execute-api.eu-west-1.amazonaws.com/v1 
+```
+
+You will need to append `/courses` to this URL in order to access the application, e.g.
+
+```
+https://j81u5u0jqi.execute-api.eu-west-1.amazonaws.com/v1/courses
+```
+
+It will probably be missing some styling because the application assumes its assets can be found under the path `/courses` whereas in the sandbox they are under `/v1/courses` as above. This is currently a limitation of running the application in the sandbox environment.
+
 To undeploy the application from your AWS account:
 
 ```
