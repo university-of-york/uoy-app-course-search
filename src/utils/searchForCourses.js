@@ -6,7 +6,7 @@ const fetch = fetchRetry(nodeFetch);
 
 const searchForCourses = async (searchTerm) => {
     const courseSearchUrl =
-        process.env.COURSES_API_BASEURL +
+        `${process.env.COURSES_API_BASEURL}/courses` +
         `?search=${encodeURI(searchTerm)}` +
         `&max=${process.env.COURSES_API_MAX_RESULTS}`;
 
