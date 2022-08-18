@@ -42,7 +42,7 @@
     "set-value": ">=4.0.1"
   },
   "devDependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@percy/script": "^1.1.0",
     "@testing-library/dom": "^7.24.1",
     "@testing-library/jest-dom": "^5.11.4",
