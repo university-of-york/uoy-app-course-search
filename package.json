@@ -63,7 +63,7 @@
     "lighthouse": "^8.3.0",
     "mockdate": "^3.0.5",
     "prettier": "2.1.1",
-    "serverless": "^2.41.0",
+    "serverless": "^2.72.3",
     "serverless-dotenv-plugin": "^3.9.0",
     "xo": "^0.33.1"
   }
