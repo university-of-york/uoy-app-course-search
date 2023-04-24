@@ -65,6 +65,6 @@
     "prettier": "2.1.1",
     "serverless": "^2.41.0",
     "serverless-dotenv-plugin": "^3.9.0",
-    "xo": "^0.33.1"
+    "xo": "^0.54.1"
   }
 }
