@@ -1,3 +1,6 @@
+> **Note**
+> This application was retired on 26/04/2023.
+
 # Course Search (not yet released)
 
 [![build](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/build.yml/badge.svg)](https://github.com/university-of-york/uoy-app-course-search/actions/workflows/build.yml)
