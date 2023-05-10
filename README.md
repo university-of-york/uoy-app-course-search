@@ -1,5 +1,5 @@
 > **Note**
-> This application was retired on 26/04/2023.
+> This application was retired on 10/05/2023.
 
 # Course Search (not yet released)
 
